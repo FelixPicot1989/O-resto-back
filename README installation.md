@@ -2,7 +2,7 @@
 
 ### Installation of Symfony
 
-- Follow this step by step :
+- Follow this step by step : 
 
 > Creation of projet symfony avec composer
 
