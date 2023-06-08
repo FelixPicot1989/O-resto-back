@@ -6,6 +6,8 @@ use App\Repository\RestaurantRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=RestaurantRepository::class)
@@ -16,26 +18,34 @@ class Restaurant
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * 
+     * @Groups({"restaurant_browse"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="text")
+     * 
+     * @Groups({"restaurant_browse"})
      */
+
     private $history;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"restaurant_browse"})
      */
     private $openingHours;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"restaurant_browse"})
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=32)
+     * @Groups({"restaurant_browse"})
      */
     private $phone;
 
@@ -51,6 +61,7 @@ class Restaurant
 
     /**
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="restaurant")
+     * @Groups({"restaurant_browse"})
      */
     private $images;
 
