@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MenuRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,16 @@ class Menu
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Eat::class, mappedBy="menu")
+     */
+    private $eats;
+
+    public function __construct()
+    {
+        $this->eats = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +98,33 @@ class Menu
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Eat>
+     */
+    public function getEats(): Collection
+    {
+        return $this->eats;
+    }
+
+    public function addEat(Eat $eat): self
+    {
+        if (!$this->eats->contains($eat)) {
+            $this->eats[] = $eat;
+            $eat->addMenu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEat(Eat $eat): self
+    {
+        if ($this->eats->removeElement($eat)) {
+            $eat->removeMenu($this);
+        }
 
         return $this;
     }
