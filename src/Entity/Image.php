@@ -37,6 +37,11 @@ class Image
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Restaurant::class, inversedBy="images")
+     */
+    private $restaurant;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Image
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getRestaurant(): ?Restaurant
+    {
+        return $this->restaurant;
+    }
+
+    public function setRestaurant(?Restaurant $restaurant): self
+    {
+        $this->restaurant = $restaurant;
 
         return $this;
     }
