@@ -381,6 +381,7 @@
     <service id="App\Controller\Api\ImageController" class="App\Controller\Api\ImageController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
+      <argument type="service" id="serializer"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.GNc8e5B.App\Controller\Api\ImageController"/>
       </call>
@@ -401,7 +402,14 @@
         <argument type="service" id=".service_locator.GNc8e5B.App\Controller\Api\RestaurantController"/>
       </call>
     </service>
-    <service id="App\Controller\Api\ReviewController" class="App\Controller\Api\ReviewController" autowire="true" autoconfigure="true"/>
+    <service id="App\Controller\Api\ReviewController" class="App\Controller\Api\ReviewController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="serializer"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.GNc8e5B.App\Controller\Api\ReviewController"/>
+      </call>
+    </service>
     <service id="App\Controller\Api\UserController" class="App\Controller\Api\UserController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -6700,6 +6708,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Api\RestaurantController" class="App\Controller\Api\RestaurantController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Api\RestaurantController" class="App\Controller\Api\RestaurantController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Api\RestaurantController" class="App\Controller\Api\RestaurantController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Api\ReviewController" class="App\Controller\Api\ReviewController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Api\ReviewController" class="App\Controller\Api\ReviewController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Api\ReviewController" class="App\Controller\Api\ReviewController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Api\UserController" class="App\Controller\Api\UserController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Api\UserController" class="App\Controller\Api\UserController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Api\UserController" class="App\Controller\Api\UserController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -7061,6 +7072,12 @@
         <argument key="eatRepository" type="service_closure" id="App\Repository\EatRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.fVWBnHr" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="imageRepository" type="service_closure" id="App\Repository\ImageRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.Idl01Op" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7073,13 +7090,26 @@
         <argument key="restaurantRepository" type="service_closure" id="App\Repository\RestaurantRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.OEREEZh" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="reviewRepository" type="service_closure" id="App\Repository\ReviewRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.zLUIdUt" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="reviewRepository" type="service_closure" id="App\Repository\ReviewRepository"/>
+        <argument key="serializer" type="service_closure" id="serializer"/>
+      </argument>
+    </service>
     <service id=".service_locator..Ae5NXw" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.vzo6unw" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.EkofG_m" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\Api\CategoryController::browse" type="service_closure" id=".service_locator.uCSWYWR"/>
@@ -7088,10 +7118,15 @@
         <argument key="App\Controller\Api\DrinkController::read" type="service_closure" id=".service_locator.j4egLXZ"/>
         <argument key="App\Controller\Api\EatController::browse" type="service_closure" id=".service_locator.ss61uwt"/>
         <argument key="App\Controller\Api\EatController::read" type="service_closure" id=".service_locator.ss61uwt"/>
+        <argument key="App\Controller\Api\ImageController::browse" type="service_closure" id=".service_locator.fVWBnHr"/>
+        <argument key="App\Controller\Api\ImageController::read" type="service_closure" id=".service_locator.fVWBnHr"/>
         <argument key="App\Controller\Api\MenuController::browse" type="service_closure" id=".service_locator.Idl01Op"/>
         <argument key="App\Controller\Api\MenuController::read" type="service_closure" id=".service_locator.Idl01Op"/>
         <argument key="App\Controller\Api\RestaurantController::browse" type="service_closure" id=".service_locator.yQvGdWR"/>
         <argument key="App\Controller\Api\RestaurantController::read" type="service_closure" id=".service_locator.yQvGdWR"/>
+        <argument key="App\Controller\Api\ReviewController::add" type="service_closure" id=".service_locator.zLUIdUt"/>
+        <argument key="App\Controller\Api\ReviewController::browse" type="service_closure" id=".service_locator.OEREEZh"/>
+        <argument key="App\Controller\Api\ReviewController::read" type="service_closure" id=".service_locator.OEREEZh"/>
         <argument key="App\Controller\Api\UserController::browse" type="service_closure" id=".service_locator..Ae5NXw"/>
         <argument key="App\Controller\Api\UserController::read" type="service_closure" id=".service_locator..Ae5NXw"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
@@ -7104,10 +7139,15 @@
         <argument key="App\Controller\Api\DrinkController:read" type="service_closure" id=".service_locator.j4egLXZ"/>
         <argument key="App\Controller\Api\EatController:browse" type="service_closure" id=".service_locator.ss61uwt"/>
         <argument key="App\Controller\Api\EatController:read" type="service_closure" id=".service_locator.ss61uwt"/>
+        <argument key="App\Controller\Api\ImageController:browse" type="service_closure" id=".service_locator.fVWBnHr"/>
+        <argument key="App\Controller\Api\ImageController:read" type="service_closure" id=".service_locator.fVWBnHr"/>
         <argument key="App\Controller\Api\MenuController:browse" type="service_closure" id=".service_locator.Idl01Op"/>
         <argument key="App\Controller\Api\MenuController:read" type="service_closure" id=".service_locator.Idl01Op"/>
         <argument key="App\Controller\Api\RestaurantController:browse" type="service_closure" id=".service_locator.yQvGdWR"/>
         <argument key="App\Controller\Api\RestaurantController:read" type="service_closure" id=".service_locator.yQvGdWR"/>
+        <argument key="App\Controller\Api\ReviewController:add" type="service_closure" id=".service_locator.zLUIdUt"/>
+        <argument key="App\Controller\Api\ReviewController:browse" type="service_closure" id=".service_locator.OEREEZh"/>
+        <argument key="App\Controller\Api\ReviewController:read" type="service_closure" id=".service_locator.OEREEZh"/>
         <argument key="App\Controller\Api\UserController:browse" type="service_closure" id=".service_locator..Ae5NXw"/>
         <argument key="App\Controller\Api\UserController:read" type="service_closure" id=".service_locator..Ae5NXw"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
@@ -7583,6 +7623,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.GNc8e5B" method="withContext"/>
     </service>
+    <service id=".service_locator.GNc8e5B.App\Controller\Api\ReviewController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Api\ReviewController"/>
+      <argument>App\Controller\Api\ReviewController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.GNc8e5B" method="withContext"/>
+    </service>
     <service id=".service_locator.GNc8e5B.App\Controller\Api\UserController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Api\UserController"/>
       <argument>App\Controller\Api\UserController</argument>
@@ -7779,12 +7825,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.vzo6unw"/>
+      <argument type="service" id=".service_locator.EkofG_m"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.vzo6unw"/>
+      <argument type="service" id=".service_locator.EkofG_m"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8759,7 +8805,7 @@
     <service id="lexik_jwt_authentication.key_loader" alias="lexik_jwt_authentication.key_loader.raw" public="true"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.vzo6unw"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.EkofG_m"/>
     <service id="session" alias=".session.do-not-use" public="true">
       <deprecated package="symfony/framework-bundle" version="5.3">The "%alias_id%" service and "SessionInterface" alias are deprecated, use "$requestStack-&gt;getSession()" instead.</deprecated>
     </service>
@@ -8784,7 +8830,8 @@
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.k3s3K.2" alias=".service_locator.EqDN9r1"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
-    <service id=".service_locator.Vv1ZuF." alias=".service_locator.vzo6unw"/>
+    <service id=".service_locator.OxeUWgu" alias=".service_locator.zLUIdUt"/>
+    <service id=".service_locator.WvI5XI5" alias=".service_locator.EkofG_m"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
     <service id=".service_locator.Za9MpXe" alias=".service_locator.y4dplYt"/>
     <service id=".service_locator.nk0lT0X" alias=".service_locator.1kmbKC8"/>
@@ -8817,8 +8864,11 @@
     <service id=".service_locator.I6uDghJ" alias=".service_locator.uCSWYWR"/>
     <service id=".service_locator.rQXmNnW" alias=".service_locator.j4egLXZ"/>
     <service id=".service_locator.s0OFpCd" alias=".service_locator.ss61uwt"/>
+    <service id=".service_locator.HKuXlMf" alias=".service_locator.fVWBnHr"/>
     <service id=".service_locator.e6WjB2D" alias=".service_locator.Idl01Op"/>
     <service id=".service_locator.KWTbC0T" alias=".service_locator.yQvGdWR"/>
+    <service id=".service_locator.viUD0yS" alias=".service_locator.OEREEZh"/>
+    <service id=".service_locator.wYROGYv" alias=".service_locator.zLUIdUt"/>
     <service id=".service_locator.8PQa8Mp" alias=".service_locator..Ae5NXw"/>
     <service id=".service_locator.Wd_D6Iy" alias=".service_locator.GNc8e5B"/>
     <service id=".service_locator.l3DyD1S" alias=".service_locator.nR5uEWv"/>
