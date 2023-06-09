@@ -4,6 +4,9 @@ namespace App\Entity;
 
 use App\Repository\DrinkRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
+
 
 /**
  * @ORM\Entity(repositoryClass=DrinkRepository::class)
@@ -14,26 +17,34 @@ class Drink
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * 
+     * @Groups({"drink_browse", "drink_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
+     * @Groups({"drink_browse", "drink_read"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"drink_browse", "drink_read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="decimal", precision=5, scale=2)
+     * @Groups({"drink_browse", "drink_read"})
+     * 
      */
     private $price;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"drink_browse", "drink_read"})
      */
     private $alcool;
 
@@ -49,6 +60,8 @@ class Drink
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="drinks")
+     * @Groups({"drink_browse", "drink_read"})
+     *
      */
     private $category;
 

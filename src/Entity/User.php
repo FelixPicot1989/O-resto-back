@@ -6,6 +6,8 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -16,16 +18,19 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"user_browse", "user_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user_browse", "user_read"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"user_browse", "user_read"})
      */
     private $lastname;
 
@@ -56,11 +61,13 @@ class User
 
     /**
      * @ORM\OneToMany(targetEntity=Review::class, mappedBy="user")
+     * @Groups({"user_browse", "user_read"})
      */
     private $reviews;
 
     /**
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="user")
+     * 
      */
     private $reservations;
 

@@ -6,6 +6,8 @@ use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
@@ -16,11 +18,17 @@ class Category
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"drink_browse", "drink_read"})
+     * @Groups({"eat_browse", "eat_read"})
+     * @Groups({"category_browse", "category_read"}})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups({"drink_browse", "drink_read"})
+     * @Groups({"eat_browse", "eat_read"})
+     * @Groups({"category_browse", "category_read"})
      */
     private $name;
 
@@ -41,6 +49,8 @@ class Category
 
     /**
      * @ORM\ManyToMany(targetEntity=Eat::class, mappedBy="category")
+     * @Groups({"category_browse", "category_read"}})
+     * 
      */
     private $eats;
 

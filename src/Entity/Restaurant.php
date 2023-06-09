@@ -19,14 +19,14 @@ class Restaurant
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * 
-     * @Groups({"restaurant_browse"})
+     * @Groups({"restaurant_browse", "restaurant_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="text")
      * 
-     * @Groups({"restaurant_browse"})
+     * @Groups({"restaurant_browse", "restaurant_read"})
      */
 
     private $history;
@@ -39,13 +39,13 @@ class Restaurant
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"restaurant_browse"})
+     * @Groups({"restaurant_browse", "restaurant_read"})
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=32)
-     * @Groups({"restaurant_browse"})
+     * @Groups({"restaurant_browse", "restaurant_read"})
      */
     private $phone;
 
@@ -61,19 +61,19 @@ class Restaurant
 
     /**
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="restaurant")
-     * @Groups({"restaurant_browse"})
+     * @Groups({"restaurant_browse", "restaurant_read"})
      */
     private $images;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"restaurant_browse"})
+     * @Groups({"restaurant_browse", "restaurant_read"})
      */
     private $openingEvening;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"restaurant_browse"})     
+     * @Groups({"restaurant_browse", "restaurant_read"})     
      */
     private $info;
 

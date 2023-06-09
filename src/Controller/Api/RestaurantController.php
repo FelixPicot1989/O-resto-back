@@ -49,7 +49,7 @@ class RestaurantController extends CoreApiController
         return $this->json200($restaurant,
                 [
                     //name of group(s)
-                    "restaurant_browse"
+                    "restaurant_read"
                 ]
             );
     }
