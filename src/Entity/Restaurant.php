@@ -35,7 +35,7 @@ class Restaurant
      * @ORM\Column(type="string", length=255)
      * @Groups({"restaurant_browse"})
      */
-    private $openingHours;
+    private $openingLunch;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -65,6 +65,18 @@ class Restaurant
      */
     private $images;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"restaurant_browse"})
+     */
+    private $openingEvening;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"restaurant_browse"})     
+     */
+    private $info;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -87,14 +99,14 @@ class Restaurant
         return $this;
     }
 
-    public function getOpeningHours(): ?string
+    public function getOpeningLunch(): ?string
     {
-        return $this->openingHours;
+        return $this->openingLunch;
     }
 
-    public function setOpeningHours(string $openingHours): self
+    public function setOpeningLunch(string $openingLunch): self
     {
-        $this->openingHours = $openingHours;
+        $this->openingLunch = $openingLunch;
 
         return $this;
     }
@@ -173,6 +185,30 @@ class Restaurant
                 $image->setRestaurant(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getOpeningEvening(): ?string
+    {
+        return $this->openingEvening;
+    }
+
+    public function setOpeningEvening(string $openingEvening): self
+    {
+        $this->openingEvening = $openingEvening;
+
+        return $this;
+    }
+
+    public function getInfo(): ?string
+    {
+        return $this->info;
+    }
+
+    public function setInfo(string $info): self
+    {
+        $this->info = $info;
 
         return $this;
     }
