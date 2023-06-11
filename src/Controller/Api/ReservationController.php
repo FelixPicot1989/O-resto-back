@@ -2,8 +2,8 @@
 
 namespace App\Controller\Api;
 
-use App\Entity\Review;
-use App\Repository\ReviewRepository;
+use App\Entity\Reservation;
+use App\Repository\ReservationRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,62 +12,61 @@ use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
- * @Route("/api/reviews", name="app_api_review_")
+ * @Route("/api/reservations", name="app_api_reservation_")
  */
-class ReviewController extends CoreApiController
+class ReservationController extends CoreApiController
 {
     /**
-     * list all reviews
+     * list all reservations
      *
      * @Route("",name="browse", methods={"GET"})
      *
-     * @param ReviewRepository $reviewRepository
+     * @param ReservationRepository $reservationRepository
      * @return JsonResponse
      */
-    public function browse(ReviewRepository $reviewRepository): JsonResponse
+    public function browse(ReservationRepository $reservationRepository): JsonResponse
     {
-        $allreviews = $reviewRepository->findAll();
-        return $this->json200($allreviews, ["review_browse"]);
+        $allreservations = $reservationRepository->findAll();
+        return $this->json200($allreservations, ["reservation_browse"]);
     }
     /**
      * @Route("/{id}", name="read", requirements={"id"="\d+"}, methods={"GET"})
      */
-    // public function read(?review $review,reviewRepository $reviewRepository): JsonResponse
-    public function read($id, ReviewRepository $reviewRepository): JsonResponse
+    public function read($id, ReservationRepository $reservationRepository): JsonResponse
     {
-        $review = $reviewRepository->find($id);
+        $reservation = $reservationRepository->find($id);
         // gestion of 404
-        if ($review === null) {
+        if ($reservation === null) {
             // ! API -> we don't have HTML
             return $this->json(
                 [
-                    "message" => "Cet avis existe pas"
+                    "message" => "Cette reservation existe pas"
                 ],
                 // code status : 404
                 Response::HTTP_NOT_FOUND
             );
         }
         return $this->json(
-            $review,
+            $reservation,
             200,
             [],
             [
                 "groups" =>
                 [
-                    "review_read"
+                    "reservation_read"
                 ]
             ]
         );
     }
 
     /**
-     * add new review
+     * add new reservation
      *
      * @Route("",name="add", methods={"POST"})
      *
      * @return JsonResponse
      */
-    public function add(Request $request, SerializerInterface $serializerInterface, ReviewRepository $reviewRepository)
+    public function add(Request $request, SerializerInterface $serializerInterface, ReservationRepository $reservationRepository)
     {
 
 
@@ -76,29 +75,21 @@ class ReviewController extends CoreApiController
 
 
         // I use SerializerInterface for that
-        /** @var Review $newreview */
-        $newReview = $serializerInterface->deserialize(
+        /** @var Reservation $newreservation */
+        $newReservation = $serializerInterface->deserialize(
             $jsonContent,
-            Review::class,
+            Reservation::class,
             'json'
         );
 
-        //dd($newReview);
+        //dd($newReservation);
 
-        // ReviewController.php on line 88:
-        // App\Entity\Review {#949 ▼
-        // -id: null
-        // -comment: "Très chic"
-        // -rating: 4.5
-        // -createdAt: null //!\\ BUT CAN NOT BE NULL
-        // -user: null
-        // }
 
-        $reviewRepository->add($newReview, true);
+        $reservationRepository->add($newReservation, true);
 
         return $this->json(
 
-            $newReview,
+            $newReservation,
             //status 201 for created object
             Response::HTTP_CREATED,
 
@@ -108,44 +99,44 @@ class ReviewController extends CoreApiController
                 "groups" =>
                 [
                     // I use an existing group
-                    "review_read",
+                    "reservation_read",
                     "user_browse"
                 ]
             ]
         );
     }
 /**
-     * edit review
+     * edit reservation
      *
      * @Route("/{id}",name="edit", requirements={"id"="\d+"}, methods={"PUT", "PATCH"})
      * 
      * @param Request $request 
      * @param SerializerInterface $serializerInterface
-     * @param ReviewRepository $reviewRepository
+     * @param ReservationRepository $reservationRepository
      */
-    public function edit($id, Request $request, SerializerInterface $serializerInterface, ReviewRepository $reviewRepository)
+    public function edit($id, Request $request, SerializerInterface $serializerInterface, ReservationRepository $reservationRepository)
     {
-        // Update Review
+        // Update Reservation
         // 1. take back a JSON content
         $jsonContent = $request->getContent();
-        // 2. we cherch an existant review with id
-        $review = $reviewRepository->find($id);
+        // 2. we cherch an existant reservation with id
+        $reservation = $reservationRepository->find($id);
         // 3. deserialize and update the object
         $serializerInterface->deserialize(
             // content
             $jsonContent,
             // object type
-            Review::class,
+            Reservation::class,
             // data format
             'json',
-            // I want to POPULATE my review object 
-            [AbstractNormalizer::OBJECT_TO_POPULATE => $review]
+            // I want to POPULATE my reservation object 
+            [AbstractNormalizer::OBJECT_TO_POPULATE => $reservation]
         );
         // 4. flush
-        $reviewRepository->add($review, true);
+        $reservationRepository->add($reservation, true);
 
         // return 200
-        return $this->json($review,Response::HTTP_OK, [], ["groups"=>["review_read","user_browse"]]);
+        return $this->json($reservation,Response::HTTP_OK, [], ["groups"=>["reservation_read","user_browse"]]);
     }
 
     /**
@@ -154,10 +145,10 @@ class ReviewController extends CoreApiController
      *
      * @Route("/{id}",name="delete", requirements={"id"="\d+"}, methods={"DELETE"})
      */
-    public function delete($id, ReviewRepository $reviewRepository)
+    public function delete($id, ReservationRepository $reservationRepository)
     {
-        $review = $reviewRepository->find($id);
-        $reviewRepository->remove($review, true);
+        $reservation = $reservationRepository->find($id);
+        $reservationRepository->remove($reservation, true);
 
         return $this->json(null,Response::HTTP_NO_CONTENT);
     }

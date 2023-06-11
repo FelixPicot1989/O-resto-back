@@ -20,6 +20,7 @@ class User
      * @ORM\Column(type="integer")
      * @Groups({"user_browse", "user_read"})
      * @Groups({"review_browse", "review_read"})
+     * @Groups({"reservation_browse", "reservation_read"})
      */
     private $id;
 
@@ -27,6 +28,7 @@ class User
      * @ORM\Column(type="string", length=255)
      * @Groups({"user_browse", "user_read"})
      * @Groups({"review_browse", "review_read"})
+     * @Groups({"reservation_browse", "reservation_read"})
      */
     private $firstname;
 
@@ -34,6 +36,7 @@ class User
      * @ORM\Column(type="string", length=255)
      * @Groups({"user_browse", "user_read"})
      * @Groups({"review_browse", "review_read"})
+     * @Groups({"reservation_browse", "reservation_read"})
      */
     private $lastname;
 
