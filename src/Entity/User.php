@@ -19,18 +19,21 @@ class User
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups({"user_browse", "user_read"})
+     * @Groups({"review_browse", "review_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"user_browse", "user_read"})
+     * @Groups({"review_browse", "review_read"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"user_browse", "user_read"})
+     * @Groups({"review_browse", "review_read"})
      */
     private $lastname;
 
@@ -61,7 +64,6 @@ class User
 
     /**
      * @ORM\OneToMany(targetEntity=Review::class, mappedBy="user")
-     * @Groups({"user_browse", "user_read"})
      */
     private $reviews;
 

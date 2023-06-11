@@ -16,28 +16,33 @@ class Review
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups({"user_browse", "user_read"})
+     * @Groups({"review_browse", "review_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"user_browse", "user_read"})
+     * @Groups({"review_browse", "review_read"})
      */
     private $comment;
 
     /**
      * @ORM\Column(type="float")
      * @Groups({"user_browse", "user_read"})
+     * @Groups({"review_browse", "review_read"})
      */
     private $rating;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"review_browse", "review_read"})
      */
     private $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reviews")
+     * @Groups({"review_browse", "review_read"})
      */
     private $user;
 

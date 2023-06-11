@@ -6,6 +6,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         clone ($p['Doctrine\\ORM\\Mapping\\GeneratedValue'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\GeneratedValue')),
         clone ($p['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
         clone ($p['Symfony\\Component\\Serializer\\Annotation\\Groups'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Annotation\\Groups')),
+        clone $p['Symfony\\Component\\Serializer\\Annotation\\Groups'],
     ],
     null,
     [
@@ -26,6 +27,10 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                     'user_browse',
                     'user_read',
                 ],
+                [
+                    'review_browse',
+                    'review_read',
+                ],
             ],
         ],
     ],
@@ -34,6 +39,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         $o[1],
         $o[2],
         $o[3],
+        $o[4],
     ],
     []
 ); }];
