@@ -33,7 +33,7 @@ class Restaurant
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"restaurant_browse"})
+     * @Groups({"restaurant_browse", "restaurant_read" })
      */
     private $openingLunch;
 
@@ -62,6 +62,7 @@ class Restaurant
     /**
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="restaurant")
      * @Groups({"restaurant_browse", "restaurant_read"})
+     * @Groups({"image_browse", "image_read"})
      */
     private $images;
 

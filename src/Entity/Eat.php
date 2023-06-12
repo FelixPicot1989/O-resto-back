@@ -21,6 +21,7 @@ class Eat
      * @Groups({"eat_browse", "eat_read"})
      * @Groups({"category_browse","category_read"})
      * @Groups({"menu_browse", "menu_read"})
+     * @Groups({"image_browse", "image_read"})
      */
     private $id;
 
@@ -68,7 +69,6 @@ class Eat
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="eats")
-     * @Groups({"eat_browse", "eat_read"})
      * 
      */
     private $category;
@@ -81,6 +81,8 @@ class Eat
     /**
      * @ORM\OneToOne(targetEntity=Image::class, cascade={"persist", "remove"})
      * @Groups({"eat_browse", "eat_read"})
+     * @Groups({"category_browse", "category_read"})
+     * @Groups({"image_browse", "image_read"})
      */
     private $image;
 

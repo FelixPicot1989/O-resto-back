@@ -129,6 +129,7 @@ class ComposerStaticInitc03d7c84e6b3cbc325f42393060882f6
         ),
         'N' => 
         array (
+            'Nelmio\\CorsBundle\\' => 18,
             'Namshi\\JOSE\\' => 12,
         ),
         'M' => 
@@ -515,6 +516,10 @@ class ComposerStaticInitc03d7c84e6b3cbc325f42393060882f6
         array (
             0 => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src',
         ),
+        'Nelmio\\CorsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nelmio/cors-bundle',
+        ),
         'Namshi\\JOSE\\' => 
         array (
             0 => __DIR__ . '/..' . '/namshi/jose/src/Namshi/JOSE',
@@ -619,7 +624,35 @@ class ComposerStaticInitc03d7c84e6b3cbc325f42393060882f6
     );
 
     public static $classMap = array (
+        'App\\Controller\\Api\\CategoryController' => __DIR__ . '/../..' . '/src/Controller/Api/CategoryController.php',
+        'App\\Controller\\Api\\CoreApiController' => __DIR__ . '/../..' . '/src/Controller/Api/CoreApiController.php',
+        'App\\Controller\\Api\\DrinkController' => __DIR__ . '/../..' . '/src/Controller/Api/DrinkController.php',
+        'App\\Controller\\Api\\EatController' => __DIR__ . '/../..' . '/src/Controller/Api/EatController.php',
+        'App\\Controller\\Api\\ImageController' => __DIR__ . '/../..' . '/src/Controller/Api/ImageController.php',
+        'App\\Controller\\Api\\MenuController' => __DIR__ . '/../..' . '/src/Controller/Api/MenuController.php',
+        'App\\Controller\\Api\\ReservationController' => __DIR__ . '/../..' . '/src/Controller/Api/ReservationController.php',
+        'App\\Controller\\Api\\RestaurantController' => __DIR__ . '/../..' . '/src/Controller/Api/RestaurantController.php',
+        'App\\Controller\\Api\\ReviewController' => __DIR__ . '/../..' . '/src/Controller/Api/ReviewController.php',
+        'App\\Controller\\Api\\UserController' => __DIR__ . '/../..' . '/src/Controller/Api/UserController.php',
+        'App\\Entity\\Category' => __DIR__ . '/../..' . '/src/Entity/Category.php',
+        'App\\Entity\\Drink' => __DIR__ . '/../..' . '/src/Entity/Drink.php',
+        'App\\Entity\\Eat' => __DIR__ . '/../..' . '/src/Entity/Eat.php',
+        'App\\Entity\\Image' => __DIR__ . '/../..' . '/src/Entity/Image.php',
+        'App\\Entity\\Menu' => __DIR__ . '/../..' . '/src/Entity/Menu.php',
+        'App\\Entity\\Reservation' => __DIR__ . '/../..' . '/src/Entity/Reservation.php',
+        'App\\Entity\\Restaurant' => __DIR__ . '/../..' . '/src/Entity/Restaurant.php',
+        'App\\Entity\\Review' => __DIR__ . '/../..' . '/src/Entity/Review.php',
+        'App\\Entity\\User' => __DIR__ . '/../..' . '/src/Entity/User.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
+        'App\\Repository\\CategoryRepository' => __DIR__ . '/../..' . '/src/Repository/CategoryRepository.php',
+        'App\\Repository\\DrinkRepository' => __DIR__ . '/../..' . '/src/Repository/DrinkRepository.php',
+        'App\\Repository\\EatRepository' => __DIR__ . '/../..' . '/src/Repository/EatRepository.php',
+        'App\\Repository\\ImageRepository' => __DIR__ . '/../..' . '/src/Repository/ImageRepository.php',
+        'App\\Repository\\MenuRepository' => __DIR__ . '/../..' . '/src/Repository/MenuRepository.php',
+        'App\\Repository\\ReservationRepository' => __DIR__ . '/../..' . '/src/Repository/ReservationRepository.php',
+        'App\\Repository\\RestaurantRepository' => __DIR__ . '/../..' . '/src/Repository/RestaurantRepository.php',
+        'App\\Repository\\ReviewRepository' => __DIR__ . '/../..' . '/src/Repository/ReviewRepository.php',
+        'App\\Repository\\UserRepository' => __DIR__ . '/../..' . '/src/Repository/UserRepository.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Collator' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/Collator.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -2283,6 +2316,16 @@ class ComposerStaticInitc03d7c84e6b3cbc325f42393060882f6
         'Namshi\\JOSE\\Signer\\SecLib\\RSA' => __DIR__ . '/..' . '/namshi/jose/src/Namshi/JOSE/Signer/SecLib/RSA.php',
         'Namshi\\JOSE\\Signer\\SignerInterface' => __DIR__ . '/..' . '/namshi/jose/src/Namshi/JOSE/Signer/SignerInterface.php',
         'Namshi\\JOSE\\SimpleJWS' => __DIR__ . '/..' . '/namshi/jose/src/Namshi/JOSE/SimpleJWS.php',
+        'Nelmio\\CorsBundle\\DependencyInjection\\Compiler\\CorsConfigurationProviderPass' => __DIR__ . '/..' . '/nelmio/cors-bundle/DependencyInjection/Compiler/CorsConfigurationProviderPass.php',
+        'Nelmio\\CorsBundle\\DependencyInjection\\Configuration' => __DIR__ . '/..' . '/nelmio/cors-bundle/DependencyInjection/Configuration.php',
+        'Nelmio\\CorsBundle\\DependencyInjection\\NelmioCorsExtension' => __DIR__ . '/..' . '/nelmio/cors-bundle/DependencyInjection/NelmioCorsExtension.php',
+        'Nelmio\\CorsBundle\\EventListener\\CacheableResponseVaryListener' => __DIR__ . '/..' . '/nelmio/cors-bundle/EventListener/CacheableResponseVaryListener.php',
+        'Nelmio\\CorsBundle\\EventListener\\CorsListener' => __DIR__ . '/..' . '/nelmio/cors-bundle/EventListener/CorsListener.php',
+        'Nelmio\\CorsBundle\\NelmioCorsBundle' => __DIR__ . '/..' . '/nelmio/cors-bundle/NelmioCorsBundle.php',
+        'Nelmio\\CorsBundle\\Options\\ConfigProvider' => __DIR__ . '/..' . '/nelmio/cors-bundle/Options/ConfigProvider.php',
+        'Nelmio\\CorsBundle\\Options\\ProviderInterface' => __DIR__ . '/..' . '/nelmio/cors-bundle/Options/ProviderInterface.php',
+        'Nelmio\\CorsBundle\\Options\\Resolver' => __DIR__ . '/..' . '/nelmio/cors-bundle/Options/Resolver.php',
+        'Nelmio\\CorsBundle\\Options\\ResolverInterface' => __DIR__ . '/..' . '/nelmio/cors-bundle/Options/ResolverInterface.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'NumberFormatter' => __DIR__ . '/..' . '/symfony/intl/Resources/stubs/NumberFormatter.php',
         'PHPStan\\PhpDocParser\\Ast\\AbstractNodeVisitor' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/AbstractNodeVisitor.php',

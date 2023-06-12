@@ -9,6 +9,8 @@ return [
     'app_api_drinks_read' => [['id'], ['_controller' => 'App\\Controller\\Api\\DrinkController::read'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/api/drinks']], [], [], []],
     'app_api_eats_browse' => [[], ['_controller' => 'App\\Controller\\Api\\EatController::browse'], [], [['text', '/api/eats']], [], [], []],
     'app_api_eats_read' => [['id'], ['_controller' => 'App\\Controller\\Api\\EatController::read'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/api/eats']], [], [], []],
+    'app_api_images_browse' => [[], ['_controller' => 'App\\Controller\\Api\\ImageController::browse'], [], [['text', '/api/images']], [], [], []],
+    'app_api_images_read' => [['id'], ['_controller' => 'App\\Controller\\Api\\ImageController::read'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/api/images']], [], [], []],
     'app_api_menus_browse' => [[], ['_controller' => 'App\\Controller\\Api\\MenuController::browse'], [], [['text', '/api/menus']], [], [], []],
     'app_api_menus_read' => [['id'], ['_controller' => 'App\\Controller\\Api\\MenuController::read'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/api/menus']], [], [], []],
     'app_api_reservation_browse' => [[], ['_controller' => 'App\\Controller\\Api\\ReservationController::browse'], [], [['text', '/api/reservations']], [], [], []],
@@ -23,8 +25,6 @@ return [
     'app_api_review_add' => [[], ['_controller' => 'App\\Controller\\Api\\ReviewController::add'], [], [['text', '/api/reviews']], [], [], []],
     'app_api_review_edit' => [['id'], ['_controller' => 'App\\Controller\\Api\\ReviewController::edit'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/api/reviews']], [], [], []],
     'app_api_review_delete' => [['id'], ['_controller' => 'App\\Controller\\Api\\ReviewController::delete'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/api/reviews']], [], [], []],
-    'app_api_users_browse' => [[], ['_controller' => 'App\\Controller\\Api\\UserController::browse'], [], [['text', '/api/users']], [], [], []],
-    'app_api_users_read' => [['id'], ['_controller' => 'App\\Controller\\Api\\UserController::read'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/api/users']], [], [], []],
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
     '_wdt' => [['token'], ['_controller' => 'web_profiler.controller.profiler::toolbarAction'], [], [['variable', '/', '[^/]++', 'token', true], ['text', '/_wdt']], [], [], []],
     '_profiler_home' => [[], ['_controller' => 'web_profiler.controller.profiler::homeAction'], [], [['text', '/_profiler/']], [], [], []],
@@ -37,4 +37,5 @@ return [
     '_profiler_router' => [['token'], ['_controller' => 'web_profiler.controller.router::panelAction'], [], [['text', '/router'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
+    'api_login_check' => [[], [], [], [['text', '/api/login_check']], [], [], []],
 ];

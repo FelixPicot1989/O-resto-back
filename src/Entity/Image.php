@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=ImageRepository::class)
@@ -14,16 +16,24 @@ class Image
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"image_browse", "image_read"})
+     * @Groups({"restaurant_browse", "restaurant_read"})
+     * @Groups({"eat_browse", "eat_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Groups({"image_browse", "image_read"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"image_browse", "image_read"})
+     * @Groups({"category_browse", "category_read"})
+     * @Groups({"restaurant_browse", "restaurant_read"})
+     * @Groups({"eat_browse", "eat_read"})
      */
     private $url;
 

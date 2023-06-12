@@ -42,9 +42,9 @@ class Review
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reviews")
-     * @Groups({"review_browse", "review_read"})
      */
     private $user;
+
 
     public function getId(): ?int
     {
@@ -98,4 +98,6 @@ class Review
 
         return $this;
     }
+
+    
 }

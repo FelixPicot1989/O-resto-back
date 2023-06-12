@@ -38,7 +38,7 @@ class CategoryController extends CoreApiController
                 // throw $this->createNotFoundException();
             return $this->json(
                 [
-                    "message" => "La category recherchée n'existe pas"
+                    "message" => "La catégorie recherchée n'existe pas"
                 ],
                 // le code de status : 404
                 Response::HTTP_NOT_FOUND
@@ -49,7 +49,8 @@ class CategoryController extends CoreApiController
         return $this->json200($category,
                 [
                     //name of group(s)
-                    "category_read"
+                    "category_read",
+                    "eat_read"
                 ]
             );
     }
