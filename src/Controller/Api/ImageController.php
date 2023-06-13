@@ -2,20 +2,56 @@
 
 namespace App\Controller\Api;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\ImageRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/image", name="app_image")
+ * @Route("/api/images", name="app_api_images_")
  */
-class ImageController extends AbstractController
+class ImageController extends CoreApiController
 {
-    public function index(): JsonResponse
+    /**
+     * @Route("", name="browse", methods={"GET"})
+     */
+    public function browse(ImageRepository $imageRepository): JsonResponse
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/ImageController.php',
-        ]);
+        //List of images
+        // BDD, Images: imageRepository
+        $allImages = $imageRepository->findAll();
+
+        // le serializer is after json method()
+        // we need to give to him objects to transform in jsondata
+        return $this->json200($allImages, ["image_browse"]);
     }
+
+
+    /**
+     * @Route("/{id}", name="read", requirements={"id"="\d+"}, methods={"GET"})
+     */
+    public function read($id, ImageRepository $imageRepository): JsonResponse
+    {
+        $image = $imageRepository->find($id);
+        // gestion of 404
+        if ($image === null) {
+
+            return $this->json(
+                [
+                    "message" => "Cette image n'existe pas"
+                ],
+                // Code status : 404
+                Response::HTTP_NOT_FOUND
+            );
+        }
+
+        return $this->json200(
+            $image,
+            [
+                //name of group(s)
+                "image_read"
+            ]
+        );
+    }
+    
 }

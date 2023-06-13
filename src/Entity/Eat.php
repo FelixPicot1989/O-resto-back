@@ -6,6 +6,8 @@ use App\Repository\EatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=EatRepository::class)
@@ -16,31 +18,42 @@ class Eat
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"eat_browse", "eat_read"})
+     * @Groups({"category_browse","category_read"})
+     * @Groups({"menu_browse", "menu_read"})
+     * @Groups({"image_browse", "image_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"eat_browse", "eat_read"})
+     * @Groups({"category_browse","category_read"})
+     * @Groups({"menu_browse", "menu_read"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"eat_browse", "eat_read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="decimal", precision=5, scale=2)
+     * @Groups({"eat_browse", "eat_read"})
      */
     private $price;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"eat_browse", "eat_read"})
      */
     private $vegan;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"eat_browse", "eat_read"})
      */
     private $glutenFree;
 
@@ -56,6 +69,7 @@ class Eat
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="eats")
+     * 
      */
     private $category;
 
@@ -66,6 +80,9 @@ class Eat
 
     /**
      * @ORM\OneToOne(targetEntity=Image::class, cascade={"persist", "remove"})
+     * @Groups({"eat_browse", "eat_read"})
+     * @Groups({"category_browse", "category_read"})
+     * @Groups({"image_browse", "image_read"})
      */
     private $image;
 

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ReservationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ReservationRepository::class)
@@ -14,21 +15,26 @@ class Reservation
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"reservation_browse", "reservation_read"})
+
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"reservation_browse", "reservation_read"})
      */
     private $numberOfCovers;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"reservation_browse", "reservation_read"})
      */
     private $date;
 
     /**
      * @ORM\Column(type="time")
+     * @Groups({"reservation_browse", "reservation_read"})
      */
     private $timeSlots;
 
@@ -44,6 +50,7 @@ class Reservation
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reservations")
+     * @Groups({"reservation_browse", "reservation_read"})
      */
     private $user;
 
