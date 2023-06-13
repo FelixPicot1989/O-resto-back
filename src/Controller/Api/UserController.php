@@ -65,7 +65,7 @@ class UserController extends CoreApiController
             return $this->json($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        $plainPassword = $request->request->get("password");
+        $plainPassword = json_decode($request->getContent(), true)['password'];
 
         if (!empty($plainPassword)) {
             // je hash le mot de passe
@@ -118,7 +118,7 @@ public function edit($id, Request $request, SerializerInterface $serializerInter
         [AbstractNormalizer::OBJECT_TO_POPULATE => $user]
     );
 
-    $plainPassword = $request->request->get("password");
+    $plainPassword = json_decode($request->getContent(), true)['password'];
 
     if (!empty($plainPassword)) {
         $hashedPassword = $userPasswordHasherInterface->hashPassword($user, $plainPassword);
@@ -127,6 +127,7 @@ public function edit($id, Request $request, SerializerInterface $serializerInter
 
     // Flush changes to the user repository
     $userRepository->add($user, true);
+
 
     return $this->json(
         $user,
