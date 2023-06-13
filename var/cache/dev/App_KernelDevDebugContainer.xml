@@ -251,9 +251,9 @@
     <parameter key="lexik_jwt_authentication.pass_phrase">%env(JWT_PASSPHRASE)%</parameter>
     <parameter key="lexik_jwt_authentication.token_ttl">64800</parameter>
     <parameter key="lexik_jwt_authentication.clock_skew">0</parameter>
-    <parameter key="lexik_jwt_authentication.user_identity_field">username</parameter>
+    <parameter key="lexik_jwt_authentication.user_identity_field">email</parameter>
     <parameter key="lexik_jwt_authentication.allow_no_expiration">false</parameter>
-    <parameter key="lexik_jwt_authentication.user_id_claim">username</parameter>
+    <parameter key="lexik_jwt_authentication.user_id_claim">email</parameter>
     <parameter key="lexik_jwt_authentication.encoder.signature_algorithm">RS256</parameter>
     <parameter key="lexik_jwt_authentication.encoder.crypto_engine">openssl</parameter>
     <parameter key="nelmio_cors.map" type="collection">
@@ -493,7 +493,6 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
-    <service id="App\Security\ApiUserAuthenticator" class="App\Security\ApiUserAuthenticator" autowire="true" autoconfigure="true"/>
     <service id="argument_metadata_factory" class="Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory"/>
     <service id="response_listener" class="Symfony\Component\HttpKernel\EventListener\ResponseListener">
       <tag name="kernel.event_subscriber"/>
@@ -5473,7 +5472,22 @@
         </service>
       </argument>
     </service>
-    <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap"/>
+    <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap">
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.Ud1TEPV"/>
+        <argument type="collection">
+          <argument>PUBLIC_ACCESS</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.cRNYaJ1"/>
+        <argument type="collection">
+          <argument>IS_AUTHENTICATED_FULLY</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+    </service>
     <service id="security.context_listener" class="Symfony\Component\Security\Http\Firewall\ContextListener">
       <tag name="monolog.logger" channel="security"/>
       <argument type="service" id="security.untracked_token_storage"/>
@@ -5782,7 +5796,6 @@
           <argument type="service" id="security.authenticator.json_login.login"/>
         </argument>
         <argument key="api" type="collection">
-          <argument type="service" id="App\Security\ApiUserAuthenticator"/>
           <argument type="service" id="security.authenticator.jwt.api"/>
         </argument>
         <argument key="main" type="collection"/>
@@ -5972,7 +5985,6 @@
       <argument>null</argument>
       <argument type="collection">
         <argument>jwt</argument>
-        <argument>App\Security\ApiUserAuthenticator</argument>
       </argument>
       <argument>null</argument>
     </service>
@@ -6048,7 +6060,6 @@
     <service id="security.authenticator.manager.api" class="Symfony\Component\Security\Http\Authentication\AuthenticatorManager">
       <tag name="monolog.logger" channel="security"/>
       <argument type="collection">
-        <argument type="service" id="App\Security\ApiUserAuthenticator"/>
         <argument type="service" id="security.authenticator.jwt.api"/>
       </argument>
       <argument type="service" id="security.token_storage"/>
@@ -6260,6 +6271,12 @@
         <argument key="security.firewall.map.context.login" type="service_closure" id="security.firewall.map.context.login"/>
         <argument key="security.firewall.map.context.main" type="service_closure" id="security.firewall.map.context.main"/>
       </argument>
+    </service>
+    <service id=".security.request_matcher.Ud1TEPV" class="Symfony\Component\HttpFoundation\RequestMatcher">
+      <argument>^/api/login</argument>
+    </service>
+    <service id=".security.request_matcher.cRNYaJ1" class="Symfony\Component\HttpFoundation\RequestMatcher">
+      <argument>^/api</argument>
     </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand">
       <tag name="console.command" command="security:encode-password"/>
@@ -6598,9 +6615,9 @@
       <argument></argument>
       <argument type="service" id="lexik_jwt_authentication.jwt_manager"/>
       <argument type="service" id="debug.event_dispatcher"/>
-      <argument>username</argument>
+      <argument>email</argument>
       <call method="setUserIdentityField">
-        <argument>username</argument>
+        <argument>email</argument>
       </call>
       <deprecated package="lexik/jwt-authentication-bundle" version="2.0">The "%service_id%" service is deprecated since LexikJWTAuthenticationBundle version 2.0 and will be removed in 3.0</deprecated>
     </service>
@@ -6634,9 +6651,9 @@
     <service id="lexik_jwt_authentication.jwt_manager" class="Lexik\Bundle\JWTAuthenticationBundle\Services\JWTManager" public="true">
       <argument type="service" id="lexik_jwt_authentication.encoder.lcobucci"/>
       <argument type="service" id="debug.event_dispatcher"/>
-      <argument>username</argument>
+      <argument>email</argument>
       <call method="setUserIdentityField">
-        <argument>username</argument>
+        <argument>email</argument>
         <argument>false</argument>
       </call>
     </service>
