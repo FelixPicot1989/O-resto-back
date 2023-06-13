@@ -25,6 +25,7 @@ security:
             pattern:   ^/api
             stateless: true
             jwt: ~
+            custom_authenticator: App\Security\ApiUserAuthenticator
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -34,9 +35,9 @@ security:
                 # target: app_any_route
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
-    access_control:
-        - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+    # access_control:
+    #     - { path: ^/api/login, roles: PUBLIC_ACCESS }
+    #     - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
