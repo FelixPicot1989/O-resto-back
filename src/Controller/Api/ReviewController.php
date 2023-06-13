@@ -4,12 +4,16 @@ namespace App\Controller\Api;
 
 use App\Entity\Review;
 use App\Repository\ReviewRepository;
+use Doctrine\ORM\EntityNotFoundException;
+use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/api/reviews", name="app_api_review_")
@@ -32,7 +36,6 @@ class ReviewController extends CoreApiController
     /**
      * @Route("/{id}", name="read", requirements={"id"="\d+"}, methods={"GET"})
      */
-    // public function read(?review $review,reviewRepository $reviewRepository): JsonResponse
     public function read($id, ReviewRepository $reviewRepository): JsonResponse
     {
         $review = $reviewRepository->find($id);
@@ -64,36 +67,33 @@ class ReviewController extends CoreApiController
      * add new review
      *
      * @Route("",name="add", methods={"POST"})
+     * @IsGranted("ROLE_USER")
      *
      * @return JsonResponse
      */
-    public function add(Request $request, SerializerInterface $serializerInterface, ReviewRepository $reviewRepository)
+    public function add(Request $request, SerializerInterface $serializerInterface, ReviewRepository $reviewRepository, ValidatorInterface $validatorInterface)
     {
 
 
         // In request, I need the content
         $jsonContent = $request->getContent();
 
+        try { // try to deserialiser
+            $newReview = $serializerInterface->deserialize($jsonContent, Review::class, 'json');
+        } catch (EntityNotFoundException $e){
 
-        // I use SerializerInterface for that
-        /** @var Review $newreview */
-        $newReview = $serializerInterface->deserialize(
-            $jsonContent,
-            Review::class,
-            'json'
-        );
+            return $this->json("Denormalisation : ". $e->getMessage(), Response::HTTP_BAD_REQUEST);
+        } catch (Exception $exception){
+            
+            return $this->json("JSON Invalide : " . $exception->getMessage(), Response::HTTP_BAD_REQUEST);
+        }
 
-        //dd($newReview);
-
-        // ReviewController.php on line 88:
-        // App\Entity\Review {#949 ▼
-        // -id: null
-        // -comment: "Très chic"
-        // -rating: 4.5
-        // -createdAt: null //!\\ BUT CAN NOT BE NULL
-        // -user: null
-        // }
-
+        $errors = $validatorInterface->validate($newReview);
+        // Have errors? 
+        if (count($errors) > 0) {
+            return $this->json($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+        
         $reviewRepository->add($newReview, true);
 
         return $this->json(
@@ -109,7 +109,7 @@ class ReviewController extends CoreApiController
                 [
                     // I use an existing group
                     "review_read",
-                    "user_browse"
+                    
                 ]
             ]
         );
@@ -118,6 +118,8 @@ class ReviewController extends CoreApiController
      * edit review
      *
      * @Route("/{id}",name="edit", requirements={"id"="\d+"}, methods={"PUT", "PATCH"})
+     * 
+     * @IsGranted("ROLE_USER")
      * 
      * @param Request $request 
      * @param SerializerInterface $serializerInterface
@@ -145,13 +147,14 @@ class ReviewController extends CoreApiController
         $reviewRepository->add($review, true);
 
         // return 200
-        return $this->json($review,Response::HTTP_OK, [], ["groups"=>["review_read","user_browse"]]);
+        return $this->json($review,Response::HTTP_OK, [], ["groups"=>["review_read","user_read"]]);
     }
 
     /**
      * delete review
      * 
-     *
+     * @IsGranted("ROLE_USER")
+     * 
      * @Route("/{id}",name="delete", requirements={"id"="\d+"}, methods={"DELETE"})
      */
     public function delete($id, ReviewRepository $reviewRepository)
