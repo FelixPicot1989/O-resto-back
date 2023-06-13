@@ -21,17 +21,29 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
  */
 
 class UserController extends CoreApiController
+
 {
-    /**
+    
+       /**
      * add new user
      *
      * @Route("",name="add", methods={"POST"})
      * @IsGranted("ROLE_USER")
      *
+     * @param Request $request
+     * @param SerializerInterface $serializerInterface
+     * @param UserRepository $userRepository
+     * @param ValidatorInterface $validatorInterface
+     * @param UserPasswordHasherInterface $userPasswordHasherInterface
      * @return JsonResponse
      */
-    public function add(Request $request, SerializerInterface $serializerInterface, UserRepository $userRepository, ValidatorInterface $validatorInterface, UserPasswordHasherInterface $userPasswordHasherInterface)
-    {
+    public function add(
+        Request $request,
+        SerializerInterface $serializerInterface,
+        UserRepository $userRepository,
+        ValidatorInterface $validatorInterface,
+        UserPasswordHasherInterface $userPasswordHasherInterface
+    ): JsonResponse {
 
 
         // In request, I need the content
@@ -79,42 +91,51 @@ class UserController extends CoreApiController
         );
     }
     /**
-     * edit user
-     *
-     * @Route("/{id}",name="edit", requirements={"id"="\d+"}, methods={"PUT", "PATCH"})
-     *
-     * @IsGranted("ROLE_USER")
-     *
-     */
-    public function edit($id, Request $request, SerializerInterface $serializerInterface, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasherInterface)
-    {
-        $jsonContent = $request->getContent();
+ * edit user
+ *
+ * @Route("/{id}",name="edit", requirements={"id"="\d+"}, methods={"PUT", "PATCH"})
+ *
+ * @IsGranted("ROLE_USER")
+ *
+ * @param int $id
+ * @param Request $request
+ * @param SerializerInterface $serializerInterface
+ * @param UserRepository $userRepository
+ * @param UserPasswordHasherInterface $userPasswordHasherInterface
+ * @return JsonResponse
+ */
+public function edit($id, Request $request, SerializerInterface $serializerInterface, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasherInterface): JsonResponse
+{
+    $jsonContent = $request->getContent();
 
-        $user = $userRepository->find($id);
+    $user = $userRepository->find($id);
 
-        $serializerInterface->deserialize(
-            $jsonContent,
-            User::class,
-            'json',
-            // I want to POPULATE my user object
-            [AbstractNormalizer::OBJECT_TO_POPULATE => $user]
-        );
+    $serializerInterface->deserialize(
+        $jsonContent,
+        User::class,
+        'json',
+        // I want to POPULATE my user object
+        [AbstractNormalizer::OBJECT_TO_POPULATE => $user]
+    );
 
+    $plainPassword = $request->request->get("password");
 
-        $plainPassword = $request->request->get("password");
-
-        if (!empty($plainPassword)) {
-
-            $hashedPassword = $userPasswordHasherInterface->hashPassword($user, $plainPassword);
-
-            $user->setPassword($hashedPassword);
-            // flush
-            $userRepository->add($user, true);
-
-            // return 200
-            return $this->json($user, Response::HTTP_OK, [], ["groups" => ["user_read"]]);
-        }
+    if (!empty($plainPassword)) {
+        $hashedPassword = $userPasswordHasherInterface->hashPassword($user, $plainPassword);
+        $user->setPassword($hashedPassword);
     }
+
+    // Flush changes to the user repository
+    $userRepository->add($user, true);
+
+    return $this->json(
+        $user,
+        Response::HTTP_OK,
+        [],
+        ["groups" => ["user_read"]]
+    );
+}
+    
     /**
      * delete user
      *

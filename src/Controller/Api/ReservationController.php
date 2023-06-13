@@ -123,6 +123,7 @@ class ReservationController extends CoreApiController
      * 
      * @IsGranted("ROLE_USER")
      * 
+     * @param int $id
      * @param Request $request 
      * @param SerializerInterface $serializerInterface
      * @param ReservationRepository $reservationRepository
