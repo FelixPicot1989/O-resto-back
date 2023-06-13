@@ -4,12 +4,17 @@ namespace App\Controller\Api;
 
 use App\Entity\Reservation;
 use App\Repository\ReservationRepository;
+use Doctrine\ORM\EntityNotFoundException;
+use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 /**
  * @Route("/api/reservations", name="app_api_reservation_")
@@ -40,7 +45,7 @@ class ReservationController extends CoreApiController
             // ! API -> we don't have HTML
             return $this->json(
                 [
-                    "message" => "Cette reservation existe pas"
+                    "message" => "Cette reservation n'existe pas"
                 ],
                 // code status : 404
                 Response::HTTP_NOT_FOUND
@@ -63,26 +68,32 @@ class ReservationController extends CoreApiController
      * add new reservation
      *
      * @Route("",name="add", methods={"POST"})
+     * @IsGranted("ROLE_USER")
      *
      * @return JsonResponse
      */
-    public function add(Request $request, SerializerInterface $serializerInterface, ReservationRepository $reservationRepository)
+    public function add(Request $request, SerializerInterface $serializerInterface, ReservationRepository $reservationRepository, ValidatorInterface $validatorInterface)
     {
 
 
         // In request, I need the content
         $jsonContent = $request->getContent();
 
+        try { // try to deserialiser
+            $newReservation = $serializerInterface->deserialize($jsonContent, Reservation::class, 'json');
+        } catch (EntityNotFoundException $e){
 
-        // I use SerializerInterface for that
-        /** @var Reservation $newreservation */
-        $newReservation = $serializerInterface->deserialize(
-            $jsonContent,
-            Reservation::class,
-            'json'
-        );
+            return $this->json("Denormalisation : ". $e->getMessage(), Response::HTTP_BAD_REQUEST);
+        } catch (Exception $exception){
+            
+            return $this->json("JSON Invalide : " . $exception->getMessage(), Response::HTTP_BAD_REQUEST);
+        }
 
-        //dd($newReservation);
+        $errors = $validatorInterface->validate($newReservation);
+        // Have errors? 
+        if (count($errors) > 0) {
+            return $this->json($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
 
 
         $reservationRepository->add($newReservation, true);
@@ -105,11 +116,14 @@ class ReservationController extends CoreApiController
             ]
         );
     }
-/**
+    /**
      * edit reservation
      *
      * @Route("/{id}",name="edit", requirements={"id"="\d+"}, methods={"PUT", "PATCH"})
      * 
+     * @IsGranted("ROLE_USER")
+     * 
+     * @param int $id
      * @param Request $request 
      * @param SerializerInterface $serializerInterface
      * @param ReservationRepository $reservationRepository
@@ -136,7 +150,7 @@ class ReservationController extends CoreApiController
         $reservationRepository->add($reservation, true);
 
         // return 200
-        return $this->json($reservation,Response::HTTP_OK, [], ["groups"=>["reservation_read","user_browse"]]);
+        return $this->json($reservation, Response::HTTP_OK, [], ["groups" => ["reservation_read", "user_browse"]]);
     }
 
     /**
@@ -144,13 +158,14 @@ class ReservationController extends CoreApiController
      * 
      *
      * @Route("/{id}",name="delete", requirements={"id"="\d+"}, methods={"DELETE"})
+     * 
+     * @IsGranted("ROLE_USER")
      */
     public function delete($id, ReservationRepository $reservationRepository)
     {
         $reservation = $reservationRepository->find($id);
         $reservationRepository->remove($reservation, true);
 
-        return $this->json(null,Response::HTTP_NO_CONTENT);
+        return $this->json(null, Response::HTTP_NO_CONTENT);
     }
-
 }
