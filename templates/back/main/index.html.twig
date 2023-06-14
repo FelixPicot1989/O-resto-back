@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome dans le Backoffice d' O'Resto{% endblock %}
+
+{% block body %}
+        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'category' } %}
+        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'drink' } %}
+        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'eat' } %}
+        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'image' } %}
+        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'menu' } %}
+        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'reservation' } %}
+        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'restaurant' } %}
+        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'review' } %}
+        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'user' } %}
+
+{% endblock %}
+

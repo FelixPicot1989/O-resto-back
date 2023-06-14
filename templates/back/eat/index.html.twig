@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Eat index{% endblock %}
+
+{% block body %}
+    <h1>Eat index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Vegan</th>
+                <th>GlutenFree</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for eat in eats %}
+            <tr>
+                <td>{{ eat.id }}</td>
+                <td>{{ eat.name }}</td>
+                <td>{{ eat.description }}</td>
+                <td>{{ eat.price }}</td>
+                <td>{{ eat.vegan ? 'Yes' : 'No' }}</td>
+                <td>{{ eat.glutenFree ? 'Yes' : 'No' }}</td>
+                <td>{{ eat.createdAt ? eat.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ eat.updatedAt ? eat.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_back_eat_show', {'id': eat.id}) }}">show</a>
+                    <a href="{{ path('app_back_eat_edit', {'id': eat.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_back_eat_new') }}">Create new</a>
+{% endblock %}
