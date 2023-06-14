@@ -68,7 +68,6 @@ class ReservationController extends CoreApiController
      * add new reservation
      *
      * @Route("",name="add", methods={"POST"})
-     * @IsGranted("ROLE_USER")
      *
      * @return JsonResponse
      */
@@ -121,7 +120,6 @@ class ReservationController extends CoreApiController
      *
      * @Route("/{id}",name="edit", requirements={"id"="\d+"}, methods={"PUT", "PATCH"})
      * 
-     * @IsGranted("ROLE_USER")
      * 
      * @param int $id
      * @param Request $request 
@@ -159,7 +157,6 @@ class ReservationController extends CoreApiController
      *
      * @Route("/{id}",name="delete", requirements={"id"="\d+"}, methods={"DELETE"})
      * 
-     * @IsGranted("ROLE_USER")
      */
     public function delete($id, ReservationRepository $reservationRepository)
     {
