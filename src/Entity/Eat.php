@@ -69,6 +69,8 @@ class Eat
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="eats")
+     * @Groups({"eat_browse", "eat_read"})
+     * @Groups({"menu_browse", "menu_read"})
      * 
      */
     private $category;
