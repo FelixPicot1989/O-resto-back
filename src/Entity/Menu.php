@@ -20,6 +20,7 @@ class Menu
      * @ORM\Column(type="integer")
      * @Groups({"eat_browse", "eat_read"})
      * @Groups({"menu_browse", "menu_read"})
+     * @Groups({"category_browse", "category_read"})
      */
     private $id;
 
@@ -54,6 +55,7 @@ class Menu
      * 
      * @Groups({"eat_browse", "eat_read"})
      * @Groups({"menu_browse", "menu_read"})
+     * 
      */
     private $eats;
 
