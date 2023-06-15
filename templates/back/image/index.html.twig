@@ -25,8 +25,8 @@
                 <td>{{ image.createdAt ? image.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ image.updatedAt ? image.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_back_image_show', {'id': image.id}) }}">show</a>
-                    <a href="{{ path('app_back_image_edit', {'id': image.id}) }}">edit</a>
+                    <a href="{{ path('app_back_image_show', {'id': image.id}) }}">Voir</a>
+                    <a href="{{ path('app_back_image_edit', {'id': image.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

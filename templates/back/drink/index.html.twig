@@ -29,8 +29,8 @@
                 <td>{{ drink.createdAt ? drink.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ drink.updatedAt ? drink.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_back_drink_show', {'id': drink.id}) }}">show</a>
-                    <a href="{{ path('app_back_drink_edit', {'id': drink.id}) }}">edit</a>
+                    <a href="{{ path('app_back_drink_show', {'id': drink.id}) }}">Voir</a>
+                    <a href="{{ path('app_back_drink_edit', {'id': drink.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

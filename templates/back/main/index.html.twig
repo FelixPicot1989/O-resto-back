@@ -1,17 +1,40 @@
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Welcome dans le Backoffice d' O'Resto{% endblock %}
+{% block title %}Welcome dans le Backoffice d'O'Resto{% endblock %}
 
 {% block body %}
-        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'category' } %}
-        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'drink' } %}
-        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'eat' } %}
-        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'image' } %}
-        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'menu' } %}
-        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'reservation' } %}
-        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'restaurant' } %}
-        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'review' } %}
-        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'user' } %}
-
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <div class="row justify-content-center">Gestion de la Carte</div>
+                <div class="row justify-content-center">
+                {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'drink' } %}
+                {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'eat' } %}
+                {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'menu' } %}
+                {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'category' } %}
+                </div>
+        </div>
+        <div class="col-3">
+            <div class="row justify-content-center">Gestion de la Galerie</div>
+                <div class="row justify-content-center">
+                        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'image' } %}
+                </div>
+        </div>
+        <div class="col-3">
+            <div class="row justify-content-center">Gestion du Restaurant</div>
+                <div class="row justify-content-center">
+                        {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'restaurant' } %}
+                </div>
+        </div>
+        <div class="col-3">
+            <div class="row justify-content-center">Gestion des Utilisateurs</div>
+                <div class="row justify-content-center">
+            {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'reservation' } %}
+            {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'review' } %}
+            {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'user' } %}
+                </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
-
