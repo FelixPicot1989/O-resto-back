@@ -1,13 +1,39 @@
-{% extends 'base.html.twig' %}
+{# {% extends 'base.html.twig' %}
 
-{% block title %}Edit Category{% endblock %}
+{% block title %}Edition Catégorie{% endblock %}
 
 {% block body %}
-    <h1>Edit Category</h1>
+<div class="col-3">
+    <h1 class="row">Edition Catégorie</h1>
+        <div class="row justify-content-center">
+            <div class="row-4">
+                {{ include('back/category/_form.html.twig', {'button_label': 'Mise à jour'}) }}
 
-    {{ include('back/category/_form.html.twig', {'button_label': 'Update'}) }}
+                <a class= "btn btn-warning" href="{{ path('app_back_category_index') }}">Retour</a>
 
-    <a href="{{ path('app_back_category_index') }}">back to list</a>
+                {{ include('back/category/_delete_form.html.twig') }}
+            </div>
+        </div>
+</div>
+{% endblock %} #}
+{% extends 'base.html.twig' %}
 
-    {{ include('back/category/_delete_form.html.twig') }}
+{% block title %}Edition Catégorie{% endblock %}
+
+{% block body %}
+<div>
+    <h1>Edition Catégorie</h1>
+        <div class="d-flex">
+            <div class="col-8">
+                {{ include('back/category/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+            </div>
+            <div class="col-8">
+                {{ include('back/category/_delete_form.html.twig') }}
+            </div>
+            <div class="col-8">
+                <a class="btn btn-warning" href="{{ path('app_back_category_index') }}">Retour</a>
+            </div>
+        </div>
+    
+</div>
 {% endblock %}
