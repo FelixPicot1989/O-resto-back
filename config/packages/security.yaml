@@ -13,7 +13,7 @@ security:
         # used to reload user from session & other features (e.g. switch_user)
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:
-        login:
+        login:          
             pattern: ^/api/login
             stateless: true
             json_login:
@@ -37,9 +37,14 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/api\/\w+\$,  roles: IS_AUTHENTICATED_FULLY, methods: [POST] }
+        - { path: ^/api\/\w+\/\d+, roles: IS_AUTHENTICATED_FULLY, methods: [PUT, PATCH, DELETE]}
+        - { path: ^/api,       roles: PUBLIC_ACCESS }
+        - { path: ^/api/users, roles: PUBLIC_ACCESS, methods: [POST] }
+        
+
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
 
 
     role_hierarchy:

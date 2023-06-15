@@ -67,7 +67,6 @@ class ReviewController extends CoreApiController
      * add new review
      *
      * @Route("",name="add", methods={"POST"})
-     * @IsGranted("ROLE_USER")
      *
      * @return JsonResponse
      */
@@ -119,7 +118,6 @@ class ReviewController extends CoreApiController
      *
      * @Route("/{id}",name="edit", requirements={"id"="\d+"}, methods={"PUT", "PATCH"})
      * 
-     * @IsGranted("ROLE_USER")
      * 
      * @param Request $request 
      * @param SerializerInterface $serializerInterface
@@ -153,7 +151,6 @@ class ReviewController extends CoreApiController
     /**
      * delete review
      * 
-     * @IsGranted("ROLE_USER")
      * 
      * @Route("/{id}",name="delete", requirements={"id"="\d+"}, methods={"DELETE"})
      */

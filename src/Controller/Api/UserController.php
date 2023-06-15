@@ -24,11 +24,10 @@ class UserController extends CoreApiController
 
 {
     
-       /**
+    /**
      * add new user
      *
      * @Route("",name="add", methods={"POST"})
-     * @IsGranted("ROLE_USER")
      *
      * @param Request $request
      * @param SerializerInterface $serializerInterface
@@ -95,7 +94,6 @@ class UserController extends CoreApiController
  *
  * @Route("/{id}",name="edit", requirements={"id"="\d+"}, methods={"PUT", "PATCH"})
  *
- * @IsGranted("ROLE_USER")
  *
  * @param int $id
  * @param Request $request
@@ -140,7 +138,6 @@ public function edit($id, Request $request, SerializerInterface $serializerInter
     /**
      * delete user
      *
-     * @IsGranted("ROLE_USER")
      *
      * @Route("/{id}",name="delete", requirements={"id"="\d+"}, methods={"DELETE"})
      */
