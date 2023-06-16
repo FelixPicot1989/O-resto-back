@@ -20,7 +20,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"user_read"})
+     * @Groups({"user_browse", "user_read"})
      * @Groups({"review_browse", "review_read"})
      * @Groups({"reservation_browse", "reservation_read"})
      */
@@ -28,7 +28,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"user_read"})
+     * @Groups({"user_browse", "user_read"})
      */
     private $email;
 
@@ -45,7 +45,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read"})
+     * @Groups({"user_browse", "user_read"})
      * @Groups({"review_browse", "review_read"})
      * @Groups({"reservation_browse", "reservation_read"})
      */
@@ -53,7 +53,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read"})
+     * @Groups({"user_browse", "user_read"})
      * @Groups({"review_browse", "review_read"})
      * @Groups({"reservation_browse", "reservation_read"})
      */
@@ -72,14 +72,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=Review::class, mappedBy="user")
-     * @Groups({"user_read"})
-
      */
     private $reviews;
 
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
+        $this->setCreatedAt(new \DateTime());
     }
 
     public function getId(): ?int
@@ -214,7 +213,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
+        $this->updatedAt = new \DateTime('now');
         $this->updatedAt = $updatedAt;
+
 
         return $this;
     }
