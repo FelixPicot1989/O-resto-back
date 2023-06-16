@@ -30,8 +30,8 @@ class ReviewController extends CoreApiController
      */
     public function browse(ReviewRepository $reviewRepository): JsonResponse
     {
-        $allreviews = $reviewRepository->findAll();
-        return $this->json200($allreviews, ["review_browse"]);
+        $allReviews = $reviewRepository->findAll();
+        return $this->json200($allReviews, ["review_browse"]);
     }
     /**
      * @Route("/{id}", name="read", requirements={"id"="\d+"}, methods={"GET"})
@@ -44,7 +44,7 @@ class ReviewController extends CoreApiController
             // ! API -> we don't have HTML
             return $this->json(
                 [
-                    "message" => "Cet avis existe pas"
+                    "message" => "Cet avis n'existe pas"
                 ],
                 // code status : 404
                 Response::HTTP_NOT_FOUND
@@ -57,7 +57,8 @@ class ReviewController extends CoreApiController
             [
                 "groups" =>
                 [
-                    "review_read"
+                    "review_read",
+                    "user_read"
                 ]
             ]
         );

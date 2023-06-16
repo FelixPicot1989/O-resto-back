@@ -42,6 +42,8 @@ class Review
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reviews")
+     * @Groups({"review_browse", "review_read"})
+     * @Groups({"user_browse", "user_read"})
      */
     private $user;
 
