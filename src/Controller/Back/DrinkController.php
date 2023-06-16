@@ -36,6 +36,7 @@ class DrinkController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $drinkRepository->add($drink, true);
+            $this->addFlash("success", "Votre boisson a bien été ajoutée.");
 
             return $this->redirectToRoute('app_back_drink_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -65,7 +66,11 @@ class DrinkController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $drink->setUpdatedAt(new \DateTime());
+
             $drinkRepository->add($drink, true);
+
+            $this->addFlash("success", "Votre boisson a bien été modifiée.");
 
             return $this->redirectToRoute('app_back_drink_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -83,6 +88,9 @@ class DrinkController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$drink->getId(), $request->request->get('_token'))) {
             $drinkRepository->remove($drink, true);
+
+            $this->addFlash("success", "Votre boisson a bien été supprimée.");
+
         }
 
         return $this->redirectToRoute('app_back_drink_index', [], Response::HTTP_SEE_OTHER);

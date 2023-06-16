@@ -37,6 +37,8 @@ class EatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $eatRepository->add($eat, true);
 
+            $this->addFlash("success", "Votre plat a bien été ajouté.");
+
             return $this->redirectToRoute('app_back_eat_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -65,7 +67,12 @@ class EatController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $eat->setUpdatedAt(new \DateTime());
+
             $eatRepository->add($eat, true);
+
+            $this->addFlash("success", "Votre plat a bien été modifié.");
+
 
             return $this->redirectToRoute('app_back_eat_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -83,6 +90,9 @@ class EatController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$eat->getId(), $request->request->get('_token'))) {
             $eatRepository->remove($eat, true);
+
+            $this->addFlash("success", "Votre plat a bien été supprimé.");
+
         }
 
         return $this->redirectToRoute('app_back_eat_index', [], Response::HTTP_SEE_OTHER);

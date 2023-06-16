@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 /**
@@ -30,6 +32,8 @@ class Eat
      * @Groups({"eat_browse", "eat_read"})
      * @Groups({"category_browse","category_read"})
      * @Groups({"menu_browse", "menu_read"})
+     * 
+     * @Assert\NotBlank( message = "Le nom du plat ne peut pas être vide")
      */
     private $name;
 
@@ -42,6 +46,9 @@ class Eat
     /**
      * @ORM\Column(type="decimal", precision=5, scale=2)
      * @Groups({"eat_browse", "eat_read"})
+     * 
+     * @Assert\NotBlank( message = "Le prix du plat ne peut pas être vide")
+     * @Assert\GreaterThan ( value=0, message = "Le prix doit être forcément positif")
      */
     private $price;
 
@@ -90,6 +97,7 @@ class Eat
     {
         $this->category = new ArrayCollection();
         $this->menu = new ArrayCollection();
+        $this->setCreatedAt(new \DateTime());
     }
 
     public function getId(): ?int
@@ -176,6 +184,7 @@ class Eat
 
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
+        $this->updatedAt = new \DateTime('now');
         $this->updatedAt = $updatedAt;
 
         return $this;

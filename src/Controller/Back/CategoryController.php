@@ -5,7 +5,6 @@ namespace App\Controller\Back;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
-use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,6 +37,7 @@ class CategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $categoryRepository->add($category, true);
             $this->addFlash("success", "Votre catégorie a bien été ajoutée.");
+
             return $this->redirectToRoute('app_back_category_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -68,6 +68,8 @@ class CategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $category->setUpdatedAt(new \DateTime());
             $categoryRepository->add($category, true);
+            
+            $this->addFlash("success", "Votre catégorie a bien été modifée.");
 
             return $this->redirectToRoute('app_back_category_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -85,6 +87,7 @@ class CategoryController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
             $categoryRepository->remove($category, true);
+            $this->addFlash("success", "Votre catégorie a bien été supprimée.");
         }
 
         return $this->redirectToRoute('app_back_category_index', [], Response::HTTP_SEE_OTHER);
