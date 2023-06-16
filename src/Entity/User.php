@@ -20,6 +20,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"user_read"})
+     * @Groups({"review_browse", "review_read"})
+     * @Groups({"reservation_browse", "reservation_read"})
      */
     private $id;
 
@@ -43,17 +46,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"user_read"})
+     * @Groups({"review_browse", "review_read"})
+     * @Groups({"reservation_browse", "reservation_read"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"user_read"})
+     * @Groups({"review_browse", "review_read"})
+     * @Groups({"reservation_browse", "reservation_read"})
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="datetime")
+     * 
      */
     private $createdAt;
 
