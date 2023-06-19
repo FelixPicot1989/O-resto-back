@@ -8,6 +8,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ImageType extends AbstractType
 {
@@ -17,7 +19,13 @@ class ImageType extends AbstractType
             ->add('name', TextType::class, [
             "label" => "Le nom:",
             ])
-            ->add('url')
+            ->add('image_file', VichImageType::class, [
+                'label' => 'Image',
+                'required' => false,
+                'allow_delete' => true,
+                'delete_label' => "Supprimer l'image",
+                'download_label' => true,
+            ])
             ->add('restaurant', EntityType::class, [
                 "multiple" => false,
                 "expanded" => false, // radiobutton

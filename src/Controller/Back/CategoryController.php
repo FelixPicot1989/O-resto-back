@@ -69,7 +69,7 @@ class CategoryController extends AbstractController
             $category->setUpdatedAt(new \DateTime());
             $categoryRepository->add($category, true);
             
-            $this->addFlash("success", "Votre catégorie a bien été modifée.");
+            $this->addFlash("success", "Votre catégorie a bien été modifiée.");
 
             return $this->redirectToRoute('app_back_category_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -87,6 +87,7 @@ class CategoryController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
             $categoryRepository->remove($category, true);
+            
             $this->addFlash("success", "Votre catégorie a bien été supprimée.");
         }
 

@@ -47,6 +47,9 @@ class Restaurant
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"restaurant_browse", "restaurant_read"})
+     * 
+     * @Assert\NotBlank( message = "L'adresse doit être renseignée")
+
      */
     private $address;
 

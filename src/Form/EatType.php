@@ -59,6 +59,8 @@ class EatType extends AbstractType
                 "expanded" => false, 
                 "class" => Menu::class,
                 'choice_label' => 'name',
+                "placeholder" => "-",
+
             ])
             ->add('image', EntityType::class, [
                 "multiple" => false,

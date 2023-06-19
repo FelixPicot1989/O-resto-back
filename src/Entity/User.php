@@ -207,7 +207,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->updatedAt = new \DateTime('now');
         $this->createdAt = $createdAt;
 
         return $this;
@@ -220,6 +219,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
+        $this->updatedAt = new \DateTime('now');
         $this->updatedAt = $updatedAt;
 
         return $this;

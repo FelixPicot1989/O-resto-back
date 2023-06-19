@@ -36,6 +36,8 @@ class ReservationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $reservationRepository->add($reservation, true);
+            $this->addFlash("success", "Votre réservation a bien été ajoutée.");
+
 
             return $this->redirectToRoute('app_back_reservation_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -65,7 +67,10 @@ class ReservationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $reservation->setUpdatedAt(new \DateTime());
             $reservationRepository->add($reservation, true);
+
+            $this->addFlash("success", "Votre réservation a bien été modifiée.");
 
             return $this->redirectToRoute('app_back_reservation_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -83,6 +88,7 @@ class ReservationController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$reservation->getId(), $request->request->get('_token'))) {
             $reservationRepository->remove($reservation, true);
+            $this->addFlash("success", "Votre réservation a bien été supprimée.");
         }
 
         return $this->redirectToRoute('app_back_reservation_index', [], Response::HTTP_SEE_OTHER);

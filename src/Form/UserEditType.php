@@ -21,7 +21,7 @@ class UserEditType extends AbstractType
             ])
             ->add('password', PasswordType::class, [
                 "mapped" => false,
-                "label" => "le mot de passe",
+                "label" => "Le mot de passe",
                 "attr" => [
                     "placeholder" => "Ne rien mettre si vous ne voulez pas modifier le mot de passe"
                 ],

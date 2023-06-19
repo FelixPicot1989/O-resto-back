@@ -23,17 +23,12 @@
 {% block body %}
 <div>
     <h1>Edition Catégorie</h1>
-        <div class="d-flex">
-            <div class="col-8">
-                {{ include('back/category/_form.html.twig') }}
-            </div>
-            <div class="col-8">
-                {{ include('back/category/_delete_form.html.twig') }}
-            </div>
-            <div class="col-8">
-                <a class="btn btn-warning" href="{{ path('app_back_category_index') }}">Retour</a>
-            </div>
-        </div>
+        
+    {{ include('back/category/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+
+     <a href="{{ path('app_back_category_index') }}" class="btn btn-warning">{{ 'Retour' }}</a>
+
+    {{ include('back/category/_delete_form.html.twig') }}
     
 </div>
 {% endblock %}

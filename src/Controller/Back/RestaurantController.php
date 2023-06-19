@@ -36,6 +36,8 @@ class RestaurantController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $restaurantRepository->add($restaurant, true);
+            $this->addFlash("success", "Votre restaurant a bien été ajouté.");
+
 
             return $this->redirectToRoute('app_back_restaurant_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -65,7 +67,11 @@ class RestaurantController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $restaurant->setUpdatedAt(new \DateTime());
             $restaurantRepository->add($restaurant, true);
+
+            $this->addFlash("success", "Votre restaurant a bien été modifé.");
+
 
             return $this->redirectToRoute('app_back_restaurant_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -83,6 +89,9 @@ class RestaurantController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$restaurant->getId(), $request->request->get('_token'))) {
             $restaurantRepository->remove($restaurant, true);
+
+            $this->addFlash("success", "Votre restaurant a bien été supprimé.");
+
         }
 
         return $this->redirectToRoute('app_back_restaurant_index', [], Response::HTTP_SEE_OTHER);

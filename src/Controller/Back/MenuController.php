@@ -2,6 +2,7 @@
 
 namespace App\Controller\Back;
 
+use App\Entity\Eat;
 use App\Entity\Menu;
 use App\Form\MenuType;
 use App\Repository\MenuRepository;
@@ -36,6 +37,8 @@ class MenuController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $menuRepository->add($menu, true);
+            $this->addFlash("success", "Votre menu a bien été ajouté.");
+
 
             return $this->redirectToRoute('app_back_menu_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -49,10 +52,11 @@ class MenuController extends AbstractController
     /**
      * @Route("/{id}", name="app_back_menu_show", methods={"GET"})
      */
-    public function show(Menu $menu): Response
+    public function show(Menu $menu, Eat $eat): Response
     {
         return $this->render('back/menu/show.html.twig', [
             'menu' => $menu,
+            'eats' => $eat
         ]);
     }
 
@@ -65,7 +69,11 @@ class MenuController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $menu->setUpdatedAt(new \DateTime());
             $menuRepository->add($menu, true);
+
+            $this->addFlash("success", "Votre menu a bien été modifié.");
+
 
             return $this->redirectToRoute('app_back_menu_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -83,6 +91,9 @@ class MenuController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$menu->getId(), $request->request->get('_token'))) {
             $menuRepository->remove($menu, true);
+
+            $this->addFlash("success", "Votre menu a bien été supprimé.");
+
         }
 
         return $this->redirectToRoute('app_back_menu_index', [], Response::HTTP_SEE_OTHER);

@@ -36,6 +36,7 @@ class ImageController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $imageRepository->add($image, true);
+            $this->addFlash("success", "Votre image a bien été ajoutée.");
 
             return $this->redirectToRoute('app_back_image_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -65,7 +66,11 @@ class ImageController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $image->setUpdatedAt(new \DateTime());
             $imageRepository->add($image, true);
+
+            $this->addFlash("success", "Votre image a bien été modifiée.");
+
 
             return $this->redirectToRoute('app_back_image_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -83,6 +88,8 @@ class ImageController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$image->getId(), $request->request->get('_token'))) {
             $imageRepository->remove($image, true);
+            $this->addFlash("success", "Votre image a bien été supprimée.");
+
         }
 
         return $this->redirectToRoute('app_back_image_index', [], Response::HTTP_SEE_OTHER);

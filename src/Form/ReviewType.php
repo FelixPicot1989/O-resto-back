@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Review;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -27,13 +29,14 @@ class ReviewType extends AbstractType
                     "A éviter" => 1
                 ],
                 "multiple" => false,
-                "expanded" => true,
+                "expanded" => false,
             ])
             ->add('user',  EntityType::class, [
                 "multiple" => false,
                 "expanded" => false, // radiobutton
-                "class" => Category::class,
-                'choice_label' => 'name',
+                "class" => User::class,
+                'choice_label' => 'firstname',
+                'choice_label' => 'lastname',
             ]);
         ;
     }

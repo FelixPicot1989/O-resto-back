@@ -3,7 +3,7 @@
 body {
     font-family: 'https://fonts.googleapis.com/css2?family=Oswald&display=swap';
     width: 100%;
-    background-color: rgba(83, 115, 117, 0.767);
+    /* background-color: rgba(83, 115, 117, 0.767); */
 }
 .container{
     
@@ -22,10 +22,11 @@ body {
     
 }
 .btn{
-    border-radius: 0px 25px 0px 25px;
-    -moz-border-radius: 0px 25px 0px 25px;
-    -webkit-border-radius: 0px 25px 0px 25px;
-    border: 1px double #000000;
+    padding: 7px;
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 1px solid #000000;
 }
 
 h1 {

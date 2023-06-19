@@ -25,9 +25,11 @@ class MenuType extends AbstractType
         ])
         ->add('eats',  EntityType::class, [
             "multiple" => true,
-            "expanded" => true, 
+            "expanded" => false, 
             "class" => Eat::class,
             'choice_label' => 'name',
+            "placeholder" => "-",
+            
         ]);
     }
 
