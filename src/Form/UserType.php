@@ -5,7 +5,9 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -30,9 +32,9 @@ class UserType extends AbstractType
             if ($user->getId() !== null) {
                 $builder->add('password', PasswordType::class, [
                     "mapped" => false,
-                    "label" => "le mot de passe",
+                    "label" => "Le mot de passe",
                     "attr" => [
-                        "placeholder" => "laisser vide pour ne pas modifier ..."
+                        "placeholder" => "Ne rien mettre si vous ne voulez pas modifier le mot de passe"
                     ],
                 // On déplace les contraintes de l'entité vers le form d'ajout
                     'constraints' => [

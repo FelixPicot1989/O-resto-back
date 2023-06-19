@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Eat;
 use App\Entity\Menu;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,12 +23,12 @@ class MenuType extends AbstractType
             "label" => "Le prix",
             "scale" => 2,
         ])
-            ->add('eats',  EntityType::class, [
-                "multiple" => false,
-                "expanded" => false, // radiobutton
-                "class" => Eat::class,
-                'choice_label' => 'name',
-            ]);
+        ->add('eats',  EntityType::class, [
+            "multiple" => true,
+            "expanded" => true, 
+            "class" => Eat::class,
+            'choice_label' => 'name',
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

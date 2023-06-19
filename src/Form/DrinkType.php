@@ -34,7 +34,7 @@ class DrinkType extends AbstractType
                     "Avec alcool" => 1
                 ],
                 "multiple" => false,
-                "expanded" => false,
+                "expanded" => true,
             ])
             ->add('category',  EntityType::class, [
                 "multiple" => false,

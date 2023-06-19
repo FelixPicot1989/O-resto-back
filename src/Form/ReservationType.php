@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Reservation;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,8 +20,9 @@ class ReservationType extends AbstractType
             ->add('user',  EntityType::class, [
                 "multiple" => false,
                 "expanded" => false, // radiobutton
-                "class" => Category::class,
-                'choice_label' => 'name',
+                "class" => User::class,
+                'choice_label' => 'firstname',
+                'choice_label' => 'lastname',
             ]);
     }
 

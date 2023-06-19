@@ -44,7 +44,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      * 
      * @Assert\NotBlank( message = "Le mot de passe doit être renseigné")
-     * @Assert\Length(min = 6, max=32)
      */
     private $password;
 
