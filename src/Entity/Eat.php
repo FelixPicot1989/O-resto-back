@@ -43,6 +43,7 @@ class Eat
     /**
      * @ORM\Column(type="decimal", precision=5, scale=2)
      * @Groups({"eat_browse", "eat_read"})
+     * @Groups({"category_browse", "category_read"})
      */
     private $price;
 
