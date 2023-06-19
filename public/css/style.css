@@ -1,0 +1,85 @@
+
+
+body {
+    font-family: 'https://fonts.googleapis.com/css2?family=Oswald&display=swap';
+    width: 100%;
+}
+.container{
+    
+    background-image: url("../image/logo-oresto.png");
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: center;
+}
+.nav-tabs .nav-link {
+    color: goldenrod;
+    border-radius: 0px 25px 0px 25px;
+    -moz-border-radius: 0px 25px 0px 25px;
+    -webkit-border-radius: 0px 25px 0px 25px;
+    border: 4px double #000000;
+    
+    
+}
+.btn{
+    border-radius: 0px 25px 0px 25px;
+    -moz-border-radius: 0px 25px 0px 25px;
+    -webkit-border-radius: 0px 25px 0px 25px;
+    border: 1px double #000000;
+}
+
+h1 {
+    text-align: center;
+    color: goldenrod;
+    font-family: 'Dancing Script', cursive;
+}
+
+h4 {
+    margin: 1em;
+}
+.card {
+    margin-top: 1em;
+}
+.btn-primary{
+    color: goldenrod;
+}
+.btn-primary.success {
+    border-color: green;
+}
+.btn-primary.warning {
+    border-color: yellow;
+}
+.btn-primary.danger {
+    border-color: red;
+}
+form{
+    align-items: center;
+}
+input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 1em;
+    width: 100%;
+
+}
+
+label {
+    color: goldenrod;
+    font-size: large;
+}
+
+textarea {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 1em;
+    width: 100%;
+}
+select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 1em;
+    width: 100%;
+}
+

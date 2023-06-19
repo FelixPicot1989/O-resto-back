@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ReservationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=ReservationRepository::class)
@@ -53,6 +55,12 @@ class Reservation
      * @Groups({"reservation_browse", "reservation_read"})
      */
     private $user;
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
+
 
     public function getId(): ?int
     {
@@ -114,6 +122,7 @@ class Reservation
 
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
+        $this->updatedAt = new \DateTime('now');
         $this->updatedAt = $updatedAt;
 
         return $this;

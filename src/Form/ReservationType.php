@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Reservation;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,16 +16,19 @@ class ReservationType extends AbstractType
             ->add('numberOfCovers')
             ->add('date')
             ->add('timeSlots')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('user')
-        ;
+            ->add('user',  EntityType::class, [
+                "multiple" => false,
+                "expanded" => false, // radiobutton
+                "class" => Category::class,
+                'choice_label' => 'name',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Reservation::class,
+            "attr" => ["novalidate" => 'novalidate']
         ]);
     }
 }

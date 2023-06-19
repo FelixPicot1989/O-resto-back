@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -25,6 +26,7 @@ class Image
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups({"image_browse", "image_read"})
+     * 
      */
     private $name;
 
@@ -34,6 +36,8 @@ class Image
      * @Groups({"category_browse", "category_read"})
      * @Groups({"restaurant_browse", "restaurant_read"})
      * @Groups({"eat_browse", "eat_read"})
+     * 
+     * 
      */
     private $url;
 
@@ -51,6 +55,11 @@ class Image
      * @ORM\ManyToOne(targetEntity=Restaurant::class, inversedBy="images")
      */
     private $restaurant;
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
 
     public function getId(): ?int
     {
@@ -100,6 +109,7 @@ class Image
 
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
+        $this->updatedAt = new \DateTime('now');
         $this->updatedAt = $updatedAt;
 
         return $this;

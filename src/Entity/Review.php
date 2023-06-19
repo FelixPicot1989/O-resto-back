@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ReviewRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=ReviewRepository::class)
@@ -24,6 +26,9 @@ class Review
      * @ORM\Column(type="string", length=255)
      * @Groups({"review_browse", "review_read"})
      * @Groups({"user_read"})
+     * 
+     * @Assert\NotBlank( message = "Le commentaire ne peut pas être vide")
+
      */
     private $comment;
 
@@ -44,6 +49,11 @@ class Review
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reviews")
      */
     private $user;
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
 
 
     public function getId(): ?int

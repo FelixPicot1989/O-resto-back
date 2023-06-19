@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 /**
@@ -26,6 +28,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Groups({"user_read"})
+     * 
+     * @Assert\NotBlank( message = "L'email doit être renseigné")
+
      */
     private $email;
 
@@ -37,18 +42,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * 
+     * @Assert\NotBlank( message = "Le mot de passe doit être renseigné")
+     * @Assert\Length(min = 6, max=32)
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"user_read"})
+     * 
+     * @Assert\NotBlank( message = "Le prénom doit être renseigné")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"user_read"})
+     * 
+     * @Assert\NotBlank( message = "Le nom de famille doit être renseigné")
      */
     private $lastname;
 
@@ -72,6 +84,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
+        $this->setCreatedAt(new \DateTime());
+
     }
 
     public function getId(): ?int
@@ -194,6 +208,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
+        $this->updatedAt = new \DateTime('now');
         $this->createdAt = $createdAt;
 
         return $this;
