@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Review{% endblock %}
+{% block title %}Avis{% endblock %}
 
 {% block body %}
-    <h1>Review</h1>
+    <h1>Avis</h1>
 
     <table class="table">
         <tbody>
@@ -26,9 +26,8 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_review_index') }}">Retour</a>
+   <a class="btn btn-warning" href="{{ path('app_back_review_index') }}" >{{ 'Retour' }}</a> <br>
 
-    <a href="{{ path('app_back_review_edit', {'id': review.id}) }}">Modifier</a>
-
+    <a class="btn btn-outline-success" href="{{ path('app_back_review_edit', {'id': review.id}) }}" >{{ 'Modifier' }}</a>
     {{ include('back/review/_delete_form.html.twig') }}
 {% endblock %}

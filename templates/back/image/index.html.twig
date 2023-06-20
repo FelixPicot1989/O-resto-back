@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Image index{% endblock %}
+{% block title %}Les Images{% endblock %}
 
 {% block body %}
-    <h1>Image index</h1>
+    <h1>Les Images</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Url</th>
+                <th>Image</th>
                 <th>CreatedAt</th>
                 <th>UpdatedAt</th>
                 <th>actions</th>
@@ -21,12 +21,12 @@
             <tr>
                 <td>{{ image.id }}</td>
                 <td>{{ image.name }}</td>
-                <td>{{ image.url }}</td>
+                <td>{{ image.image }}</td>
                 <td>{{ image.createdAt ? image.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ image.updatedAt ? image.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_back_image_show', {'id': image.id}) }}">Voir</a>
-                    <a href="{{ path('app_back_image_edit', {'id': image.id}) }}">Modifier</a>
+                    <a class="btn btn-primary" href="{{ path('app_back_image_show', {'id': image.id}) }}">Voir</a>
+                    <a class="btn btn-primary" href="{{ path('app_back_image_edit', {'id': image.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_image_new') }}">Ajouter</a>
+    <a class="btn btn-success" href="{{ path('app_back_image_new') }}">Ajouter</a>
 {% endblock %}

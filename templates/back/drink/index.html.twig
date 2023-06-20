@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Drink index{% endblock %}
+{% block title %}Les Boissons{% endblock %}
 
 {% block body %}
-    <h1>Drink index</h1>
+    <h1>Les Boissons</h1>
 
     <table class="table">
         <thead>
@@ -29,8 +29,8 @@
                 <td>{{ drink.createdAt ? drink.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ drink.updatedAt ? drink.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a class="btn btn-secondary" href="{{ path('app_back_drink_show', {'id': drink.id}) }}">Voir</a>
-                    <a class="btn btn-secondary" href="{{ path('app_back_drink_edit', {'id': drink.id}) }}">Modifier</a>
+                    <a class="btn btn-primary" href="{{ path('app_back_drink_show', {'id': drink.id}) }}">Voir</a>
+                    <a class="btn btn-primary" href="{{ path('app_back_drink_edit', {'id': drink.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

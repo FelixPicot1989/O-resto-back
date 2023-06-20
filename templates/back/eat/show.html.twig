@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Eat{% endblock %}
+{% block title %}Plat{% endblock %}
 
 {% block body %}
-    <h1>Eat</h1>
+    <h1>Plat</h1>
 
     <table class="table">
         <tbody>
@@ -42,9 +42,8 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_eat_index') }}">Retour</a>
+    <a class="btn btn-warning" href="{{ path('app_back_eat_index') }}" >{{ 'Retour' }}</a> <br>
 
-    <a href="{{ path('app_back_eat_edit', {'id': eat.id}) }}">Modifier</a>
-
+    <a class="btn btn-outline-success" href="{{ path('app_back_eat_edit', {'id': eat.id}) }}" >{{ 'Modifier' }}</a>
     {{ include('back/eat/_delete_form.html.twig') }}
 {% endblock %}

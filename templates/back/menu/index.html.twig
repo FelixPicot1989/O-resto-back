@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Menu index{% endblock %}
+{% block title %}Les Menus{% endblock %}
 
 {% block body %}
-    <h1>Menu index</h1>
+    <h1>Les Menus</h1>
 
     <table class="table">
         <thead>
@@ -25,8 +25,8 @@
                 <td>{{ menu.createdAt ? menu.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ menu.updatedAt ? menu.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_back_menu_show', {'id': menu.id}) }}">Voir</a>
-                    <a href="{{ path('app_back_menu_edit', {'id': menu.id}) }}">Modifier</a>
+                    <a class="btn btn-primary" href="{{ path('app_back_menu_show', {'id': menu.id}) }}">Voir</a>
+                    <a class="btn btn-primary" href="{{ path('app_back_menu_edit', {'id': menu.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_menu_new') }}">Ajouter</a>
+    <a class="btn btn-success" href="{{ path('app_back_menu_new') }}">Ajouter</a>
 {% endblock %}

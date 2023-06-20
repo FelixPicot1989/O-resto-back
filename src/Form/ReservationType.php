@@ -18,7 +18,7 @@ class ReservationType extends AbstractType
             ->add('date')
             ->add('timeSlots')
             ->add('user',  EntityType::class, [
-                "multiple" => false,
+                "multiple" => true,
                 "expanded" => false, // radiobutton
                 "class" => User::class,
                 'choice_label' => 'firstname',

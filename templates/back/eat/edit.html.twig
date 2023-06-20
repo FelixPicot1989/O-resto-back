@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edition Eat{% endblock %}
+{% block title %}Edition Plat{% endblock %}
 
 {% block body %}
-    <h1>Edition Eat</h1>
+    <div>
+    <h1>Edition Plat</h1>
+        
+    {{ include('back/eat/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
 
-    {{ include('back/eat/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_back_eat_index') }}">Retour</a>
+     <a href="{{ path('app_back_eat_index') }}" class="btn btn-warning">{{ 'Retour' }}</a>
 
     {{ include('back/eat/_delete_form.html.twig') }}
+    
+</div>
 {% endblock %}

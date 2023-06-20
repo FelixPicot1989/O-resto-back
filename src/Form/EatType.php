@@ -24,6 +24,7 @@ class EatType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 "label" => "Le nom:",
+                'required' => true,
             ])
             ->add('description', TextareaType::class, [
                 "label" => "Description du plat : ",
@@ -38,7 +39,7 @@ class EatType extends AbstractType
                     "Oui" => 1
                 ],
                 "multiple" => false,
-                "expanded" => true,
+                "expanded" => false,
             ])
             ->add('glutenFree',  ChoiceType::class, [
                 'choices'  => [
@@ -46,28 +47,26 @@ class EatType extends AbstractType
                     "Oui" => 1
                 ],
                 "multiple" => false,
-                "expanded" => true,
+                "expanded" => false,
             ]) 
             ->add('category',  EntityType::class, [
                 "multiple" => true,
-                "expanded" => false, 
+                "expanded" => true, 
                 "class" => Category::class,
                 'choice_label' => 'name',
+                "empty_data" => 'false',
+                "query_builder" => function(EntityRepository $entityrepository){
+                    return $entityrepository->createQueryBuilder('c')
+                        ->orderBy('c.name', 'ASC');
+                }
             ])
             ->add('menu', EntityType::class, [
                 "multiple" => true,
-                "expanded" => false, 
+                "expanded" => true, 
                 "class" => Menu::class,
-                'choice_label' => 'name',
-                "placeholder" => "-",
-
-            ])
-            ->add('image', EntityType::class, [
-                "multiple" => false,
-                "expanded" => false, 
-                "class" => Image::class,
-                'choice_label' => 'name',
+                "choice_label" => 'name',
             ]);
+            
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -34,6 +34,7 @@ class Eat
      * @Groups({"menu_browse", "menu_read"})
      * 
      * @Assert\NotBlank( message = "Le nom du plat ne peut pas être vide")
+     * @Assert\NotNull(message="Le nom du plat ne peut pas être null")
      */
     private $name;
 
@@ -55,12 +56,14 @@ class Eat
     /**
      * @ORM\Column(type="boolean")
      * @Groups({"eat_browse", "eat_read"})
+     * 
      */
     private $vegan;
 
     /**
      * @ORM\Column(type="boolean")
      * @Groups({"eat_browse", "eat_read"})
+     * 
      */
     private $glutenFree;
 

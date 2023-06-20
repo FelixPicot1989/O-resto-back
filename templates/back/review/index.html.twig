@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Review index{% endblock %}
+{% block title %}Les Avis{% endblock %}
 
 {% block body %}
-    <h1>Review index</h1>
+    <h1>Les Avis</h1>
 
     <table class="table">
         <thead>
@@ -23,8 +23,8 @@
                 <td>{{ review.rating }}</td>
                 <td>{{ review.createdAt ? review.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_back_review_show', {'id': review.id}) }}">Voir</a>
-                    <a href="{{ path('app_back_review_edit', {'id': review.id}) }}">Modifier</a>
+                    <a class="btn btn-primary" href="{{ path('app_back_review_show', {'id': review.id}) }}">Voir</a>
+                    <a class="btn btn-primary" href="{{ path('app_back_review_edit', {'id': review.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_review_new') }}">Ajouter</a>
+    <a class="btn btn-success" href="{{ path('app_back_review_new') }}">Ajouter</a>
 {% endblock %}

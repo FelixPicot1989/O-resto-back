@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Eat index{% endblock %}
+{% block title %}Les Plats{% endblock %}
 
 {% block body %}
-    <h1>Eat index</h1>
+    <h1>Les Plats</h1>
 
     <table class="table">
         <thead>
@@ -31,8 +31,8 @@
                 <td>{{ eat.createdAt ? eat.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ eat.updatedAt ? eat.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_back_eat_show', {'id': eat.id}) }}">Voir</a>
-                    <a href="{{ path('app_back_eat_edit', {'id': eat.id}) }}">Modifier</a>
+                    <a class="btn btn-primary" href="{{ path('app_back_eat_show', {'id': eat.id}) }}">Voir</a>
+                    <a class="btn btn-primary" href="{{ path('app_back_eat_edit', {'id': eat.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -43,5 +43,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_eat_new') }}">Ajouter</a>
+    <a class="btn btn-success" href="{{ path('app_back_eat_new') }}">Ajouter</a>
 {% endblock %}
