@@ -3,11 +3,13 @@
 {% block title %}Edition Review{% endblock %}
 
 {% block body %}
-    <h1>Edition Review</h1>
+      <div>
+        <h1>Edition Avis</h1>
+        
+        {{ include('back/review/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
 
-    {{ include('back/review/_form.html.twig', {'button_label': 'Update'}) }}
+        <a  class="btn btn-warning" href="{{ path('app_back_review_index') }}">{{ 'Retour' }}</a>
 
-    <a href="{{ path('app_back_review_index') }}">Retour</a>
-
-    {{ include('back/review/_delete_form.html.twig') }}
+        {{ include('back/review/_delete_form.html.twig') }} 
+    </div>
 {% endblock %}

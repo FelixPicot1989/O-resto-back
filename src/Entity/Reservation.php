@@ -25,6 +25,9 @@ class Reservation
     /**
      * @ORM\Column(type="integer")
      * @Groups({"reservation_browse", "reservation_read"})
+     * 
+     * @Assert\NotBlank( message = "Le nombre de couverts ne peut pas être vide")
+     * @Assert\GreaterThan ( value=0, message = "Le nombre de couverts doit être forcément positif")
      */
     private $numberOfCovers;
 

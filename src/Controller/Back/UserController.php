@@ -78,6 +78,8 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $plainPassword = $request->request->get("password");
+            //dd($request);
+            //dd($plainPassword);
             
             if (!empty($plainPassword)){
 

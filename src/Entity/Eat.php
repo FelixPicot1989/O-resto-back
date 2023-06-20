@@ -34,7 +34,6 @@ class Eat
      * @Groups({"menu_browse", "menu_read"})
      * 
      * @Assert\NotBlank( message = "Le nom du plat ne peut pas être vide")
-     * @Assert\NotNull(message="Le nom du plat ne peut pas être null")
      */
     private $name;
 

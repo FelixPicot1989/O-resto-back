@@ -88,7 +88,7 @@ class Restaurant
     private $openingEvening;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"restaurant_browse", "restaurant_read"})     
      */
     private $info;
@@ -225,7 +225,7 @@ class Restaurant
         return $this->info;
     }
 
-    public function setInfo(string $info): self
+    public function setInfo(?string $info): self
     {
         $this->info = $info;
 

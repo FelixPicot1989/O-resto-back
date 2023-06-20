@@ -20,13 +20,13 @@
                 <td>{{ review.rating }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
+                <th>Créé le</th>
                 <td>{{ review.createdAt ? review.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-   <a class="btn btn-warning" href="{{ path('app_back_review_index') }}" >{{ 'Retour' }}</a> <br>
+    <a class="btn btn-warning" href="{{ path('app_back_review_index') }}" >{{ 'Retour' }}</a> <br>
 
     <a class="btn btn-outline-success" href="{{ path('app_back_review_edit', {'id': review.id}) }}" >{{ 'Modifier' }}</a>
     {{ include('back/review/_delete_form.html.twig') }}

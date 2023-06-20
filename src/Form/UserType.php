@@ -33,10 +33,7 @@ class UserType extends AbstractType
                 $builder->add('password', PasswordType::class, [
                     "mapped" => false,
                     "label" => "Le mot de passe",
-                    "attr" => [
-                        "placeholder" => "Ne rien mettre si vous ne voulez pas modifier le mot de passe"
-                    ],
-                // On déplace les contraintes de l'entité vers le form d'ajout
+                    'help' => "Laissez ce champ vide si vous ne souhaitez pas modifier le mot de passe",
                     'constraints' => [
                         new Regex(
                             "/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])\S{6,12}$/",

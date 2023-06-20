@@ -9,15 +9,15 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>History</th>
-                <th>OpeningLunch</th>
-                <th>Address</th>
-                <th>Phone</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>OpeningEvening</th>
+                <th>Histoire</th>
+                <th>Midi</th>
+                <th>Soir</th>
                 <th>Info</th>
-                <th>actions</th>
+                <th>Addresse</th>
+                <th>Téléphone</th>
+                <th>Créé le</th>
+                <th>Modifié</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -26,12 +26,12 @@
                 <td>{{ restaurant.id }}</td>
                 <td>{{ restaurant.history }}</td>
                 <td>{{ restaurant.openingLunch }}</td>
+                <td>{{ restaurant.openingEvening }}</td>
+                <td>{{ restaurant.info }}</td>
                 <td>{{ restaurant.address }}</td>
                 <td>{{ restaurant.phone }}</td>
                 <td>{{ restaurant.createdAt ? restaurant.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ restaurant.updatedAt ? restaurant.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ restaurant.openingEvening }}</td>
-                <td>{{ restaurant.info }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('app_back_restaurant_show', {'id': restaurant.id}) }}">Voir</a>
                     <a class="btn btn-primary" href="{{ path('app_back_restaurant_edit', {'id': restaurant.id}) }}">Modifier</a>

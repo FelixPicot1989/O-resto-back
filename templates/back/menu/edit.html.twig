@@ -3,11 +3,14 @@
 {% block title %}Edition Menu{% endblock %}
 
 {% block body %}
+<div>
     <h1>Edition Menu</h1>
+        
+    {{ include('back/menu/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
 
-    {{ include('back/menu/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_back_menu_index') }}">Retour</a>
+     <a  class="btn btn-warning" href="{{ path('app_back_menu_index') }}">{{ 'Retour' }}</a>
 
     {{ include('back/menu/_delete_form.html.twig') }}
+    
+</div>
 {% endblock %}

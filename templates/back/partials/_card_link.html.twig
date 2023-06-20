@@ -13,8 +13,12 @@
 		{% else %}
             <h5 class="card-title">{{ entity|capitalize }}</h5>
         {% endif %}
-				<a href="{{ path('app_back_' ~ entity ~ '_new')}}" class="card-link btn btn-outline-success">Ajout</a>
-				<a href="{{ path('app_back_' ~ entity ~ '_index')}}" class="card-link btn btn-outline-info">Liste</a>
+				{% if entity == 'review' %}
+					<a href="{{ path('app_back_' ~ entity ~ '_index')}}" class="card-link btn btn-outline-info">Liste</a>
+				{% else %}
+					<a href="{{ path('app_back_' ~ entity ~ '_new')}}" class="card-link btn btn-outline-success">Ajout</a>
+					<a href="{{ path('app_back_' ~ entity ~ '_index')}}" class="card-link btn btn-outline-info">Liste</a>
+				{% endif %}
 			</div>
 		</div>
 

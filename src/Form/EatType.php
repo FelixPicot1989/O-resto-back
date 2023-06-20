@@ -23,17 +23,17 @@ class EatType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                "label" => "Le nom:",
-                'required' => true,
+                "label" => "Le nom :",
             ])
             ->add('description', TextareaType::class, [
                 "label" => "Description du plat : ",
             ])
             ->add('price', NumberType::class, [
-                "label" => "Le prix",
+                "label" => "Le prix :" ,
                 "scale" => 2,
             ])
             ->add('vegan', ChoiceType::class, [
+                "label" => "Végétarien :",
                 'choices'  => [
                     'Non' => 0,
                     "Oui" => 1
@@ -42,6 +42,7 @@ class EatType extends AbstractType
                 "expanded" => false,
             ])
             ->add('glutenFree',  ChoiceType::class, [
+                "label" => "Gluten :",
                 'choices'  => [
                     'Non' => 0,
                     "Oui" => 1
@@ -53,6 +54,7 @@ class EatType extends AbstractType
                 "multiple" => true,
                 "expanded" => true, 
                 "class" => Category::class,
+                "label" => "La categorie:",
                 'choice_label' => 'name',
                 "empty_data" => 'false',
                 "query_builder" => function(EntityRepository $entityrepository){

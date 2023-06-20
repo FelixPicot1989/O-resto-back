@@ -37,6 +37,7 @@ class DrinkType extends AbstractType
                 "expanded" => true,
             ])
             ->add('category',  EntityType::class, [
+                "label" => "La catégorie :",
                 "multiple" => false,
                 "expanded" => false, // radiobutton
                 "class" => Category::class,
