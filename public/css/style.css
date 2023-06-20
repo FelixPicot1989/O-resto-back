@@ -11,6 +11,7 @@ body {
     background-repeat: no-repeat;
     background-size: 35%;
     background-position: center;
+   padding-top: 4em;
 }
 .nav-tabs .nav-link {
     color: goldenrod;
