@@ -31,12 +31,19 @@ security:
             security: false
         main:
             lazy: true
+            provider: app_user_provider
+            custom_authenticator: App\Security\BackAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
                 # where to redirect after logout
                 # target: app_any_route
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
+        - { path: ^/back, roles: ROLE_ADMIN }
         - { path: ^/api\/\w+\$,  roles: IS_AUTHENTICATED_FULLY, methods: [POST] }
         - { path: ^/api\/\w+\/\d+, roles: IS_AUTHENTICATED_FULLY, methods: [PUT, PATCH, DELETE]}
         - { path: ^/api,       roles: PUBLIC_ACCESS }
@@ -48,7 +55,7 @@ security:
 
 
     role_hierarchy:
-        ROLE_ADMIN:   ROLE_USER
+        ROLE_ADMIN:   [ROLE_USER]
 
 
 

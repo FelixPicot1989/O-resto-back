@@ -70,7 +70,7 @@ class UserController extends CoreApiController
             // je hash le mot de passe
             $hashedPassword = $userPasswordHasherInterface->hashPassword($newUser, $plainPassword);
             $newUser->setPassword($hashedPassword);
-            $newUser->setRoles(["ROLE_USER"]);
+            $newUser->setRoles(['ROLE_USER']);
         }
 
         $userRepository->add($newUser, true);

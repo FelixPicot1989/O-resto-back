@@ -60,11 +60,11 @@
 	
     {% if is_granted("IS_AUTHENTICATED_FULLY")%}
     {# if is authentificated  #}
-		<a href="#">
+		<a href="{{ path('app_logout') }}">
 			<button type="button" class="btn btn-danger me-2">Deconnexion</button>
 		</a>
 	{% else %}
-		<a href="#">
+		<a href="{{ path('app_login') }}">
 			<button type="button" class="btn btn-danger me-2">Connexion</button>
 		</a>
 	{% endif %}
