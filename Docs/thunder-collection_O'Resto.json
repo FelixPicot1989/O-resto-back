@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "O'Resto",
-    "dateExported": "2023-06-13T17:11:31.294Z",
+    "dateExported": "2023-06-21T09:09:47.922Z",
     "version": "1.1",
     "folders": [
         {
@@ -78,7 +78,7 @@
             "method": "GET",
             "sortNum": 10000,
             "created": "2023-06-08T15:30:00.116Z",
-            "modified": "2023-06-12T08:24:35.858Z",
+            "modified": "2023-06-15T08:05:03.148Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -88,17 +88,13 @@
             "colId": "02f650ac-abd8-4b3e-aa82-b0a7b0e12221",
             "containerId": "b4542b2b-6e53-4156-8413-7ea03e33c4e6",
             "name": "/api/drinks",
-            "url": "localhost:8000/api/drinks",
+            "url": "/api/drinks",
             "method": "GET",
             "sortNum": 20000,
             "created": "2023-06-09T09:07:27.691Z",
-            "modified": "2023-06-09T09:07:27.691Z",
+            "modified": "2023-06-16T07:25:36.174Z",
             "headers": [],
             "params": [],
-            "auth": {
-                "type": "bearer",
-                "bearer": "MIIFHDBOBgkqhkiG9w0BBQ0wQTApBgkqhkiG9w0BBQwwHAQI6ma1rdx+wwQCAggA MAwGCCqGSIb3DQIJBQAwFAYIKoZIhvcNAwcECHffTCG6i3F4BIIEyFNLZUpt9SOx e8zWOzP2X6LHF24rNxJovQiI8d1RVId+7VfzKPh46Rm0SOCOljktglVG6ovjz/M1 VA8Dk9t7Can8tuo70uA2SR/6mrOzmUjQB3vIwp/+nGYA12HGjJv7l7i5cImrgnVH g4bZvkO1duMdTLeGR+HUHDNhDjvkAvM66zMtSR2b3sBb4yqtpcevWMlzgfCxwZ6q Cgk3S1HRqQUkT5qGxc44Cu8xyTTV/ZhQ2uVu2NkeYusXobPJQN7uxeJWotjAd6bb pWbNFGbiMeMpk1kccSjz1kWD0QgyRXDEU5hVdSjiPoPhvm79RNsqgDZLTaOzj39N oVWm0Ezoav9N/nkJ58Iep8NX0n+Qk0Y45AASrFVPireF0Mmxesdk0g9YloqIGPki DiLBzTGrWtvghH9M8F/2mzA5fnfDvpUtCUufMiUAdHY0QBw8vtOQAyon4jy4cEpe BFjXburdndaYhJINJsyHBhsNJ3fQMrSPngqn5gxLM8It9Pzu3eIBSSQdAI4NVzI7 Qb3wGCBg1rvbaeQy900P6gG+ELas01OFjPVUER1hlzpRAGp810uye/weabnlqA4L QP5ymNQ5WDoly7CV0l4Ty8/YQiQ2eLC5twRLqs8aJNM4+ftD+haGEy3K9uFZqFt5 q+dA2PH6SVOyxDkfsPBytsPJGuTgGgzHkYfXSM7wd2jcF8yDWELyGKcu7XhrZ61F 9uvz01lGa61Td2NocBnraKb50FYSE9+whEIy7Nr4UZVrxy8F/KX+FQYe6Nhshfbp HXaGnvGHhFqAa3/f98Gyk6Ej1yueI27KbogHhK7Mi+J3c7/3QEUM9T5IrD53rXbU h+h8kyHeHSQjySALtBCn2CjAJ/WwK3G1O2p+Pw4G0ptl9JCecJN+xSLQ6uqmPgWW 6OIc5NhFXXklNI/+0pKO5Hw+ViD/RUqyVtvWprrJGmGNAm8ScQsprgPEl/y70zAz HDW1ylrbrRMrsXdjTCguxyHem/ZCnepoyPtm5mMfygQ/5nn0uYO62HTaEioRmTTy uaPwzNGYfRYm3G2KzI/yj7YQAtxu0sdiTE5DW3odp55u2ichpeiT+rcfvhNmZQ2/ Wqp8MowGmkyvrobLHsDzoC4fERzXnki2XsfekOxjt11phMnkz/fH6V8wGP8c8gDq /WbZfhXX0eX3MrmaWfBYDg+EYQFM+szKDav0RmUHUmC2BZlIA5FcBIXfwdPFaYCr 3AvV+soXIzCp/2JScqUvit7X4wyKU84xm/cqt5aQ8Iq2D5gAb7XUM7OeXGfgVx5g NSNCFbSWjLvKJikZQpGdBTNNodwK3xUk4HFQOOrzC1RtV5/SDlbujhl3h7Hbowep c4lkRHFm9763XbcoB5uKoTh4FpChOvbpAdumXeb5tlJ+XSRmZlCnviVrpV5jebCn 4KoT43nEztJrmJmppA68j9kqiGbkdDj8BrL6582HqnFB0+zdtSllYAep90b1TQS3 dtsbH2M42JP9qH1m8wxMFfwVPZlEWqaRM89Vq5oQxIG6WcnOcejqR9wLGCXRzJw1 yIoBVGch60r+uCl+pCXMSoDXAiIBm8k6qOdXiZhFCYGoTyE6rPJdn5xycuaw/Z+X /cv3WPvQvnUxTD9wp8gISw=="
-            },
             "tests": []
         },
         {
@@ -160,17 +156,13 @@
             "colId": "02f650ac-abd8-4b3e-aa82-b0a7b0e12221",
             "containerId": "f3bcd7bc-2699-45b2-8d8a-ed1efe99406b",
             "name": "/api/categories/1",
-            "url": "/api/categories/2",
+            "url": "/api/categories/1",
             "method": "GET",
             "sortNum": 60000,
             "created": "2023-06-09T10:01:46.010Z",
-            "modified": "2023-06-12T08:31:33.168Z",
+            "modified": "2023-06-16T11:13:49.833Z",
             "headers": [],
             "params": [],
-            "auth": {
-                "type": "bearer",
-                "bearer": "MIIFHDBOBgkqhkiG9w0BBQ0wQTApBgkqhkiG9w0BBQwwHAQI6ma1rdx+wwQCAggA MAwGCCqGSIb3DQIJBQAwFAYIKoZIhvcNAwcECHffTCG6i3F4BIIEyFNLZUpt9SOx e8zWOzP2X6LHF24rNxJovQiI8d1RVId+7VfzKPh46Rm0SOCOljktglVG6ovjz/M1 VA8Dk9t7Can8tuo70uA2SR/6mrOzmUjQB3vIwp/+nGYA12HGjJv7l7i5cImrgnVH g4bZvkO1duMdTLeGR+HUHDNhDjvkAvM66zMtSR2b3sBb4yqtpcevWMlzgfCxwZ6q Cgk3S1HRqQUkT5qGxc44Cu8xyTTV/ZhQ2uVu2NkeYusXobPJQN7uxeJWotjAd6bb pWbNFGbiMeMpk1kccSjz1kWD0QgyRXDEU5hVdSjiPoPhvm79RNsqgDZLTaOzj39N oVWm0Ezoav9N/nkJ58Iep8NX0n+Qk0Y45AASrFVPireF0Mmxesdk0g9YloqIGPki DiLBzTGrWtvghH9M8F/2mzA5fnfDvpUtCUufMiUAdHY0QBw8vtOQAyon4jy4cEpe BFjXburdndaYhJINJsyHBhsNJ3fQMrSPngqn5gxLM8It9Pzu3eIBSSQdAI4NVzI7 Qb3wGCBg1rvbaeQy900P6gG+ELas01OFjPVUER1hlzpRAGp810uye/weabnlqA4L QP5ymNQ5WDoly7CV0l4Ty8/YQiQ2eLC5twRLqs8aJNM4+ftD+haGEy3K9uFZqFt5 q+dA2PH6SVOyxDkfsPBytsPJGuTgGgzHkYfXSM7wd2jcF8yDWELyGKcu7XhrZ61F 9uvz01lGa61Td2NocBnraKb50FYSE9+whEIy7Nr4UZVrxy8F/KX+FQYe6Nhshfbp HXaGnvGHhFqAa3/f98Gyk6Ej1yueI27KbogHhK7Mi+J3c7/3QEUM9T5IrD53rXbU h+h8kyHeHSQjySALtBCn2CjAJ/WwK3G1O2p+Pw4G0ptl9JCecJN+xSLQ6uqmPgWW 6OIc5NhFXXklNI/+0pKO5Hw+ViD/RUqyVtvWprrJGmGNAm8ScQsprgPEl/y70zAz HDW1ylrbrRMrsXdjTCguxyHem/ZCnepoyPtm5mMfygQ/5nn0uYO62HTaEioRmTTy uaPwzNGYfRYm3G2KzI/yj7YQAtxu0sdiTE5DW3odp55u2ichpeiT+rcfvhNmZQ2/ Wqp8MowGmkyvrobLHsDzoC4fERzXnki2XsfekOxjt11phMnkz/fH6V8wGP8c8gDq /WbZfhXX0eX3MrmaWfBYDg+EYQFM+szKDav0RmUHUmC2BZlIA5FcBIXfwdPFaYCr 3AvV+soXIzCp/2JScqUvit7X4wyKU84xm/cqt5aQ8Iq2D5gAb7XUM7OeXGfgVx5g NSNCFbSWjLvKJikZQpGdBTNNodwK3xUk4HFQOOrzC1RtV5/SDlbujhl3h7Hbowep c4lkRHFm9763XbcoB5uKoTh4FpChOvbpAdumXeb5tlJ+XSRmZlCnviVrpV5jebCn 4KoT43nEztJrmJmppA68j9kqiGbkdDj8BrL6582HqnFB0+zdtSllYAep90b1TQS3 dtsbH2M42JP9qH1m8wxMFfwVPZlEWqaRM89Vq5oQxIG6WcnOcejqR9wLGCXRzJw1 yIoBVGch60r+uCl+pCXMSoDXAiIBm8k6qOdXiZhFCYGoTyE6rPJdn5xycuaw/Z+X /cv3WPvQvnUxTD9wp8gISw=="
-            },
             "tests": []
         },
         {
@@ -178,23 +170,13 @@
             "colId": "02f650ac-abd8-4b3e-aa82-b0a7b0e12221",
             "containerId": "f3bcd7bc-2699-45b2-8d8a-ed1efe99406b",
             "name": "/api/categories",
-            "url": "/api/categories/?name=plats",
+            "url": "/api/categories/",
             "method": "GET",
             "sortNum": 70000,
             "created": "2023-06-09T10:01:55.742Z",
-            "modified": "2023-06-12T12:54:48.873Z",
+            "modified": "2023-06-14T13:09:55.213Z",
             "headers": [],
-            "params": [
-                {
-                    "name": "name",
-                    "value": "plats",
-                    "isPath": false
-                }
-            ],
-            "auth": {
-                "type": "bearer",
-                "bearer": "MIIFHDBOBgkqhkiG9w0BBQ0wQTApBgkqhkiG9w0BBQwwHAQI6ma1rdx+wwQCAggA MAwGCCqGSIb3DQIJBQAwFAYIKoZIhvcNAwcECHffTCG6i3F4BIIEyFNLZUpt9SOx e8zWOzP2X6LHF24rNxJovQiI8d1RVId+7VfzKPh46Rm0SOCOljktglVG6ovjz/M1 VA8Dk9t7Can8tuo70uA2SR/6mrOzmUjQB3vIwp/+nGYA12HGjJv7l7i5cImrgnVH g4bZvkO1duMdTLeGR+HUHDNhDjvkAvM66zMtSR2b3sBb4yqtpcevWMlzgfCxwZ6q Cgk3S1HRqQUkT5qGxc44Cu8xyTTV/ZhQ2uVu2NkeYusXobPJQN7uxeJWotjAd6bb pWbNFGbiMeMpk1kccSjz1kWD0QgyRXDEU5hVdSjiPoPhvm79RNsqgDZLTaOzj39N oVWm0Ezoav9N/nkJ58Iep8NX0n+Qk0Y45AASrFVPireF0Mmxesdk0g9YloqIGPki DiLBzTGrWtvghH9M8F/2mzA5fnfDvpUtCUufMiUAdHY0QBw8vtOQAyon4jy4cEpe BFjXburdndaYhJINJsyHBhsNJ3fQMrSPngqn5gxLM8It9Pzu3eIBSSQdAI4NVzI7 Qb3wGCBg1rvbaeQy900P6gG+ELas01OFjPVUER1hlzpRAGp810uye/weabnlqA4L QP5ymNQ5WDoly7CV0l4Ty8/YQiQ2eLC5twRLqs8aJNM4+ftD+haGEy3K9uFZqFt5 q+dA2PH6SVOyxDkfsPBytsPJGuTgGgzHkYfXSM7wd2jcF8yDWELyGKcu7XhrZ61F 9uvz01lGa61Td2NocBnraKb50FYSE9+whEIy7Nr4UZVrxy8F/KX+FQYe6Nhshfbp HXaGnvGHhFqAa3/f98Gyk6Ej1yueI27KbogHhK7Mi+J3c7/3QEUM9T5IrD53rXbU h+h8kyHeHSQjySALtBCn2CjAJ/WwK3G1O2p+Pw4G0ptl9JCecJN+xSLQ6uqmPgWW 6OIc5NhFXXklNI/+0pKO5Hw+ViD/RUqyVtvWprrJGmGNAm8ScQsprgPEl/y70zAz HDW1ylrbrRMrsXdjTCguxyHem/ZCnepoyPtm5mMfygQ/5nn0uYO62HTaEioRmTTy uaPwzNGYfRYm3G2KzI/yj7YQAtxu0sdiTE5DW3odp55u2ichpeiT+rcfvhNmZQ2/ Wqp8MowGmkyvrobLHsDzoC4fERzXnki2XsfekOxjt11phMnkz/fH6V8wGP8c8gDq /WbZfhXX0eX3MrmaWfBYDg+EYQFM+szKDav0RmUHUmC2BZlIA5FcBIXfwdPFaYCr 3AvV+soXIzCp/2JScqUvit7X4wyKU84xm/cqt5aQ8Iq2D5gAb7XUM7OeXGfgVx5g NSNCFbSWjLvKJikZQpGdBTNNodwK3xUk4HFQOOrzC1RtV5/SDlbujhl3h7Hbowep c4lkRHFm9763XbcoB5uKoTh4FpChOvbpAdumXeb5tlJ+XSRmZlCnviVrpV5jebCn 4KoT43nEztJrmJmppA68j9kqiGbkdDj8BrL6582HqnFB0+zdtSllYAep90b1TQS3 dtsbH2M42JP9qH1m8wxMFfwVPZlEWqaRM89Vq5oQxIG6WcnOcejqR9wLGCXRzJw1 yIoBVGch60r+uCl+pCXMSoDXAiIBm8k6qOdXiZhFCYGoTyE6rPJdn5xycuaw/Z+X /cv3WPvQvnUxTD9wp8gISw=="
-            },
+            "params": [],
             "tests": []
         },
         {
@@ -248,13 +230,9 @@
             "method": "GET",
             "sortNum": 130000,
             "created": "2023-06-11T17:59:55.643Z",
-            "modified": "2023-06-13T16:14:35.828Z",
+            "modified": "2023-06-14T13:12:02.945Z",
             "headers": [],
             "params": [],
-            "auth": {
-                "type": "bearer",
-                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODY2NjM4MTksImV4cCI6MTY4NjcyODYxOSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSJ9.bWnOedxA3jatztZ5iH8hwlrhn5O8z1ZnEBVNqf8cZVYPW4OqsSfqi4FyhdGK7iUOiNZKjBJBzfzbEXCMJGwJTLhUh_rV5-m4xzqAlClMbd2Wt8xccvOukcgXHfn42_X7znWxkXbUq-ufQPlAfpAq2I0ABHukp6fqPXPAc86hDwQfPQDrsNJbUSbZvz-gyiOL-_eaH9KXsY6R6pOHhfPRcyD03x76i-z359d2SPdD3fH1EEKM3oPxayaFk2wKZN67xhMstfJ8b1XC0kenEkIZSV5T876IN8GmeviITUAgbtKVHPFhkpAvycHq0nVKBB1j8efzRoM9cxYKhLAteod0kw"
-            },
             "tests": []
         },
         {
@@ -266,17 +244,13 @@
             "method": "POST",
             "sortNum": 140000,
             "created": "2023-06-11T18:00:05.863Z",
-            "modified": "2023-06-13T16:14:47.142Z",
+            "modified": "2023-06-16T12:15:39.972Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
                 "raw": "{\n  \"comment\": \"magnifique, c'était très bon\",\n  \"rating\": 4.5 ,\n  \"createdAt\": \"now\"\n\n}",
                 "form": []
-            },
-            "auth": {
-                "type": "bearer",
-                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODY2NjM4MTksImV4cCI6MTY4NjcyODYxOSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSJ9.bWnOedxA3jatztZ5iH8hwlrhn5O8z1ZnEBVNqf8cZVYPW4OqsSfqi4FyhdGK7iUOiNZKjBJBzfzbEXCMJGwJTLhUh_rV5-m4xzqAlClMbd2Wt8xccvOukcgXHfn42_X7znWxkXbUq-ufQPlAfpAq2I0ABHukp6fqPXPAc86hDwQfPQDrsNJbUSbZvz-gyiOL-_eaH9KXsY6R6pOHhfPRcyD03x76i-z359d2SPdD3fH1EEKM3oPxayaFk2wKZN67xhMstfJ8b1XC0kenEkIZSV5T876IN8GmeviITUAgbtKVHPFhkpAvycHq0nVKBB1j8efzRoM9cxYKhLAteod0kw"
             },
             "tests": []
         },
@@ -307,17 +281,13 @@
             "method": "PUT",
             "sortNum": 160000,
             "created": "2023-06-11T18:59:55.138Z",
-            "modified": "2023-06-13T16:16:13.192Z",
+            "modified": "2023-06-14T13:35:32.554Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
                 "raw": "  {\n    \"comment\": \"très bon !\",\n    \"rating\": 5\n  }",
                 "form": []
-            },
-            "auth": {
-                "type": "bearer",
-                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODY2NjM4MTksImV4cCI6MTY4NjcyODYxOSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSJ9.bWnOedxA3jatztZ5iH8hwlrhn5O8z1ZnEBVNqf8cZVYPW4OqsSfqi4FyhdGK7iUOiNZKjBJBzfzbEXCMJGwJTLhUh_rV5-m4xzqAlClMbd2Wt8xccvOukcgXHfn42_X7znWxkXbUq-ufQPlAfpAq2I0ABHukp6fqPXPAc86hDwQfPQDrsNJbUSbZvz-gyiOL-_eaH9KXsY6R6pOHhfPRcyD03x76i-z359d2SPdD3fH1EEKM3oPxayaFk2wKZN67xhMstfJ8b1XC0kenEkIZSV5T876IN8GmeviITUAgbtKVHPFhkpAvycHq0nVKBB1j8efzRoM9cxYKhLAteod0kw"
             },
             "tests": []
         },
@@ -326,11 +296,11 @@
             "colId": "02f650ac-abd8-4b3e-aa82-b0a7b0e12221",
             "containerId": "e5bd8764-dfbf-4d8b-b037-cf658e58d12d",
             "name": "/api/reviews/3",
-            "url": "localhost:8000/api/reviews/5",
+            "url": "/api/reviews/1",
             "method": "DELETE",
             "sortNum": 170000,
             "created": "2023-06-11T19:13:48.005Z",
-            "modified": "2023-06-12T08:06:48.194Z",
+            "modified": "2023-06-14T13:36:04.097Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -362,13 +332,9 @@
             "method": "GET",
             "sortNum": 190000,
             "created": "2023-06-11T19:38:51.539Z",
-            "modified": "2023-06-13T16:17:15.803Z",
+            "modified": "2023-06-14T13:08:14.934Z",
             "headers": [],
             "params": [],
-            "auth": {
-                "type": "bearer",
-                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODY2NjM4MTksImV4cCI6MTY4NjcyODYxOSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSJ9.bWnOedxA3jatztZ5iH8hwlrhn5O8z1ZnEBVNqf8cZVYPW4OqsSfqi4FyhdGK7iUOiNZKjBJBzfzbEXCMJGwJTLhUh_rV5-m4xzqAlClMbd2Wt8xccvOukcgXHfn42_X7znWxkXbUq-ufQPlAfpAq2I0ABHukp6fqPXPAc86hDwQfPQDrsNJbUSbZvz-gyiOL-_eaH9KXsY6R6pOHhfPRcyD03x76i-z359d2SPdD3fH1EEKM3oPxayaFk2wKZN67xhMstfJ8b1XC0kenEkIZSV5T876IN8GmeviITUAgbtKVHPFhkpAvycHq0nVKBB1j8efzRoM9cxYKhLAteod0kw"
-            },
             "tests": []
         },
         {
@@ -380,17 +346,13 @@
             "method": "POST",
             "sortNum": 200000,
             "created": "2023-06-11T19:46:27.810Z",
-            "modified": "2023-06-13T16:17:33.301Z",
+            "modified": "2023-06-14T13:12:43.602Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
                 "raw": "{\n  \"numberOfCovers\": 4,\n  \"date\": \"2023-06-11T21:30:45+02:00\",\n  \"timeSlots\": \"21:00\",\n  \"createdAt\": \"now\"\n}",
                 "form": []
-            },
-            "auth": {
-                "type": "bearer",
-                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODY2NjM4MTksImV4cCI6MTY4NjcyODYxOSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSJ9.bWnOedxA3jatztZ5iH8hwlrhn5O8z1ZnEBVNqf8cZVYPW4OqsSfqi4FyhdGK7iUOiNZKjBJBzfzbEXCMJGwJTLhUh_rV5-m4xzqAlClMbd2Wt8xccvOukcgXHfn42_X7znWxkXbUq-ufQPlAfpAq2I0ABHukp6fqPXPAc86hDwQfPQDrsNJbUSbZvz-gyiOL-_eaH9KXsY6R6pOHhfPRcyD03x76i-z359d2SPdD3fH1EEKM3oPxayaFk2wKZN67xhMstfJ8b1XC0kenEkIZSV5T876IN8GmeviITUAgbtKVHPFhkpAvycHq0nVKBB1j8efzRoM9cxYKhLAteod0kw"
             },
             "tests": []
         },
@@ -472,17 +434,13 @@
             "method": "POST",
             "sortNum": 250000,
             "created": "2023-06-12T13:45:52.632Z",
-            "modified": "2023-06-13T15:29:46.698Z",
+            "modified": "2023-06-19T14:25:09.843Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "  {\n    \"firstname\": \"titi\",\n    \"lastname\": \"Chouette\",\n    \"email\": \"chouette1@chouette.com\",\n    \"password\": \"tagada\",\n    \"createdAt\": \"now\",\n    \"role\": \"user\"\n    \n  }",
+                "raw": "  {\n    \"firstname\": \"fsdfs\",\n    \"lastname\": \"dibidi\",\n    \"email\": \"dibidi@bouh.com\",\n    \"password\": \"tagada\"\n  \n    \n  }",
                 "form": []
-            },
-            "auth": {
-                "type": "bearer",
-                "bearer": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODY2NjM4MTksImV4cCI6MTY4NjcyODYxOSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSJ9.bWnOedxA3jatztZ5iH8hwlrhn5O8z1ZnEBVNqf8cZVYPW4OqsSfqi4FyhdGK7iUOiNZKjBJBzfzbEXCMJGwJTLhUh_rV5-m4xzqAlClMbd2Wt8xccvOukcgXHfn42_X7znWxkXbUq-ufQPlAfpAq2I0ABHukp6fqPXPAc86hDwQfPQDrsNJbUSbZvz-gyiOL-_eaH9KXsY6R6pOHhfPRcyD03x76i-z359d2SPdD3fH1EEKM3oPxayaFk2wKZN67xhMstfJ8b1XC0kenEkIZSV5T876IN8GmeviITUAgbtKVHPFhkpAvycHq0nVKBB1j8efzRoM9cxYKhLAteod0kw"
             },
             "tests": []
         },
@@ -491,16 +449,16 @@
             "colId": "02f650ac-abd8-4b3e-aa82-b0a7b0e12221",
             "containerId": "4bf681d0-8f1f-4634-af42-789e35dc4888",
             "name": "/api/users/3",
-            "url": "localhost:8000/api/users/3",
+            "url": "/api/users/3",
             "method": "PUT",
             "sortNum": 260000,
             "created": "2023-06-12T13:50:21.779Z",
-            "modified": "2023-06-12T13:50:21.779Z",
+            "modified": "2023-06-14T13:57:02.901Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"firstname\": \"Bibi\"\n}",
+                "raw": "{\n  \"firstname\": \"Baba\",\n  \"password\": \"0000\"\n}",
                 "form": []
             },
             "tests": []
@@ -532,18 +490,42 @@
             "method": "POST",
             "sortNum": 280000,
             "created": "2023-06-13T13:48:17.262Z",
-            "modified": "2023-06-13T16:13:31.166Z",
+            "modified": "2023-06-20T14:28:22.314Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"email\": \"admin@admin.com\",\n  \"password\": \"admin\"\n}",
+                "raw": "{\n  \"email\": \"tagada@free.fr\",\n  \"password\": \"Fraise0\"\n}",
                 "form": []
             },
-            "auth": {
-                "type": "bearer",
-                "bearer": "MIIFHDBOBgkqhkiG9w0BBQ0wQTApBgkqhkiG9w0BBQwwHAQIuWJa9AwLK5QCAggA MAwGCCqGSIb3DQIJBQAwFAYIKoZIhvcNAwcECHzL68k3LWFMBIIEyNfBqUQYNpmp tn0huJTpqVroP4eEMx+tiR1nqaQyidOiQvRVZl7f9LmQqaWFcUu78yNRVeySzpyk 0jKi5uo+LFD841HeT4caDo9uwE9KQeaT8F4VWFr62W/IdEyOQpxhLGOP4MhBhkPe eK1Sj7dDYBwN9xEERewBV8iCRT2AWQgMy5O1c8iXpJ/E+E3zB2g2Tj0xrFGcdQTT UA/OKBdf3qYbGPdL9omrurbR/9vdIVoR/D+nzNsPp6+eqtoU95ps3eR9gyzFdLtu laZJCzmgR05PHDufMUrBZULZemLZQgB6CgJWHt1DepWADWgXJgP41qRPKoBrlmIS xfs0yZsRdTGd3Ms6JrvXaiwK7dziEGOB5NNbhlDOjdixRc6f11kOMjz6FR9oBB2O 4IBU6qizWKGnh05ao6MlXxj7RAEmPNqdKXmIXm/5Tvb/8Ckn1x+UUfwNXRtbT1jk Vpb6rx9K+LVv6egrZeNpyIEljUR5KRtqO8tWXhu0c/7P0FnGbwIEEJXK3mhfz6aj GNr7V5YJS+nLNdY61zjYpR8hKGnKr/JUFy+1NBIPKuJKulnZvtKBEIBsrwxRokyH ci2phW/b1d5NRGdCScHx/Ti/DidyLdbBlIhtRm6vYlHBBKLFJ8hlfYuYdvrFlfdA ObyeuYYQWNHOb6os0BIMvxP7u/eIPU67i4YyzjLifQ/cTubyX29CKqrr06UXf6e+ H8kdiHDk0B8Ntzc7hlBxGQYOc2GUt/rjNM+GRcM847PQINSNcSS8mOETAEO8lpYf 0avcK+6plLpaHEp0qeIw68QngeX+NYNDPlCvSsIZL7lBqd09/Eb6vm7NFRCMH7TF Nt97x8yGQtfCYmZKSS3yzsvQFy1vznSvieDfw5rx0iiid6tnN75eS+XZ4EjvGMvc 4JNb2KWKmRtfj2CpbFFKHgI0yGixz4DLjNeWBYk9tC3k+UrhcrESYhTPa7aG6TLM hpO94VK95KaqSalaeZXqZfODJGyxsneafPq8mX2Ljwzpkzx7R5hSo4z1I5HSLpRu Ebm1J6es9gs3cv/Q8/QBXE71AhqbG9AOy7LhNI9LAIt/iZjn8XXTd+icril6yZZ2 sB1idZupLQGZNgNPfkosW0kIKztZAzCe1WKv7zYJYUdN+OkNzC++RdqAV7V7umxS YQxSWiMZkPG5A/A1KO30EfQcl3fh2ecSyh7oL0i5825F60MllrQ91f9BHEoQuFu9 aBXVuexlYgKSYDwz/hLAyYP0bia04kTS+LumIUCk9NvmWXGYPicYv7gBScF/TZ6C 9hqDbt0L/HyNi2KUq19t9ahz2otQRRp38796qu4EShL7e7p+1+rx1egsuIimHV2E xKgN0jKxs5MU73oVsqgjpJ5ihuCwmQRFOKaX7Q3JG4lUu1UCA6IzdJL6TgR6YUMq Vr2zA5CLx6gP7Un4QSFFZ0qQDB3IAID4Sfg1CvNxM1yapytvHJ35SijwpUUuwbEW 1EYP6Un7uq5SzLmyQiT3Xm5VcyBhWPSW1U36BjWM+UPY7bbzXQskFVHuVe3RBVEY Mm1FPcHNK1SrLM0lozm3Zf3rFkt4/2pPQqWTTPhMpx6TA2KBLAQB1eAZvFgkc0Cv p3b1sNVIUacBOIltB9hHUA=="
-            },
+            "tests": []
+        },
+        {
+            "_id": "66bc35a3-c0bf-43c2-b8e1-68697e487d0f",
+            "colId": "02f650ac-abd8-4b3e-aa82-b0a7b0e12221",
+            "containerId": "4bf681d0-8f1f-4634-af42-789e35dc4888",
+            "name": "/api/users",
+            "url": "/api/users",
+            "method": "GET",
+            "sortNum": 290000,
+            "created": "2023-06-16T11:41:46.128Z",
+            "modified": "2023-06-16T14:32:43.402Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d9fe6e26-7bdd-4d46-818f-454aa6c34a3e",
+            "colId": "02f650ac-abd8-4b3e-aa82-b0a7b0e12221",
+            "containerId": "4bf681d0-8f1f-4634-af42-789e35dc4888",
+            "name": "/api/users/1",
+            "url": "/api/users/1",
+            "method": "GET",
+            "sortNum": 300000,
+            "created": "2023-06-16T11:41:53.668Z",
+            "modified": "2023-06-16T11:41:53.668Z",
+            "headers": [],
+            "params": [],
             "tests": []
         }
     ],
