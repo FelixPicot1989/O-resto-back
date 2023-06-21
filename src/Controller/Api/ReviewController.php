@@ -58,7 +58,6 @@ class ReviewController extends CoreApiController
                 "groups" =>
                 [
                     "review_read",
-                    "user_read"
                 ]
             ]
         );
