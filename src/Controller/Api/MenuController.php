@@ -24,7 +24,7 @@ class MenuController extends CoreApiController
 
         // le serializer is after json method()
         // we need to give to him objects to transform in jsondata
-        return $this->json200($allmenus, ["menu_browse"]);
+        return $this->json200($allmenus, ["menu_browse", "category-browse"]);
     }
 
     /**

@@ -13,7 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
@@ -53,6 +52,7 @@ class UserController extends CoreApiController
                 Response::HTTP_NOT_FOUND
             );
         }
+
         return $this->json(
             $user,
             200,
@@ -64,6 +64,8 @@ class UserController extends CoreApiController
                 ]
             ]
         );
+
+
     }
     
     /**

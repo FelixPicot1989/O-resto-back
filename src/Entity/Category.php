@@ -21,6 +21,7 @@ class Category
      * @Groups({"category_browse", "category_read"})
      * @Groups({"drink_browse", "drink_read"})
      * @Groups({"eat_browse", "eat_read"})
+     * @Groups({"menu_browse", "menu_read"})
      */
     private $id;
 
@@ -29,6 +30,7 @@ class Category
      * @Groups({"category_browse", "category_read"})
      * @Groups({"drink_browse", "drink_read"})
      * @Groups({"eat_browse", "eat_read"})
+     * @Groups({"menu_browse", "menu_read"})
      */
     private $name;
 
