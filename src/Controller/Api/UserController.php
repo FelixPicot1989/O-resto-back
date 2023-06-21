@@ -52,7 +52,19 @@ class UserController extends CoreApiController
                 Response::HTTP_NOT_FOUND
             );
         }
-        return $this->json200($user, ["user_read"]);
+
+        return $this->json(
+            $user,
+            200,
+            [],
+            [
+                "groups" =>
+                [
+                    "user_read"
+                ]
+            ]
+        );
+
 
     }
     
