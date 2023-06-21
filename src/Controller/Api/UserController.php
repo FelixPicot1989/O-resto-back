@@ -60,7 +60,6 @@ class UserController extends CoreApiController
             [
                 "groups" =>
                 [
-                    "review_read",
                     "user_read"
                 ]
             ]
