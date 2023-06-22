@@ -21,7 +21,15 @@
             <tr>
                 <td>{{ image.id }}</td>
                 <td>{{ image.name }}</td>
-                <td>{{ image.image }}</td>
+                <td>
+                    {% if image.image %}
+                        <img src="{{ asset('uploads/' ~ image.image) }}" alt="Aperçu de l'image" width="100">
+                    {% dump image %}
+
+                    {% else %}
+                        Pas d'image disponible
+                    {% endif %}
+                </td>
                 <td>{{ image.createdAt ? image.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ image.updatedAt ? image.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>

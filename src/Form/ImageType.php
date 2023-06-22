@@ -17,21 +17,21 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, [
+            ->add("name", TextType::class, [
             "label" => "Le nom:",
             ])
-            ->add('image_file', VichImageType::class, [
-                'label' => 'Image',
-                'required' => false,
-                'allow_delete' => true,
-                'delete_label' => "Supprimer l'image",
-                'download_label' => true,
+            ->add("image_file", VichImageType::class, [
+                "label" => "Image",
+                "required" => false,
+                "allow_delete" => true,
+                "delete_label" => "Supprimer l'image",
+                "download_label" => true,
             ])
-            ->add('restaurant', EntityType::class, [
+            ->add("restaurant", EntityType::class, [
                 "multiple" => false,
                 "expanded" => false, // radiobutton
                 "class" => Restaurant::class,
-                'choice_label' => 'id',
+                "choice_label" => "id",
             ]);
 
         ;
@@ -40,8 +40,8 @@ class ImageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Image::class,
-            "attr" => ["novalidate" => 'novalidate']
+            "data_class" => Image::class,
+            "attr" => ["novalidate" => "novalidate"]
 
         ]);
     }

@@ -55,10 +55,11 @@ class Reservation
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reservations")
-     * @Groups({"reservation_browse", "reservation_read"})
+     * @Groups({"reservation_browse", "reservation_read"})  
      */
     private $user;
 
+    
     public function __construct()
     {
         $this->setCreatedAt(new \DateTime());
@@ -142,4 +143,5 @@ class Reservation
 
         return $this;
     }
+
 }

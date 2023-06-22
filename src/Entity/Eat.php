@@ -8,6 +8,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+
 
 
 
@@ -57,7 +60,7 @@ class Eat
      * @Groups({"eat_browse", "eat_read"})
      * 
      */
-    private $vegan;
+    private $vegetarian;
 
     /**
      * @ORM\Column(type="boolean")
@@ -143,14 +146,14 @@ class Eat
         return $this;
     }
 
-    public function isVegan(): ?bool
+    public function isVegetarian(): ?bool
     {
-        return $this->vegan;
+        return $this->vegetarian;
     }
 
-    public function setVegan(bool $vegan): self
+    public function setVegetarian(bool $vegetarian): self
     {
-        $this->vegan = $vegan;
+        $this->vegetarian = $vegetarian;
 
         return $this;
     }
@@ -251,4 +254,5 @@ class Eat
 
         return $this;
     }
+
 }

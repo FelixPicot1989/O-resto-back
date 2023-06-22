@@ -3,6 +3,7 @@
 namespace App\Controller\Back;
 
 use App\Entity\Eat;
+use App\Entity\Image;
 use App\Form\EatType;
 use App\Repository\EatRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -51,7 +52,7 @@ class EatController extends AbstractController
     /**
      * @Route("/{id}", name="app_back_eat_show", methods={"GET"})
      */
-    public function show(Eat $eat): Response
+    public function show(Eat $eat, Image $image): Response
     {
         return $this->render('back/eat/show.html.twig', [
             'eat' => $eat,

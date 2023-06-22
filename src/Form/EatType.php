@@ -3,8 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Eat;
-use App\Entity\Image;
 use App\Entity\Category;
+use App\Entity\Image;
 use App\Entity\Menu;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -15,7 +15,6 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 
 class EatType extends AbstractType
 {
@@ -32,7 +31,7 @@ class EatType extends AbstractType
                 "label" => "Le prix :" ,
                 "scale" => 2,
             ])
-            ->add('vegan', ChoiceType::class, [
+            ->add('vegetarian', ChoiceType::class, [
                 "label" => "Végétarien :",
                 'choices'  => [
                     'Non' => 0,
@@ -42,7 +41,7 @@ class EatType extends AbstractType
                 "expanded" => false,
             ])
             ->add('glutenFree',  ChoiceType::class, [
-                "label" => "Gluten :",
+                "label" => "Sans gluten :",
                 'choices'  => [
                     'Non' => 0,
                     "Oui" => 1
@@ -68,7 +67,7 @@ class EatType extends AbstractType
                 "class" => Menu::class,
                 "choice_label" => 'name',
             ]);
-            
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

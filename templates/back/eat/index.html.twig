@@ -11,9 +11,10 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Description</th>
+                <th>Image</th>
                 <th>Prix</th>
                 <th>Végé</th>
-                <th>Gluten</th>
+                <th>Sans gluten</th>
                 <th>Créé le</th>
                 <th>Modifié</th>
                 <th>Actions</th>
@@ -25,8 +26,16 @@
                 <td>{{ eat.id }}</td>
                 <td>{{ eat.name }}</td>
                 <td>{{ eat.description }}</td>
+                {# <td>
+                    {% if eat.image.image %}
+                        <img src="{{ asset('uploads/' ~ eat.image.image) }}" alt="Aperçu de l'image" width="100">
+                    {% dump eat %}
+                    {% else %}
+                        Pas d'image disponible
+                    {% endif %}
+                </td> #}
                 <td>{{ eat.price }}</td>
-                <td>{{ eat.vegan ? 'Yes' : 'No' }}</td>
+                <td>{{ eat.vegetarian ? 'Yes' : 'No' }}</td>
                 <td>{{ eat.glutenFree ? 'Yes' : 'No' }}</td>
                 <td>{{ eat.createdAt ? eat.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ eat.updatedAt ? eat.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
