@@ -72,27 +72,29 @@ class ReviewController extends CoreApiController
      */
     public function add(Request $request, SerializerInterface $serializerInterface, ReviewRepository $reviewRepository, ValidatorInterface $validatorInterface)
     {
-
+        $user = $this->getUser();
 
         // In request, I need the content
         $jsonContent = $request->getContent();
 
         try { // try to deserialiser
+            /** @var Review $newReview */
             $newReview = $serializerInterface->deserialize($jsonContent, Review::class, 'json');
+            // dd($newReview);
         } catch (EntityNotFoundException $e){
-
+          
             return $this->json("Denormalisation : ". $e->getMessage(), Response::HTTP_BAD_REQUEST);
         } catch (Exception $exception){
             
             return $this->json("JSON Invalide : " . $exception->getMessage(), Response::HTTP_BAD_REQUEST);
         }
-
         $errors = $validatorInterface->validate($newReview);
         // Have errors? 
         if (count($errors) > 0) {
             return $this->json($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
-        
+        $newReview->setUser($user);
+
         $reviewRepository->add($newReview, true);
 
         return $this->json(
