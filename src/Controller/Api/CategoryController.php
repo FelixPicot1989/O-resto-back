@@ -50,7 +50,7 @@ class CategoryController extends CoreApiController
                 [
                     //name of group(s)
                     "category_read",
-                    "eat_read"
+                    
                 ]
             );
     }

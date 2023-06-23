@@ -43,13 +43,14 @@ class Eat
     /**
      * @ORM\Column(type="text", nullable=true)
      * @Groups({"eat_browse", "eat_read"})
+     * @Groups({"category_browse", "category_read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="decimal", precision=5, scale=2)
      * @Groups({"eat_browse", "eat_read"})
-     * 
+     * @Groups({"category_browse", "category_read"})
      * @Assert\NotBlank( message = "Le prix du plat ne peut pas être vide")
      * @Assert\GreaterThan ( value=0, message = "Le prix doit être forcément positif")
      */
@@ -81,6 +82,8 @@ class Eat
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="eats")
+     * @Groups({"eat_browse", "eat_read"})
+     * @Groups({"menu_browse", "menu_read"})
      * @Assert\NotBlank( message = "Vous devez renseigner au moins une catégorie")
      */
     private $category;
@@ -93,8 +96,8 @@ class Eat
     /**
      * @ORM\OneToOne(targetEntity=Image::class)
      * @Groups({"eat_browse", "eat_read"})
-     * @Groups({"category_browse", "category_read"})
      * @Groups({"image_browse", "image_read"})
+     * @Groups({"category_browse", "category_read"})
      */
     private $image;
 

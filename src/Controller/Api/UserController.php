@@ -13,7 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
@@ -23,6 +22,51 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class UserController extends CoreApiController
 
 {
+       /**
+     * list all Users
+     *
+     * @Route("",name="browse", methods={"GET"})
+     *
+     * @param UserRepository $userRepository
+     * @return JsonResponse
+     */
+    public function browse(UserRepository $userRepository): JsonResponse
+    {
+        $allUsers = $userRepository->findAll();
+        return $this->json200($allUsers, ["user_browse"]);
+    }
+    /**
+     * @Route("/{id}", name="read", requirements={"id"="\d+"}, methods={"GET"})
+     */
+    public function read($id, UserRepository $userRepository): JsonResponse
+    {
+        $user = $userRepository->find($id);
+        // gestion of 404
+        if ($user === null) {
+            // ! API -> we don't have HTML
+            return $this->json(
+                [
+                    "message" => "Cet utilisateur n'existe pas"
+                ],
+                // code status : 404
+                Response::HTTP_NOT_FOUND
+            );
+        }
+
+        return $this->json(
+            $user,
+            200,
+            [],
+            [
+                "groups" =>
+                [
+                    "user_read"
+                ]
+            ]
+        );
+
+
+    }
     
     /**
      * add new user

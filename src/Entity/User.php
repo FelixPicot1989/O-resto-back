@@ -22,13 +22,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+
+     * @Groups({"user_read", "user_browse"})
+
+     * @Groups({"reservation_browse", "reservation_read"})
+     * @Groups({"review_browse", "review_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"user_read"})
-     * 
+     * @Groups({"user_read", "user_browse"})
+     * @Groups({"review_browse", "review_read"})
      * @Assert\NotBlank(message = "L'email doit être renseigné")
      * @Assert\Email(message = "L'email doit être valide")
      */
@@ -36,6 +41,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="json")
+     * @Groups({"user_read", "user_browse"})
      */
     private $roles = [];
 
@@ -49,33 +55,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read"})
-     * 
+     * @Groups({"user_read", "user_browse"})
+     * @Groups({"reservation_browse", "reservation_read"})
+     * @Groups({"review_browse", "review_read"})
      * @Assert\NotBlank( message = "Le prénom doit être renseigné")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user_read"})
-     * 
+     * @Groups({"user_read", "user_browse"})
+     * @Groups({"reservation_browse", "reservation_read"})
+     * @Groups({"review_browse", "review_read"})
      * @Assert\NotBlank( message = "Le nom de famille doit être renseigné")
      */
     private $lastname;
-
+    
     /**
      * @ORM\Column(type="datetime")
+     * 
      */
     private $createdAt;
-
+    
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
-
+    
     /**
      * @ORM\OneToMany(targetEntity=Review::class, mappedBy="user")
-     * @Groups({"user_read"})
+     * @Groups({"user_read", "user_browse"})
      */
     private $reviews;
 
@@ -89,7 +98,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->reviews = new ArrayCollection();
         $this->setCreatedAt(new \DateTime());
         $this->reservations = new ArrayCollection();
-
     }
 
     public function getId(): ?int
@@ -226,6 +234,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->updatedAt = new \DateTime('now');
         $this->updatedAt = $updatedAt;
+
 
         return $this;
     }

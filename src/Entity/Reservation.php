@@ -18,7 +18,7 @@ class Reservation
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups({"reservation_browse", "reservation_read"})
-
+     * 
      */
     private $id;
 
