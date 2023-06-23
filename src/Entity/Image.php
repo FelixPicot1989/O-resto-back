@@ -41,6 +41,9 @@ class Image
      * @Groups({"category_browse", "category_read"})
      * @Groups({"restaurant_browse", "restaurant_read"})
      * @Groups({"eat_browse", "eat_read"})
+     * 
+     * @Assert\NotBlank( message = "Vous devez télécharger une image")
+
      */
     private $image;
 

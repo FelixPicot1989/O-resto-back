@@ -91,7 +91,7 @@ class Eat
     private $menu;
 
     /**
-     * @ORM\OneToOne(targetEntity=Image::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Image::class)
      * @Groups({"eat_browse", "eat_read"})
      * @Groups({"category_browse", "category_read"})
      * @Groups({"image_browse", "image_read"})

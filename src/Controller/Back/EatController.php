@@ -6,6 +6,7 @@ use App\Entity\Eat;
 use App\Entity\Image;
 use App\Form\EatType;
 use App\Repository\EatRepository;
+use App\Repository\ImageRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,6 +22,8 @@ class EatController extends AbstractController
      */
     public function index(EatRepository $eatRepository): Response
     {
+        
+
         return $this->render('back/eat/index.html.twig', [
             'eats' => $eatRepository->findAll(),
         ]);
@@ -52,7 +55,7 @@ class EatController extends AbstractController
     /**
      * @Route("/{id}", name="app_back_eat_show", methods={"GET"})
      */
-    public function show(Eat $eat, Image $image): Response
+    public function show(Eat $eat): Response
     {
         return $this->render('back/eat/show.html.twig', [
             'eat' => $eat,

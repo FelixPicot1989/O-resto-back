@@ -10,7 +10,7 @@
 
     {% if app.user %}
         <div class="mb-3">
-            Vous êtes authentifié avec {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>, <a href="{{ path('app_back_main') }}">Retour au Backoffice</a>
+            Vous êtes authentifié avec {{ app.user.userIdentifier }}, <a class="btn btn-success" href="{{ path('app_logout') }}">Déconnexion</a>, <a class="btn btn-primary-1" href="{{ path('app_back_main') }}">Retour au Backoffice</a>
         </div>
     {% endif %}
 

@@ -1,56 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Les Plats{% endblock %}
+{% block title %}Les Plats
+{% endblock %}
 
 {% block body %}
-    <h1>Les Plats</h1>
+	<h1>Les Plats</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Prix</th>
-                <th>Végé</th>
-                <th>Sans gluten</th>
-                <th>Créé le</th>
-                <th>Modifié</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for eat in eats %}
-            <tr>
-                <td>{{ eat.id }}</td>
-                <td>{{ eat.name }}</td>
-                <td>{{ eat.description }}</td>
-                {# <td>
-                    {% if eat.image.image %}
-                        <img src="{{ asset('uploads/' ~ eat.image.image) }}" alt="Aperçu de l'image" width="100">
-                    {% dump eat %}
-                    {% else %}
-                        Pas d'image disponible
-                    {% endif %}
-                </td> #}
-                <td>{{ eat.price }}</td>
-                <td>{{ eat.vegetarian ? 'Yes' : 'No' }}</td>
-                <td>{{ eat.glutenFree ? 'Yes' : 'No' }}</td>
-                <td>{{ eat.createdAt ? eat.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ eat.updatedAt ? eat.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a class="btn btn-primary" href="{{ path('app_back_eat_show', {'id': eat.id}) }}">Voir</a>
-                    <a class="btn btn-primary" href="{{ path('app_back_eat_edit', {'id': eat.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a class="btn btn-success" href="{{ path('app_back_eat_new') }}">Ajouter</a>
-{% endblock %}
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nom</th>
+				<th>Description</th>
+				<th>Image</th>
+				<th>Prix</th>
+				<th>Végétarien</th>
+				<th>Sans gluten</th>
+				<th>Créé le</th>
+				<th>Modifié</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for eat in eats %}
+				<tr>
+					<td>{{ eat.id }}</td>
+					<td>{{ eat.name }}</td>
+					<td>{{ eat.description }}</td>
+            
+					<td>{{ eat.image.image }}
+					{% if eat.image.image %}
+						<img src="{{ asset('uploads/' ~ eat.image.image) }}" alt="Aperçu de l'image" width="100">
+						{% dump eat.image %}
+					{% else %}
+						Pas d'image disponible
+					{% endif %}
+                    </td>
+			
+                    <td>{{ eat.price }}</td>
+                    <td>{{ eat.vegetarian ? 'Yes' : 'No' }}</td>
+                    <td>{{ eat.glutenFree ? 'Yes' : 'No' }}</td>
+                    <td>{{ eat.createdAt ? eat.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ eat.updatedAt ? eat.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ path('app_back_eat_show', {'id': eat.id}) }}">Voir</a>
+                        <a class="btn btn-primary" href="{{ path('app_back_eat_edit', {'id': eat.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+		</tbody>
+	</tr>
+{% else %}
+	<tr>
+		<td colspan="9">no records found</td>
+	</tr>
+{% endfor %}</tbody></table><a class="btn btn-success" href="{{ path('app_back_eat_new') }}">Ajouter</a>{% endblock %}
