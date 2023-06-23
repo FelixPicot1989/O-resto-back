@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 /**
@@ -30,9 +32,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-
      * @Groups({"user_read", "user_browse"})
      * @Groups({"review_browse", "review_read"})
+     * @Assert\NotBlank(message = "L'email doit être renseigné")
+     * @Assert\Email(message = "L'email doit être valide")
      */
     private $email;
 
@@ -45,26 +48,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * 
+     * @Assert\NotBlank( message = "Le mot de passe doit être renseigné")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
-
      * @Groups({"user_read", "user_browse"})
-
      * @Groups({"reservation_browse", "reservation_read"})
      * @Groups({"review_browse", "review_read"})
+     * @Assert\NotBlank( message = "Le prénom doit être renseigné")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
-
      * @Groups({"user_read", "user_browse"})
-
      * @Groups({"reservation_browse", "reservation_read"})
      * @Groups({"review_browse", "review_read"})
+     * @Assert\NotBlank( message = "Le nom de famille doit être renseigné")
      */
     private $lastname;
     
@@ -81,16 +84,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     
     /**
      * @ORM\OneToMany(targetEntity=Review::class, mappedBy="user")
-
      * @Groups({"user_read", "user_browse"})
-
      */
     private $reviews;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="user")
+     */
+    private $reservations;
 
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
         $this->setCreatedAt(new \DateTime());
+        $this->reservations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -256,6 +263,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($review->getUser() === $this) {
                 $review->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getUser() === $this) {
+                $reservation->setUser(null);
             }
         }
 

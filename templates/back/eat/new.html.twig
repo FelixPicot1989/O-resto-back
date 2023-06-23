@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Plat{% endblock %}
+
+{% block body %}
+    <h1>Ajouter Plat</h1>
+
+    {{ include('back/eat/_form.html.twig') }}
+
+    <a class="btn btn-warning" href="{{ path('app_back_eat_index') }}">Retour</a>
+{% endblock %}

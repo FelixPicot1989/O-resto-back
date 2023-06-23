@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<div class="my-4 ">
+		<div class="my-5 py-5 text-center">
+
+			<h1 class="fw-bold display-1 lightgray">Ceci est la page d'erreur avec le code {{status_code}} {{status_text}}</h1>
+
+			<div class="col-lg-6 mx-auto">
+				<p class="display-6 mb-4 p_gold">
+					<br>Le message d'erreur : {{ exception.message }}
+				</p>
+			
+			</div>
+
+		</div>
+	</div>
+
+{% endblock %}

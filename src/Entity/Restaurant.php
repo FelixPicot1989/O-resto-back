@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 /**
@@ -27,6 +29,8 @@ class Restaurant
      * @ORM\Column(type="text")
      * 
      * @Groups({"restaurant_browse", "restaurant_read"})
+     * 
+     * @Assert\NotBlank( message = "L'histoire du restaurant ne peut pas être vide")
      */
 
     private $history;
@@ -34,18 +38,26 @@ class Restaurant
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"restaurant_browse", "restaurant_read" })
+     * 
+     * @Assert\NotBlank( message = "Les heures d'ouvertures doivent être renseignées")
+
      */
     private $openingLunch;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"restaurant_browse", "restaurant_read"})
+     * 
+     * @Assert\NotBlank( message = "L'adresse doit être renseignée")
+
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=32)
      * @Groups({"restaurant_browse", "restaurant_read"})
+     * 
+     * @Assert\NotBlank( message = "Le numéro de téléphone doit être renseigné")
      */
     private $phone;
 
@@ -63,17 +75,20 @@ class Restaurant
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="restaurant")
      * @Groups({"restaurant_browse", "restaurant_read"})
      * @Groups({"image_browse", "image_read"})
+     * 
      */
     private $images;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"restaurant_browse", "restaurant_read"})
+     * 
+     * @Assert\NotBlank( message = "Les heures d'ouvertures doivent êtres renseignées")
      */
     private $openingEvening;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"restaurant_browse", "restaurant_read"})     
      */
     private $info;
@@ -81,6 +96,8 @@ class Restaurant
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->setCreatedAt(new \DateTime());
+
     }
 
     public function getId(): ?int
@@ -155,6 +172,7 @@ class Restaurant
 
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
+        $this->updatedAt = new \DateTime('now');
         $this->updatedAt = $updatedAt;
 
         return $this;
@@ -207,7 +225,7 @@ class Restaurant
         return $this->info;
     }
 
-    public function setInfo(string $info): self
+    public function setInfo(?string $info): self
     {
         $this->info = $info;
 

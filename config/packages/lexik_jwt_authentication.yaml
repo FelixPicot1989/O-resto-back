@@ -4,6 +4,5 @@ lexik_jwt_authentication:
     secret_key: '%env(resolve:JWT_SECRET_KEY)%' # required for token creation
     public_key: '%env(resolve:JWT_PUBLIC_KEY)%' # required for token verification
     pass_phrase: '%env(JWT_PASSPHRASE)%' # required for token creation
-    token_ttl: 64800 # token TTL in seconds, defaults to 18 hour
+    token_ttl: 64800 # token TTL in seconds, defaults to 18 hours
     user_identity_field: email # key under which the user identity will be stored in the token payload
-   

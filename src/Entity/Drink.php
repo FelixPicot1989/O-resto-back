@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\DrinkRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 
@@ -26,12 +28,15 @@ class Drink
      * @ORM\Column(type="string", length=255)
      * 
      * @Groups({"drink_browse", "drink_read"})
+     * 
+     * @Assert\NotBlank( message = "Le nom de la boisson ne peut pas être vide")
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      * @Groups({"drink_browse", "drink_read"})
+     * 
      */
     private $description;
 
@@ -39,12 +44,15 @@ class Drink
      * @ORM\Column(type="decimal", precision=5, scale=2)
      * @Groups({"drink_browse", "drink_read"})
      * 
+     * @Assert\NotBlank( message = "Le prix de la boisson ne peut pas être vide")
+     * @Assert\GreaterThan ( value=0, message = "Le prix doit être forcément positif")
      */
     private $price;
 
     /**
      * @ORM\Column(type="boolean")
      * @Groups({"drink_browse", "drink_read"})
+
      */
     private $alcool;
 
@@ -64,6 +72,11 @@ class Drink
      *
      */
     private $category;
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
 
     public function getId(): ?int
     {
@@ -137,6 +150,7 @@ class Drink
 
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
+        $this->updatedAt = new \DateTime('now');
         $this->updatedAt = $updatedAt;
 
         return $this;

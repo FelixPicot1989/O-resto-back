@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Avis{% endblock %}
+
+{% block body %}
+    <h1>Ajouter Avis</h1>
+
+    {{ include('back/review/_form.html.twig') }}
+
+    <a class="btn btn-warning" href="{{ path('app_back_review_index') }}">Retour</a>
+{% endblock %}
