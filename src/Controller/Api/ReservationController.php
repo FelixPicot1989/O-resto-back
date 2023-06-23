@@ -74,6 +74,7 @@ class ReservationController extends CoreApiController
     public function add(Request $request, SerializerInterface $serializerInterface, ReservationRepository $reservationRepository, ValidatorInterface $validatorInterface)
     {
 
+        $user = $this->getUser();
 
         // In request, I need the content
         $jsonContent = $request->getContent();
@@ -93,6 +94,8 @@ class ReservationController extends CoreApiController
         if (count($errors) > 0) {
             return $this->json($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
+
+        $newReservation->setUser($user);
 
 
         $reservationRepository->add($newReservation, true);
