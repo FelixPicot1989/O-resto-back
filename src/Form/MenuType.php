@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Eat;
 use App\Entity\Menu;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -24,11 +25,15 @@ class MenuType extends AbstractType
             "scale" => 2,
         ])
         ->add('eats',  EntityType::class, [
+            "label" => "Les plats : ",
             "multiple" => true,
             "expanded" => true, 
             "class" => Eat::class,
             'choice_label' => 'name',
-            "placeholder" => "-",
+            "query_builder" => function(EntityRepository $entityrepository){
+                return $entityrepository->createQueryBuilder('e')
+                    ->orderBy('e.name', 'ASC');
+            }
             
         ]);
     }

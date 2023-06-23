@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Drink;
 use App\Entity\Category;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -42,6 +43,10 @@ class DrinkType extends AbstractType
                 "expanded" => false, // radiobutton
                 "class" => Category::class,
                 'choice_label' => 'name',
+                "query_builder" => function (EntityRepository $entityrepository) {
+                    return $entityrepository->createQueryBuilder('c')
+                        ->orderBy('c.name', 'ASC');
+                }
             ]);
     }
 
