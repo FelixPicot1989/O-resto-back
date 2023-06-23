@@ -7,6 +7,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 
 
 /**
@@ -31,6 +34,7 @@ class Category
      * @Groups({"drink_browse", "drink_read"})
      * @Groups({"eat_browse", "eat_read"})
      * @Groups({"menu_browse", "menu_read"})
+     * @Assert\NotBlank( message = "Le nom de la catégorie ne peut pas être vide")
      */
     private $name;
 
@@ -42,7 +46,7 @@ class Category
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $UpdatedAt;
+    private $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity=Drink::class, mappedBy="category")
@@ -60,6 +64,7 @@ class Category
     {
         $this->drinks = new ArrayCollection();
         $this->eats = new ArrayCollection();
+        $this->setCreatedAt(new \DateTime());
     }
 
     public function getId(): ?int
@@ -79,6 +84,7 @@ class Category
         return $this;
     }
 
+
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -93,12 +99,13 @@ class Category
 
     public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->UpdatedAt;
+        return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $UpdatedAt): self
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
-        $this->UpdatedAt = $UpdatedAt;
+        $this->updatedAt = new \DateTime('now');
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

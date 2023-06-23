@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Réservation{% endblock %}
+
+{% block body %}
+    <h1>Ajouter Réservation</h1>
+
+    {{ include('back/reservation/_form.html.twig') }}
+
+    <a class="btn btn-warning" href="{{ path('app_back_reservation_index') }}">Retour</a>
+{% endblock %}

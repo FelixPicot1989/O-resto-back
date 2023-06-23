@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Catégories{% endblock %}
+
+{% block body %}
+    <h1>Les Catégories</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Créé le</th>
+                <th>Modifié</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    {% if category.name in ['Entrées', 'Plats', 'Desserts']  %}
+
+                        <a class="btn btn-primary" href="{{ path('app_back_category_show', {'id': category.id}) }}">Voir</a>
+                    {% else %}
+                        <a class="btn btn-primary" href="{{ path('app_back_category_edit', {'id': category.id}) }}">Modifier</a>
+                        <a class="btn btn-primary" href="{{ path('app_back_category_show', {'id': category.id}) }}">Voir</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('app_back_category_new') }}">Ajouter</a>
+{% endblock %}

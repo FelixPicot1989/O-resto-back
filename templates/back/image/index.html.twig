@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Images{% endblock %}
+
+{% block body %}
+    <h1>Les Images</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Image</th>
+                <th>Créé le</th>
+                <th>Modifié</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for image in images %}
+            <tr>
+                <td>{{ image.id }}</td>
+                <td>{{ image.name }}</td>
+                <td>
+                    {% if image.image %}
+                        <img src="{{ asset('uploads/' ~ image.image) }}" alt="Aperçu de l'image" width="100">
+                    {% else %}
+                        Pas d'image disponible
+                    {% endif %}
+                </td>
+                <td>{{ image.createdAt ? image.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ image.updatedAt ? image.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_back_image_show', {'id': image.id}) }}">Voir</a>
+                    <a class="btn btn-primary" href="{{ path('app_back_image_edit', {'id': image.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('app_back_image_new') }}">Ajouter</a>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plat{% endblock %}
+
+{% block body %}
+    <h1>Plat</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ eat.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ eat.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ eat.description }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ eat.price }}</td>
+            </tr>
+            <tr>
+                <th>Végétarien</th>
+                <td>{{ eat.vegetarian ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>sans gluten</th>
+                <td>{{ eat.glutenFree ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Créé le</th>
+                <td>{{ eat.createdAt ? eat.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Modifié</th>
+                <td>{{ eat.updatedAt ? eat.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-warning" href="{{ path('app_back_eat_index') }}" >{{ 'Retour' }}</a> <br>
+
+    <a class="btn btn-outline-success" href="{{ path('app_back_eat_edit', {'id': eat.id}) }}" >{{ 'Modifier' }}</a>
+    {{ include('back/eat/_delete_form.html.twig') }}
+{% endblock %}

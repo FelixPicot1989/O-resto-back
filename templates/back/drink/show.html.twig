@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boisson{% endblock %}
+
+{% block body %}
+    <h1>Boisson</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ drink.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ drink.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ drink.description }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ drink.price }}</td>
+            </tr>
+            <tr>
+                <th>Alcool</th>
+                <td>{{ drink.alcool ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Créé le</th>
+                <td>{{ drink.createdAt ? drink.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Modifié</th>
+                <td>{{ drink.updatedAt ? drink.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-warning" href="{{ path('app_back_drink_index') }}" >{{ 'Retour' }}</a> <br>
+
+    <a class="btn btn-outline-success" href="{{ path('app_back_drink_edit', {'id': drink.id}) }}" >{{ 'Modifier' }}</a>
+    {{ include('back/drink/_delete_form.html.twig') }}
+{% endblock %}

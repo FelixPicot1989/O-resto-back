@@ -1,0 +1,24 @@
+		<div class="card" style="width: 18rem;">
+			<div class="card-body">
+     	{% if entity == 'drink' %}
+            <h5 class="card-title">Boissons</h5>
+		{% elseif entity == 'eat' %}
+            <h5 class="card-title">Plats</h5>
+		{% elseif entity == 'category' %}
+            <h5 class="card-title">Catégorie</h5>
+		{% elseif entity == 'review' %}
+            <h5 class="card-title">Avis</h5>
+		{% elseif entity == 'user' %}
+            <h5 class="card-title">Utilisateurs</h5>
+		{% else %}
+            <h5 class="card-title">{{ entity|capitalize }}</h5>
+        {% endif %}
+				{% if entity == 'review' %}
+					<a href="{{ path('app_back_' ~ entity ~ '_index')}}" class="card-link btn btn-outline-info">Liste</a>
+				{% else %}
+					<a href="{{ path('app_back_' ~ entity ~ '_new')}}" class="card-link btn btn-outline-success">Ajout</a>
+					<a href="{{ path('app_back_' ~ entity ~ '_index')}}" class="card-link btn btn-outline-info">Liste</a>
+				{% endif %}
+			</div>
+		</div>
+

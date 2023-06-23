@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ReservationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=ReservationRepository::class)
@@ -23,6 +25,9 @@ class Reservation
     /**
      * @ORM\Column(type="integer")
      * @Groups({"reservation_browse", "reservation_read"})
+     * 
+     * @Assert\NotBlank( message = "Le nombre de couverts ne peut pas être vide")
+     * @Assert\GreaterThan ( value=0, message = "Le nombre de couverts doit être forcément positif")
      */
     private $numberOfCovers;
 
@@ -50,9 +55,16 @@ class Reservation
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reservations")
-     * @Groups({"reservation_browse", "reservation_read"})
+     * @Groups({"reservation_browse", "reservation_read"})  
      */
     private $user;
+
+    
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
+
 
     public function getId(): ?int
     {
@@ -114,6 +126,7 @@ class Reservation
 
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
+        $this->updatedAt = new \DateTime('now');
         $this->updatedAt = $updatedAt;
 
         return $this;
@@ -130,4 +143,5 @@ class Reservation
 
         return $this;
     }
+
 }

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Image{% endblock %}
+
+{% block body %}
+    <h1>Ajouter Image</h1>
+
+    {{ include('back/image/_form.html.twig') }}
+
+    <a class="btn btn-warning" href="{{ path('app_back_image_index') }}">Retour</a>
+{% endblock %}

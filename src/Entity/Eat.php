@@ -7,6 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+
+
 
 
 /**
@@ -30,6 +35,8 @@ class Eat
      * @Groups({"eat_browse", "eat_read"})
      * @Groups({"category_browse","category_read"})
      * @Groups({"menu_browse", "menu_read"})
+     * 
+     * @Assert\NotBlank( message = "Le nom du plat ne peut pas être vide")
      */
     private $name;
 
@@ -44,18 +51,22 @@ class Eat
      * @ORM\Column(type="decimal", precision=5, scale=2)
      * @Groups({"eat_browse", "eat_read"})
      * @Groups({"category_browse", "category_read"})
+     * @Assert\NotBlank( message = "Le prix du plat ne peut pas être vide")
+     * @Assert\GreaterThan ( value=0, message = "Le prix doit être forcément positif")
      */
     private $price;
 
     /**
      * @ORM\Column(type="boolean")
      * @Groups({"eat_browse", "eat_read"})
+     * 
      */
-    private $vegan;
+    private $vegetarian;
 
     /**
      * @ORM\Column(type="boolean")
      * @Groups({"eat_browse", "eat_read"})
+     * 
      */
     private $glutenFree;
 
@@ -73,7 +84,7 @@ class Eat
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="eats")
      * @Groups({"eat_browse", "eat_read"})
      * @Groups({"menu_browse", "menu_read"})
-     * 
+     * @Assert\NotBlank( message = "Vous devez renseigner au moins une catégorie")
      */
     private $category;
 
@@ -83,7 +94,7 @@ class Eat
     private $menu;
 
     /**
-     * @ORM\OneToOne(targetEntity=Image::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Image::class)
      * @Groups({"eat_browse", "eat_read"})
      * @Groups({"image_browse", "image_read"})
      * @Groups({"category_browse", "category_read"})
@@ -94,6 +105,7 @@ class Eat
     {
         $this->category = new ArrayCollection();
         $this->menu = new ArrayCollection();
+        $this->setCreatedAt(new \DateTime());
     }
 
     public function getId(): ?int
@@ -137,14 +149,14 @@ class Eat
         return $this;
     }
 
-    public function isVegan(): ?bool
+    public function isVegetarian(): ?bool
     {
-        return $this->vegan;
+        return $this->vegetarian;
     }
 
-    public function setVegan(bool $vegan): self
+    public function setVegetarian(bool $vegetarian): self
     {
-        $this->vegan = $vegan;
+        $this->vegetarian = $vegetarian;
 
         return $this;
     }
@@ -180,6 +192,7 @@ class Eat
 
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
+        $this->updatedAt = new \DateTime('now');
         $this->updatedAt = $updatedAt;
 
         return $this;
@@ -244,4 +257,5 @@ class Eat
 
         return $this;
     }
+
 }

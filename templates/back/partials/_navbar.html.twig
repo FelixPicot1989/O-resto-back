@@ -1,0 +1,80 @@
+<ul class="nav nav-tabs">
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	{% if app.request.attributes.get('_route') != 'app_login' %}
+
+        {% if app.request.attributes.get('_route') != 'app_back_main' %}	
+        <li class="nav-item">
+		    <a class="nav-link" aria-current="page" href="{{ path('app_back_main') }}">Backoffice</a>
+	    </li>
+        {% endif %}
+
+	<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gestion de la Carte</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a class="dropdown-item" href="{{ path('app_back_eat_index') }}">Plats</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="{{ path('app_back_drink_index') }}">Boissons</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="{{ path('app_back_menu_index') }}">Menus</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="{{ path('app_back_category_index') }}">Catégories</a>
+			</li>
+		</ul>
+	</li>
+	<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gestion de la Galerie</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a class="dropdown-item" href="{{ path('app_back_image_index') }}">Images</a>
+			</li>
+		</ul>
+	</li>
+	<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gestion du Restaurant</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a class="dropdown-item" href="{{ path('app_back_restaurant_index') }}">Restaurant</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="{{ path('app_back_reservation_index') }}">Réservations</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="{{ path('app_back_review_index') }}">Avis</a>
+			</li>
+		</ul>
+	</li>
+	<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gestion des Utilisateurs</a>
+		<ul class="dropdown-menu">
+
+			<li>
+				<a class="dropdown-item" href="{{ path('app_back_user_index') }}">Utilisateurs</a>
+			</li>
+		</ul>
+	</li>
+    <li class="nav-item ms-auto">
+	
+    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+    {# if is authentificated  #}
+		<a href="{{ path('app_logout') }}">
+			<button type="button" class="btn btn-success me-2">Deconnexion</button>
+		</a>
+	{% else %}
+		<a href="{{ path('app_login') }}">
+			<button type="button" class="btn btn-danger me-2">Connexion</button>
+		</a>
+	{% endif %}
+
+	{% endif %}
+    {# link for go to website #}
+		<a href="http://maximeguyot1-server.eddi.cloud/">
+			<button type="button" class="btn btn-primary-1 me-2">Vers le site</button>
+		</a>
+	</li>
+</ul>

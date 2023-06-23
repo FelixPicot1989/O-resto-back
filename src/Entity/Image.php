@@ -5,13 +5,19 @@ namespace App\Entity;
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
  * @ORM\Entity(repositoryClass=ImageRepository::class)
+ * @Vich\Uploadable
  */
 class Image
 {
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -25,6 +31,7 @@ class Image
     /**
      * @ORM\Column(type="string", length=64)
      * @Groups({"image_browse", "image_read"})
+     * 
      */
     private $name;
 
@@ -34,8 +41,17 @@ class Image
      * @Groups({"category_browse", "category_read"})
      * @Groups({"restaurant_browse", "restaurant_read"})
      * @Groups({"eat_browse", "eat_read"})
+     * 
+     * @Assert\NotBlank( message = "Vous devez télécharger une image")
+
      */
-    private $url;
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="image", fileNameProperty="image")
+     * @var File|null
+     */
+    private $image_file;
 
     /**
      * @ORM\Column(type="datetime")
@@ -44,6 +60,7 @@ class Image
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTimeInterface|null
      */
     private $updatedAt;
 
@@ -51,6 +68,11 @@ class Image
      * @ORM\ManyToOne(targetEntity=Restaurant::class, inversedBy="images")
      */
     private $restaurant;
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
 
     public function getId(): ?int
     {
@@ -69,14 +91,14 @@ class Image
         return $this;
     }
 
-    public function getUrl(): ?string
+    public function getImage(): ?string
     {
-        return $this->url;
+        return $this->image;
     }
 
-    public function setUrl(string $url): self
+    public function setImage(?string $image): self
     {
-        $this->url = $url;
+        $this->image = $image;
 
         return $this;
     }
@@ -93,6 +115,19 @@ class Image
         return $this;
     }
 
+    public function setImageFile(File $image = null)
+    {
+        $this->image_file = $image;
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->image_file;
+    }
+
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
@@ -100,6 +135,7 @@ class Image
 
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
+        $this->updatedAt = new \DateTime('now');
         $this->updatedAt = $updatedAt;
 
         return $this;

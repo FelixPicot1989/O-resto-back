@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Restaurant{% endblock %}
+
+{% block body %}
+    <h1>Ajouter Restaurant</h1>
+
+    {{ include('back/restaurant/_form.html.twig') }}
+
+    <a class="btn btn-warning"  href="{{ path('app_back_restaurant_index') }}">Retour</a>
+{% endblock %}

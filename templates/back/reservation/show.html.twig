@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservation{% endblock %}
+
+{% block body %}
+    <h1>Réservation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reservation.id }}</td>
+            </tr>
+            <tr>
+                <th>NumberOfCovers</th>
+                <td>{{ reservation.numberOfCovers }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ reservation.date ? reservation.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>TimeSlots</th>
+                <td>{{ reservation.timeSlots ? reservation.timeSlots|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Créé le</th>
+                <td>{{ reservation.createdAt ? reservation.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Modifié</th>
+                <td>{{ reservation.updatedAt ? reservation.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-warning" href="{{ path('app_back_reservation_index') }}" >{{ 'Retour' }}</a> <br>
+
+    <a class="btn btn-outline-success" href="{{ path('app_back_reservation_edit', {'id': reservation.id}) }}" >{{ 'Modifier' }}</a>
+    {{ include('back/reservation/_delete_form.html.twig') }}
+{% endblock %}
