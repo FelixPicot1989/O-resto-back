@@ -81,7 +81,7 @@ class Eat
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="eats")
-     * 
+     * @Assert\NotBlank( message = "Vous devez renseigner au moins une catégorie")
      */
     private $category;
 

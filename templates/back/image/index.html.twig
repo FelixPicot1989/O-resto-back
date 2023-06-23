@@ -24,8 +24,6 @@
                 <td>
                     {% if image.image %}
                         <img src="{{ asset('uploads/' ~ image.image) }}" alt="Aperçu de l'image" width="100">
-                    {% dump image %}
-
                     {% else %}
                         Pas d'image disponible
                     {% endif %}

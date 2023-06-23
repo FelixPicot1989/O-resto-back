@@ -29,8 +29,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=180, unique=true)
      * @Groups({"user_read"})
      * 
-     * @Assert\NotBlank( message = "L'email doit être renseigné")
-
+     * @Assert\NotBlank(message = "L'email doit être renseigné")
+     * @Assert\Email(message = "L'email doit être valide")
      */
     private $email;
 

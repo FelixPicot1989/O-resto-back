@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 
@@ -21,7 +22,8 @@ class UserType extends AbstractType
     {
     $builder
         ->add('email', EmailType::class, [
-        "label" => "Indiquez votre email de connexion"
+        "label" => "Indiquez votre email de connexion", 
+        
         ])
 
         ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
@@ -37,7 +39,7 @@ class UserType extends AbstractType
                     'constraints' => [
                         new Regex(
                             "/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])\S{6,12}$/",
-                            "Le mot de passe doit contenir au minimum 6 caractères, une majuscule, un chiffre"
+                            "Le mot de passe doit contenir au minimum 6 caractères, une majuscule, un chiffre, une minuscule"
                         ),
                     ],
                 ]);
@@ -48,7 +50,7 @@ class UserType extends AbstractType
                         new NotBlank(),
                         new Regex(
                             "/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])\S{6,12}$/",
-                            "Le mot de passe doit contenir au minimum 6 caractères, une majuscule, un chiffre"
+                            "Le mot de passe doit contenir au minimum 6 caractères, une majuscule, un chiffre, une minuscule"
                         ),
                     ],
                 ]);
