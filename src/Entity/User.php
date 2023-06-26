@@ -90,7 +90,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="user")
-     */
+   * @Groups({"user_read", "user_browse"})  
+   */
     private $reservations;
 
     public function __construct()
