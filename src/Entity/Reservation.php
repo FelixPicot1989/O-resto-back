@@ -58,7 +58,6 @@ class Reservation
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reservations")
-     * @Groups({"reservation_browse", "reservation_read"})  
      */
     private $user;
 
