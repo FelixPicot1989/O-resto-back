@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Eat;
 use App\Entity\Image;
 use App\Entity\Restaurant;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -32,8 +33,8 @@ class ImageType extends AbstractType
                 "expanded" => false, // radiobutton
                 "class" => Restaurant::class,
                 "choice_label" => "id",
-            ]);
-
+                "placeholder" => "-",
+            ])
         ;
     }
 
