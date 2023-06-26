@@ -18,13 +18,14 @@ class Reservation
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups({"reservation_browse", "reservation_read"})
-     * 
+     * @Groups({"user_read", "user_browse"})  
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
      * @Groups({"reservation_browse", "reservation_read"})
+     * @Groups({"user_read", "user_browse"})  
      * 
      * @Assert\NotBlank( message = "Le nombre de couverts ne peut pas être vide")
      * @Assert\GreaterThan ( value=0, message = "Le nombre de couverts doit être forcément positif")
@@ -34,12 +35,14 @@ class Reservation
     /**
      * @ORM\Column(type="datetime")
      * @Groups({"reservation_browse", "reservation_read"})
+     * @Groups({"user_read", "user_browse"})  
      */
     private $date;
 
     /**
      * @ORM\Column(type="time")
      * @Groups({"reservation_browse", "reservation_read"})
+     * @Groups({"user_read", "user_browse"})  
      */
     private $timeSlots;
 

@@ -44,6 +44,7 @@ security:
     access_control:
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
         - { path: ^/back, roles: ROLE_ADMIN }
+        - { path: ^/api/reservations$, roles: ROLE_ADMIN }
         - { path: ^/api/users$, roles: PUBLIC_ACCESS, methods: [POST] }
         - { path: ^/api/users$, roles: ROLE_ADMIN }
         - { path: ^/api\/\w+\/\d+, roles: IS_AUTHENTICATED_FULLY, methods: [PUT, PATCH, DELETE]}
