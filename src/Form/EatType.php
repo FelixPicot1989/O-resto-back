@@ -66,8 +66,11 @@ class EatType extends AbstractType
                 "expanded" => true, 
                 "class" => Menu::class,
                 "choice_label" => 'name',
+            ])
+            ->add('image', EntityType::class, [
+                "class" => Image::class,
+                "choice_label" => 'name'
             ]);
-
     }
 
     public function configureOptions(OptionsResolver $resolver): void

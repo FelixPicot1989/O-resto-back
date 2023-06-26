@@ -34,7 +34,6 @@ class MenuType extends AbstractType
                 return $entityrepository->createQueryBuilder('e')
                     ->orderBy('e.name', 'ASC');
             }
-            
         ]);
     }
 
