@@ -3,6 +3,7 @@
 namespace App\Controller\Api;
 
 use App\Entity\Reservation;
+use App\Entity\User;
 use App\Repository\ReservationRepository;
 use App\Services\ReservationsMailer;
 use Doctrine\ORM\EntityNotFoundException;
@@ -104,7 +105,6 @@ class ReservationController extends CoreApiController
         $reservationRepository->add($newReservation, true);
 
         $reservationsMailer->newReservationEmail($newReservation);
-        
         
         
         return $this->json(

@@ -31,13 +31,16 @@ class RestaurantController extends AbstractController
     public function new(Request $request, RestaurantRepository $restaurantRepository): Response
     {
         $restaurant = new Restaurant();
+
         $form = $this->createForm(RestaurantType::class, $restaurant);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $restaurantRepository->add($restaurant, true);
-            $this->addFlash("success", "Votre restaurant a bien été ajouté.");
 
+            $restaurantRepository->add($restaurant, true);
+
+            $this->addFlash("success", "Votre restaurant a bien été ajouté.");
 
             return $this->redirectToRoute('app_back_restaurant_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -64,10 +67,13 @@ class RestaurantController extends AbstractController
     public function edit(Request $request, Restaurant $restaurant, RestaurantRepository $restaurantRepository): Response
     {
         $form = $this->createForm(RestaurantType::class, $restaurant);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $restaurant->setUpdatedAt(new \DateTime());
+            
             $restaurantRepository->add($restaurant, true);
 
             $this->addFlash("success", "Votre restaurant a bien été modifé.");

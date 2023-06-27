@@ -35,7 +35,9 @@ class EatController extends AbstractController
     public function new(Request $request, EatRepository $eatRepository): Response
     {
         $eat = new Eat();
+
         $form = $this->createForm(EatType::class, $eat);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -67,10 +69,13 @@ class EatController extends AbstractController
      */
     public function edit(Request $request, Eat $eat, EatRepository $eatRepository): Response
     {
+
         $form = $this->createForm(EatType::class, $eat);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $eat->setUpdatedAt(new \DateTime());
 
             $eatRepository->add($eat, true);

@@ -31,7 +31,9 @@ class ImageController extends AbstractController
     public function new(Request $request, ImageRepository $imageRepository): Response
     {
         $image = new Image();
+
         $form = $this->createForm(ImageType::class, $image);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,10 +65,13 @@ class ImageController extends AbstractController
     public function edit(Request $request, Image $image, ImageRepository $imageRepository): Response
     {
         $form = $this->createForm(ImageType::class, $image);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $image->setUpdatedAt(new \DateTime());
+            
             $imageRepository->add($image, true);
 
             $this->addFlash("success", "Votre image a bien été modifiée.");

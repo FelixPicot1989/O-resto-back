@@ -80,7 +80,7 @@ class ReviewController extends CoreApiController
         try { // try to deserialiser
             /** @var Review $newReview */
             $newReview = $serializerInterface->deserialize($jsonContent, Review::class, 'json');
-            // dd($newReview);
+            
         } catch (EntityNotFoundException $e){
             
             return $this->json("Denormalisation : ". $e->getMessage(), Response::HTTP_BAD_REQUEST);

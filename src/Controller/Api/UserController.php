@@ -22,7 +22,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class UserController extends CoreApiController
 
 {
-       /**
+    /**
      * list all Users
      *
      * @Route("",name="browse", methods={"GET"})
@@ -111,7 +111,7 @@ class UserController extends CoreApiController
         $plainPassword = json_decode($request->getContent(), true)['password'];
 
         if (!empty($plainPassword)) {
-            // je hash le mot de passe
+            // I need to hash the password
             $hashedPassword = $userPasswordHasherInterface->hashPassword($newUser, $plainPassword);
             $newUser->setPassword($hashedPassword);
             $newUser->setRoles(['ROLE_USER']);
