@@ -22,17 +22,17 @@ class CoreApiController extends AbstractController
     public function json200($data, array $groups): JsonResponse
     {
         return $this->json(
-            // les données
+            // the datas
             $data, 
-            // le code de retour : 200 par défaut
+            //  return code : 200 by default
             Response::HTTP_OK,
-            // les entêtes HTTP, on ne s'en sert pas : []
+            // we don't use HTTP headers
             [],
-            // le contexte de serialisation : les groupes
+            // serialisation context : the groups
             [
-                // on précise les groupes                
+                // we precise groups          
                 "groups" => 
-                // c'est un tableau indexé, avec les noms de groupes
+                // it's an array indexed, with groups names
                 $groups
             ]
         );

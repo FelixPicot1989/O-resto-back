@@ -31,7 +31,9 @@ class DrinkController extends AbstractController
     public function new(Request $request, DrinkRepository $drinkRepository): Response
     {
         $drink = new Drink();
+
         $form = $this->createForm(DrinkType::class, $drink);
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

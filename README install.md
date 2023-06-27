@@ -1,6 +1,7 @@
-# Projet O'Resto, Symfony Getting Started
+#  Symfony Getting Started
 
-### Installation of Symfony
+
+For this project we use Symfony, with annotations, lexic and vich bundles.
 
 - Follow this step by step : 
 
@@ -27,9 +28,8 @@ composer create-project symfony/skeleton:"^5.4" my_project_directory
 ```bash
    composer require annotations
    composer require webapp
-   composer require "lexik/jwt-authentication-bundle"
+   composer require lexik/jwt-authentication-bundle
+   composer require symfony/mailgun-mailer
+   composer require  vich/uploader-bundle ( version 1.16.0)
 ```
 
-## Import this project
-
-Download this file and make in your terminal `composer install`

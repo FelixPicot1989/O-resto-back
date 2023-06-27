@@ -20,6 +20,8 @@ class CategoryController extends AbstractController
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
+        //we give a view to see all categories
+        //we need to use the Categoryrepository
         return $this->render('back/category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]);
@@ -31,11 +33,15 @@ class CategoryController extends AbstractController
     public function new(Request $request, CategoryRepository $categoryRepository): Response
     {
         $category = new Category();
+
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $categoryRepository->add($category, true);
+
+            // we add a flash message to confirm a creation of object category
             $this->addFlash("success", "Votre catégorie a bien été ajoutée.");
 
             return $this->redirectToRoute('app_back_category_index', [], Response::HTTP_SEE_OTHER);
@@ -63,12 +69,16 @@ class CategoryController extends AbstractController
     public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // we set the current time when we update the category 
             $category->setUpdatedAt(new \DateTime());
+
             $categoryRepository->add($category, true);
-            
+
             $this->addFlash("success", "Votre catégorie a bien été modifiée.");
 
             return $this->redirectToRoute('app_back_category_index', [], Response::HTTP_SEE_OTHER);
@@ -85,13 +95,12 @@ class CategoryController extends AbstractController
      */
     public function delete(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $category->getId(), $request->request->get('_token'))) {
             $categoryRepository->remove($category, true);
-            
+
             $this->addFlash("success", "Votre catégorie a bien été supprimée.");
         }
 
         return $this->redirectToRoute('app_back_category_index', [], Response::HTTP_SEE_OTHER);
     }
-
 }

@@ -23,6 +23,7 @@
                 <td>{{ category.createdAt ? category.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ category.updatedAt ? category.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
+                 {# If category is "Entrées", "Plats" ou "Dessert" #}
                     {% if category.name in ['Entrées', 'Plats', 'Desserts']  %}
 
                         <a class="btn btn-primary" href="{{ path('app_back_category_show', {'id': category.id}) }}">Voir</a>

@@ -23,18 +23,8 @@ class MenuType extends AbstractType
         ->add('price', NumberType::class, [
             "label" => "Le prix",
             "scale" => 2,
-        ])
-        ->add('eats',  EntityType::class, [
-            "label" => "Les plats : ",
-            "multiple" => true,
-            "expanded" => true, 
-            "class" => Eat::class,
-            'choice_label' => 'name',
-            "query_builder" => function(EntityRepository $entityrepository){
-                return $entityrepository->createQueryBuilder('e')
-                    ->orderBy('e.name', 'ASC');
-            }
         ]);
+        
     }
 
     public function configureOptions(OptionsResolver $resolver): void

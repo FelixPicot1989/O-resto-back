@@ -34,7 +34,9 @@ class UserController extends AbstractController
     ): Response
     {
         $user = new User();
+
         $form = $this->createForm(UserType::class, $user);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -42,12 +44,14 @@ class UserController extends AbstractController
             $plainPassword = $user->getPassword();
             
             $hashedPassword = $userPasswordHasherInterface->hashPassword($user, $plainPassword);
+
             $user->setPassword($hashedPassword);
+
             $user->setRoles(['ROLE_USER']);
 
             $userRepository->add($user, true);
+            
             $this->addFlash("success", "Votre utilisateur a bien été ajouté.");
-
 
             return $this->redirectToRoute('app_back_user_index', [], Response::HTTP_SEE_OTHER);
         }

@@ -69,7 +69,11 @@ class EatType extends AbstractType
             ])
             ->add('image', EntityType::class, [
                 "class" => Image::class,
-                "choice_label" => 'name'
+                "choice_label" => 'name', 
+                "query_builder" => function(EntityRepository $entityrepository){
+                    return $entityrepository->createQueryBuilder('i')
+                        ->orderBy('i.name', 'ASC');
+                }
             ]);
     }
 

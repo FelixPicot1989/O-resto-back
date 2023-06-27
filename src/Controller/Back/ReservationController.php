@@ -31,11 +31,15 @@ class ReservationController extends AbstractController
     public function new(Request $request, ReservationRepository $reservationRepository): Response
     {
         $reservation = new Reservation();
+
         $form = $this->createForm(ReservationType::class, $reservation);
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $reservationRepository->add($reservation, true);
+
             $this->addFlash("success", "Votre réservation a bien été ajoutée.");
 
 
@@ -64,10 +68,13 @@ class ReservationController extends AbstractController
     public function edit(Request $request, Reservation $reservation, ReservationRepository $reservationRepository): Response
     {
         $form = $this->createForm(ReservationType::class, $reservation);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $reservation->setUpdatedAt(new \DateTime());
+            
             $reservationRepository->add($reservation, true);
 
             $this->addFlash("success", "Votre réservation a bien été modifiée.");
@@ -86,7 +93,7 @@ class ReservationController extends AbstractController
      */
     public function delete(Request $request, Reservation $reservation, ReservationRepository $reservationRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$reservation->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $reservation->getId(), $request->request->get('_token'))) {
             $reservationRepository->remove($reservation, true);
             $this->addFlash("success", "Votre réservation a bien été supprimée.");
         }

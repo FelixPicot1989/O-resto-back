@@ -24,7 +24,6 @@
                 <td>{{ review.createdAt ? review.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('app_back_review_show', {'id': review.id}) }}">Voir</a>
-                    <a class="btn btn-primary" href="{{ path('app_back_review_edit', {'id': review.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

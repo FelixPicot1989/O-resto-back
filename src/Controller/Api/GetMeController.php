@@ -34,15 +34,16 @@ class GetMeController extends CoreApiController
      */
     public function getUser(): JsonResponse
     {
+        // we get the user by using jwt token
+        
         $token = $this->tokenStorage->getToken();
-        //dd($token);
 
         if (null === $token) {
             return null;
         }
 
         $user = $token->getUser();
-        //dd($user); 
+
         if ($user === null) {
             return $this->json(
                 [],
