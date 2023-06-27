@@ -21,7 +21,7 @@ class ImageController extends CoreApiController
         // BDD, Images: imageRepository
         $allImages = $imageRepository->findAll();
 
-        // le serializer is after json method()
+        // the serializer is after json method()
         // we need to give to him objects to transform in jsondata
         return $this->json200($allImages, ["image_browse"]);
     }

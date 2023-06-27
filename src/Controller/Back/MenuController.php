@@ -32,11 +32,15 @@ class MenuController extends AbstractController
     public function new(Request $request, MenuRepository $menuRepository): Response
     {
         $menu = new Menu();
+
         $form = $this->createForm(MenuType::class, $menu);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $menuRepository->add($menu, true);
+
             $this->addFlash("success", "Votre menu a bien été ajouté.");
 
 
@@ -66,10 +70,13 @@ class MenuController extends AbstractController
     public function edit(Request $request, Menu $menu, MenuRepository $menuRepository): Response
     {
         $form = $this->createForm(MenuType::class, $menu);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $menu->setUpdatedAt(new \DateTime());
+            
             $menuRepository->add($menu, true);
 
             $this->addFlash("success", "Votre menu a bien été modifié.");

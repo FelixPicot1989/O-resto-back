@@ -3,7 +3,9 @@
 namespace App\Controller\Api;
 
 use App\Entity\Reservation;
+use App\Entity\User;
 use App\Repository\ReservationRepository;
+use App\Services\ReservationsMailer;
 use Doctrine\ORM\EntityNotFoundException;
 use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,6 +16,8 @@ use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 
 /**
@@ -71,7 +75,7 @@ class ReservationController extends CoreApiController
      *
      * @return JsonResponse
      */
-    public function add(Request $request, SerializerInterface $serializerInterface, ReservationRepository $reservationRepository, ValidatorInterface $validatorInterface)
+    public function add(Request $request, SerializerInterface $serializerInterface, ReservationRepository $reservationRepository, ValidatorInterface $validatorInterface, ReservationsMailer $reservationsMailer)
     {
 
         $user = $this->getUser();
@@ -96,16 +100,19 @@ class ReservationController extends CoreApiController
         }
 
         $newReservation->setUser($user);
-
-
+        
+        
         $reservationRepository->add($newReservation, true);
 
+        $reservationsMailer->newReservationEmail($newReservation);
+        
+        
         return $this->json(
-
+            
             $newReservation,
             //status 201 for created object
             Response::HTTP_CREATED,
-
+            
             [],
             // the context because we serialize an object
             [
@@ -114,10 +121,14 @@ class ReservationController extends CoreApiController
                     // I use an existing group
                     "reservation_read",
                     "user_browse"
-                ]
-            ]
-        );
+                    ]
+                    ]
+                );
+
     }
+
+
+
     /**
      * edit reservation
      *

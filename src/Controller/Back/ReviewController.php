@@ -31,13 +31,16 @@ class ReviewController extends AbstractController
     public function new(Request $request, ReviewRepository $reviewRepository): Response
     {
         $review = new Review();
+
         $form = $this->createForm(ReviewType::class, $review);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $reviewRepository->add($review, true);
-            $this->addFlash("success", "Votre avis a bien été ajouté.");
 
+            $reviewRepository->add($review, true);
+            
+            $this->addFlash("success", "Votre avis a bien été ajouté.");
 
             return $this->redirectToRoute('app_back_review_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -64,6 +67,7 @@ class ReviewController extends AbstractController
     public function edit(Request $request, Review $review, ReviewRepository $reviewRepository): Response
     {
         $form = $this->createForm(ReviewType::class, $review);
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

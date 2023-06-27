@@ -22,7 +22,7 @@ class MenuController extends CoreApiController
         // BDD, menu: MenuRepository
         $allmenus = $menuRepository->findAll();
 
-        // le serializer is after json method()
+        // the serializer is after json method()
         // we need to give to him objects to transform in jsondata
         return $this->json200($allmenus, ["menu_browse", "category-browse"]);
     }
