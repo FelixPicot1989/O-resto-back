@@ -43,6 +43,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
+        - { path: ^/back, roles: ROLE_DEMO, methods: [GET] }
         - { path: ^/back, roles: ROLE_ADMIN }
         - { path: ^/api/reservations$, roles: ROLE_ADMIN, methods: [GET] }
         - { path: ^/api/users$, roles: PUBLIC_ACCESS, methods: [POST] }
@@ -57,7 +58,9 @@ security:
 
 
     role_hierarchy:
-        ROLE_ADMIN:   [ROLE_USER]
+        ROLE_ADMIN:   [ROLE_USER, ROLE_DEMO]
+        ROLE_DEMO:   [ROLE_USER]
+
 
 
 
