@@ -5,3 +5,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 {% endfor %}
+
+{% if is_granted('ROLE_DEMO') and app.user.email == 'demo@demo.com' %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        Vous êtes en mode "DEMO". Vous avez un accès limité à certaines fonctionnalités.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}

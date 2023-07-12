@@ -39,6 +39,7 @@ class UserEditType extends AbstractType
                 "choices" => [
                     "ADMIN" => "ROLE_ADMIN",
                     "USER" => "ROLE_USER",
+                    "DEMO" => "ROLE_DEMO",
                 ]
             ])
             ->add('firstname', TextType::class, [
